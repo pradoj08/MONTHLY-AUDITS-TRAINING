@@ -11626,6 +11626,1961 @@ window.addEventListener('load',function(){
     }catch(err){ console.error('Audits standalone boot failed:', err); }
   });
 </script>
+
+<style id="monthly-training-clean-white-redesign">
+  #page-audits{
+    min-height:100vh !important;
+    background:#f8fafc !important;
+    color:#111827 !important;
+    padding:0 !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+  }
+  #page-audits .header,
+  #page-audits .roster-overview,
+  #page-audits .audits-wrap > .roster-section:nth-of-type(2),
+  #page-audits #audit-filter-row,
+  #page-audits #audit-table-wrap,
+  #page-audits #audit-count-label{
+    display:none !important;
+  }
+  #page-audits .audits-wrap{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    padding:30px 42px 32px !important;
+    margin:0 !important;
+    background:#fff !important;
+  }
+  #page-audits .audits-wrap > .roster-section:nth-of-type(3),
+  #page-audits .audits-wrap > .roster-section:last-of-type{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    overflow:visible !important;
+  }
+  #page-audits .audits-wrap > .roster-section:nth-of-type(3)::before,
+  #page-audits .audits-wrap > .roster-section:nth-of-type(3)::after,
+  #page-audits .audits-wrap > .roster-section:last-of-type::before,
+  #page-audits .audits-wrap > .roster-section:last-of-type::after{
+    display:none !important;
+    content:none !important;
+  }
+  #page-audits .roster-section-head{
+    display:grid !important;
+    grid-template-columns:1fr auto !important;
+    align-items:end !important;
+    gap:16px !important;
+    margin:0 0 24px !important;
+    padding:0 0 26px !important;
+    border-bottom:1px solid #d9dee7 !important;
+    background:#fff !important;
+    background-image:none !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    min-height:0 !important;
+    overflow:visible !important;
+  }
+  #page-audits .roster-section-head::before,
+  #page-audits .roster-section-head::after{
+    display:none !important;
+    content:none !important;
+  }
+  #page-audits .roster-section-title{
+    display:block !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+    color:#111827 !important;
+    letter-spacing:0 !important;
+    text-transform:none !important;
+    background:transparent !important;
+    background-image:none !important;
+    padding:0 !important;
+    margin:0 !important;
+  }
+  #page-audits .roster-section-title svg{display:none !important;}
+  #page-audits .roster-section-title strong{
+    display:block !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+    font-size:36px !important;
+    line-height:1.08 !important;
+    font-weight:800 !important;
+    letter-spacing:0 !important;
+    color:#111827 !important;
+  }
+  #page-audits .roster-section-title::after{
+    content:"People pending training completion";
+    display:block;
+    margin-top:6px;
+    font-size:19px;
+    line-height:1.25;
+    font-weight:500;
+    color:#6b7280;
+  }
+  #page-audits #train-count-label{
+    justify-self:end !important;
+    align-self:end !important;
+    padding:10px 14px !important;
+    border:1px solid #d8dee8 !important;
+    border-radius:8px !important;
+    background:#f7f9fc !important;
+    color:#4b5563 !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+    font-size:16px !important;
+    font-weight:500 !important;
+    letter-spacing:0 !important;
+    text-transform:none !important;
+  }
+  #page-audits #train-count-label,
+  #page-audits #monthly-training-summary-strip{
+    display:none !important;
+  }
+  #page-audits #train-filter-row{
+    display:flex !important;
+    align-items:center !important;
+    gap:14px !important;
+    flex-wrap:wrap !important;
+    margin:0 0 28px !important;
+  }
+  #page-audits .roster-filter-btn{
+    min-width:82px !important;
+    height:48px !important;
+    padding:0 22px !important;
+    border-radius:9px !important;
+    border:1px solid #d8dee8 !important;
+    background:#fff !important;
+    color:#1f2937 !important;
+    box-shadow:0 1px 2px rgba(15,23,42,.04) !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+    font-size:18px !important;
+    font-weight:500 !important;
+    letter-spacing:0 !important;
+    text-transform:none !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:11px !important;
+  }
+  #page-audits .roster-filter-btn.active{
+    border-color:#2563eb !important;
+    background:#f8fbff !important;
+    color:#2563eb !important;
+    box-shadow:0 0 0 1px rgba(37,99,235,.12) !important;
+  }
+  #page-audits .roster-filter-btn.working-today{
+    min-width:190px !important;
+    color:#059669 !important;
+  }
+  #page-audits .filter-dot{
+    width:12px;
+    height:12px;
+    border-radius:999px;
+    display:inline-block;
+    flex:0 0 auto;
+  }
+  #page-audits .filter-dot-day{background:#f59e0b;}
+  #page-audits .filter-dot-night{background:#3b82f6;}
+  #page-audits .filter-dot-other{background:#7c3aed;}
+  #page-audits .filter-star{color:#059669;display:inline-flex;}
+  #page-audits .roster-filter-btn.kanban-toggle{
+    min-width:154px !important;
+    border-color:#cbd5e1 !important;
+  }
+  #page-audits .roster-filter-btn.timesheet-toggle{
+    min-width:146px !important;
+    border-color:#cbd5e1 !important;
+  }
+  #page-audits .roster-filter-btn.training-import-toggle,
+  #page-audits .roster-filter-btn.training-clear-toggle,
+  #page-audits .roster-filter-btn.hide-completed-toggle,
+  #page-audits .roster-filter-btn.edit-courses-toggle,
+  #page-audits .roster-filter-btn.print-timesheet-toggle,
+  #page-audits .roster-filter-btn.export-trainings-toggle,
+  #page-audits .roster-filter-btn.restore-trainings-toggle{
+    min-width:120px !important;
+    border-color:#cbd5e1 !important;
+  }
+  #page-audits .roster-filter-btn.training-import-toggle{
+    color:#2563eb !important;
+  }
+  #page-audits .roster-filter-btn.training-clear-toggle{
+    color:#dc2626 !important;
+  }
+  #page-audits .roster-filter-btn.hide-completed-toggle{
+    color:#15803d !important;
+  }
+  #page-audits .roster-filter-btn.edit-courses-toggle{
+    color:#7c3aed !important;
+  }
+  #page-audits .roster-filter-btn.print-timesheet-toggle{
+    color:#0f172a !important;
+  }
+  #page-audits .roster-filter-btn.export-trainings-toggle,
+  #page-audits .roster-filter-btn.restore-trainings-toggle{
+    color:#0f766e !important;
+  }
+  #page-audits .roster-filter-btn.hide-completed-toggle.active{
+    border-color:#15803d !important;
+    background:#ecfdf5 !important;
+    color:#15803d !important;
+  }
+  #page-audits .roster-filter-spacer{
+    flex:1 1 auto;
+    min-width:12px;
+  }
+  #page-audits .roster-filter-btn.kanban-toggle.active{
+    border-color:#111827 !important;
+    background:#111827 !important;
+    color:#fff !important;
+    box-shadow:none !important;
+  }
+  #page-audits .roster-filter-btn.timesheet-toggle.active{
+    border-color:#111827 !important;
+    background:#111827 !important;
+    color:#fff !important;
+    box-shadow:none !important;
+  }
+  #page-audits .filter-board-icon{
+    width:21px;
+    height:21px;
+    display:inline-flex;
+  }
+  #roster-modal-bg .modal{
+    background:#fff !important;
+    color:#111827 !important;
+    border:1px solid rgba(203,213,225,.95) !important;
+    border-radius:18px !important;
+    box-shadow:0 32px 90px rgba(15,23,42,.34) !important;
+    padding:0 !important;
+    overflow:hidden !important;
+  }
+  #roster-modal-bg .training-import-modal{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    padding:26px;
+    background:
+      linear-gradient(180deg,#ffffff,#f8fafc);
+  }
+  #roster-modal-bg .training-import-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif;
+    font-size:28px;
+    line-height:1.05;
+    font-weight:900;
+    color:#111827;
+  }
+  #roster-modal-bg .training-import-title span{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  #roster-modal-bg .training-import-title span::before{
+    content:"+";
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#2563eb;
+    color:#fff;
+    font-size:25px;
+    font-weight:700;
+    box-shadow:0 10px 20px rgba(37,99,235,.22);
+  }
+  #roster-modal-bg .training-import-close{
+    width:40px;
+    height:40px;
+    border:1px solid #e2e8f0;
+    border-radius:999px;
+    background:#fff;
+    color:#4b5563;
+    cursor:pointer;
+    font-size:24px;
+    line-height:1;
+    box-shadow:0 1px 2px rgba(15,23,42,.06);
+  }
+  #roster-modal-bg .training-import-close:hover{
+    background:#f8fafc;
+    color:#111827;
+  }
+  #roster-modal-bg .training-import-help{
+    color:#6b7280;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif;
+    font-size:16px;
+    line-height:1.45;
+    max-width:820px;
+  }
+  #roster-modal-bg .training-import-field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  #roster-modal-bg .training-import-field label{
+    color:#374151;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+  }
+  #roster-modal-bg .training-import-field input,
+  #roster-modal-bg .training-import-field textarea{
+    width:100%;
+    border:1px solid #d8dee8;
+    border-radius:12px;
+    background:#fff;
+    color:#111827;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif;
+    font-size:16px;
+    outline:none;
+    box-shadow:0 1px 2px rgba(15,23,42,.04);
+    transition:border-color .15s, box-shadow .15s;
+  }
+  #roster-modal-bg .training-import-field input:focus,
+  #roster-modal-bg .training-import-field textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+  }
+  #roster-modal-bg .training-import-field input{
+    height:50px;
+    padding:0 15px;
+  }
+  #roster-modal-bg .training-import-field textarea{
+    min-height:210px;
+    resize:vertical;
+    padding:14px 15px;
+    line-height:1.45;
+  }
+  #roster-modal-bg .training-import-field textarea.training-smart-paste{
+    min-height:150px;
+    font-family:"IBM Plex Mono", Consolas, monospace;
+    font-size:13px;
+  }
+  #roster-modal-bg .training-import-staged{
+    border:1px solid #d8dee8;
+    border-radius:14px;
+    background:#fff;
+    padding:14px;
+    min-height:64px;
+    box-shadow:0 1px 2px rgba(15,23,42,.04);
+  }
+  #roster-modal-bg .training-import-staged-title{
+    font-size:13px;
+    font-weight:800;
+    color:#374151;
+    margin-bottom:10px;
+    letter-spacing:.4px;
+  }
+  #roster-modal-bg .training-import-batch{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 0;
+    border-top:1px solid #e5e7eb;
+    color:#111827;
+    font-size:15px;
+  }
+  #roster-modal-bg .training-import-batch:first-of-type{border-top:0;}
+  #roster-modal-bg .training-import-batch button{
+    height:32px;
+    border-radius:8px;
+    border:1px solid #fecaca;
+    background:#fff;
+    color:#dc2626;
+    padding:0 10px;
+    cursor:pointer;
+    font-weight:700;
+  }
+  #roster-modal-bg .training-import-empty{
+    color:#6b7280;
+    font-size:14px;
+    padding:4px 0;
+  }
+  #roster-modal-bg .training-import-actions{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  #roster-modal-bg .training-import-actions button{
+    height:44px;
+    border-radius:10px;
+    padding:0 18px;
+    border:1px solid #cbd5e1;
+    background:#fff;
+    color:#111827;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 1px 2px rgba(15,23,42,.05);
+  }
+  #roster-modal-bg .training-import-actions button:hover{
+    background:#f8fafc;
+  }
+  #roster-modal-bg .training-import-actions .primary{
+    border-color:#2563eb;
+    background:#2563eb;
+    color:#fff;
+    box-shadow:0 12px 24px rgba(37,99,235,.22);
+  }
+  #roster-modal-bg .training-import-actions .primary:hover{
+    background:#1d4ed8;
+  }
+  #roster-modal-bg .training-import-actions .danger{
+    border-color:#fecaca;
+    color:#dc2626;
+  }
+  #roster-modal-bg .course-manager-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  #roster-modal-bg .course-manager-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    align-items:center;
+    padding:12px;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    background:#fff;
+  }
+  #roster-modal-bg .course-manager-current{
+    color:#4b5563;
+    font-weight:800;
+    overflow-wrap:anywhere;
+  }
+  #roster-modal-bg .course-manager-row input{
+    width:100%;
+    height:42px;
+    border:1px solid #cbd5e1;
+    border-radius:9px;
+    padding:0 12px;
+    font-size:15px;
+  }
+  #page-audits #train-table-wrap{
+    overflow:hidden !important;
+    border:1px solid #d8dee8 !important;
+    border-radius:10px !important;
+    background:#fff !important;
+    box-shadow:none !important;
+  }
+  #page-audits #train-table-wrap .roster-table{
+    width:100% !important;
+    border-collapse:collapse !important;
+    table-layout:fixed !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+    background:#fff !important;
+  }
+  #page-audits #train-table-wrap .roster-table th{
+    height:68px !important;
+    padding:0 36px !important;
+    background:#fff !important;
+    border-bottom:1px solid #e2e8f0 !important;
+    color:#4b5563 !important;
+    font-size:15px !important;
+    font-weight:800 !important;
+    letter-spacing:1.4px !important;
+    text-transform:uppercase !important;
+    text-align:left !important;
+  }
+  #page-audits #train-table-wrap .roster-table th:nth-child(2),
+  #page-audits #train-table-wrap .roster-table td:nth-child(2){
+    text-align:left !important;
+  }
+  #page-audits #train-table-wrap .roster-table th:nth-child(3),
+  #page-audits #train-table-wrap .roster-table td:nth-child(3){
+    text-align:right !important;
+  }
+  #page-audits #train-table-wrap .roster-table td{
+    height:82px !important;
+    padding:0 36px !important;
+    border-bottom:1px solid #e5eaf1 !important;
+    background:#fff !important;
+    color:#111827 !important;
+    font-size:20px !important;
+    vertical-align:middle !important;
+  }
+  #page-audits #train-table-wrap .roster-table tr:last-child td{border-bottom:0 !important;}
+  #page-audits #train-table-wrap .roster-table tr:hover td{background:#fbfdff !important;}
+  #page-audits .monthly-name-cell{
+    display:flex;
+    align-items:center;
+    gap:26px;
+    min-width:0;
+  }
+  #page-audits .monthly-status-dot{
+    width:12px;
+    height:12px;
+    border-radius:999px;
+    background:#10b981;
+    box-shadow:0 1px 3px rgba(16,185,129,.25);
+    flex:0 0 auto;
+  }
+  #page-audits .monthly-avatar{
+    width:52px;
+    height:52px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    line-height:1;
+    font-weight:700;
+    flex:0 0 auto;
+  }
+  #page-audits .monthly-avatar-day{background:#fff7e6;color:#c47a00;border:1px solid #fde2a8;}
+  #page-audits .monthly-avatar-night{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;}
+  #page-audits .monthly-avatar-other{background:#f3e8ff;color:#7e22ce;border:1px solid #e9d5ff;}
+  #page-audits .monthly-name{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:21px;
+    font-weight:500;
+    letter-spacing:0;
+    color:#111827;
+  }
+  #page-audits .monthly-shift-pill{
+    min-width:116px;
+    height:44px;
+    border-radius:12px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:0 17px;
+    font-size:18px;
+    font-weight:600;
+  }
+  #page-audits .monthly-shift-day{background:#fff8e8;color:#b86f00;border:1px solid #f8dc9c;}
+  #page-audits .monthly-shift-night{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;}
+  #page-audits .monthly-shift-other{background:#f7efff;color:#6d28d9;border:1px solid #e4cffc;}
+  #page-audits .monthly-shift-icon{
+    width:22px;
+    height:22px;
+    flex:0 0 auto;
+  }
+  #page-audits .monthly-reveal-delete{
+    position:absolute;
+    top:50%;
+    right:18px;
+    transform:translateY(-50%) scale(.86);
+    width:38px !important;
+    height:38px !important;
+    border-radius:999px !important;
+    border:1px solid #fecaca !important;
+    background:#fff !important;
+    color:#dc2626 !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+    font-size:24px !important;
+    line-height:1 !important;
+    font-weight:500 !important;
+    letter-spacing:0 !important;
+    text-transform:none !important;
+    display:none !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:0 !important;
+    box-shadow:0 8px 20px rgba(220,38,38,.14) !important;
+    z-index:3;
+  }
+  #page-audits .monthly-reveal-delete:hover{
+    background:#fef2f2 !important;
+    border-color:#ef4444 !important;
+    color:#b91c1c !important;
+  }
+  #page-audits .monthly-click-row,
+  #page-audits .monthly-kanban-card{
+    cursor:pointer;
+    position:relative;
+  }
+  #page-audits .monthly-click-row td:last-child{
+    position:relative;
+  }
+  #page-audits .monthly-click-row.is-delete-open td{
+    background:#fffafa !important;
+  }
+  #page-audits .monthly-click-row.is-delete-open .monthly-reveal-delete,
+  #page-audits .monthly-kanban-card.is-delete-open .monthly-reveal-delete{
+    display:inline-flex !important;
+    transform:translateY(-50%) scale(1);
+  }
+  #page-audits .monthly-summary-strip{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    flex-wrap:wrap;
+    margin:-14px 0 28px;
+    color:#111827;
+    font-size:18px;
+    font-weight:500;
+  }
+  #page-audits .monthly-summary-item{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  #page-audits .monthly-summary-separator{
+    width:1px;
+    height:18px;
+    background:#cfd6e2;
+  }
+  #page-audits .monthly-summary-icon{width:24px;height:24px;display:inline-flex;color:#4b5563;}
+  #page-audits .monthly-summary-day{color:#f59e0b;}
+  #page-audits .monthly-summary-night{color:#2563eb;}
+  #page-audits .monthly-summary-other{color:#7c3aed;}
+  #page-audits .roster-empty{
+    padding:56px 18px !important;
+    color:#6b7280 !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+    font-size:18px !important;
+  }
+  #page-audits #train-table-wrap.kanban-mode{
+    border:0 !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    overflow:visible !important;
+  }
+  #page-audits #train-table-wrap.timesheet-mode{
+    border:0 !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    overflow:visible !important;
+    max-height:none !important;
+    height:auto !important;
+  }
+  #page-audits .monthly-kanban{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+    align-items:start;
+  }
+  #page-audits .monthly-kanban-column{
+    min-height:280px;
+    border:1px solid #d8dee8;
+    border-radius:10px;
+    background:#f8fafc;
+    overflow:hidden;
+  }
+  #page-audits .monthly-kanban-head{
+    min-height:66px;
+    padding:0 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:#fff;
+    border-bottom:1px solid #e2e8f0;
+  }
+  #page-audits .monthly-kanban-title{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:19px;
+    font-weight:800;
+    color:#111827;
+  }
+  #page-audits .monthly-kanban-count{
+    min-width:32px;
+    height:28px;
+    padding:0 9px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#eef2f7;
+    color:#4b5563;
+    font-size:14px;
+    font-weight:700;
+  }
+  #page-audits .monthly-kanban-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:14px;
+  }
+  #page-audits .monthly-kanban-card{
+    border:1px solid #e0e7ef;
+    border-radius:10px;
+    background:#fff;
+    padding:14px 58px 14px 14px;
+    box-shadow:0 1px 2px rgba(15,23,42,.05);
+  }
+  #page-audits .monthly-kanban-person{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0;
+  }
+  #page-audits .monthly-kanban-person .monthly-avatar{
+    width:44px;
+    height:44px;
+    font-size:17px;
+  }
+  #page-audits .monthly-kanban-person .monthly-name{
+    font-size:17px;
+    font-weight:650;
+  }
+  #page-audits .monthly-kanban-card.is-delete-open{
+    border-color:#fecaca;
+    background:#fffafa;
+  }
+  #page-audits .monthly-kanban-empty{
+    padding:28px 12px;
+    border:1px dashed #d8dee8;
+    border-radius:10px;
+    color:#6b7280;
+    text-align:center;
+    font-size:15px;
+    background:#fff;
+  }
+  #page-audits .monthly-timesheet{
+    width:100%;
+    min-width:620px;
+    border-collapse:collapse;
+    table-layout:fixed;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:16px;
+    color:#000;
+    background:#fff;
+  }
+  #page-audits .monthly-timesheet-note{
+    margin:0 0 10px;
+    color:#4b5563;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif;
+    font-size:14px;
+    font-weight:600;
+  }
+  #page-audits .monthly-timesheet th,
+  #page-audits .monthly-timesheet td{
+    border:1px solid #000;
+    height:23px;
+    padding:2px 4px;
+    line-height:1.1;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  #page-audits .monthly-timesheet tr:hover td,
+  #page-audits .monthly-timesheet tr:hover th,
+  #page-audits .monthly-timesheet td:hover,
+  #page-audits .monthly-timesheet th:hover{
+    background:inherit !important;
+    color:inherit !important;
+  }
+  #page-audits .monthly-timesheet tr:hover .timesheet-name,
+  #page-audits .monthly-timesheet tr:hover .timesheet-off,
+  #page-audits .monthly-timesheet tr:hover .timesheet-missing{
+    background:#fff !important;
+  }
+  #page-audits .monthly-timesheet tr:hover th{
+    background:#d0cece !important;
+  }
+  #page-audits .monthly-timesheet th{
+    background:#d0cece;
+    font-weight:800;
+    text-align:center;
+    position:relative;
+    user-select:none;
+    cursor:pointer;
+  }
+  #page-audits .monthly-timesheet-resizer{
+    position:absolute;
+    top:0;
+    right:-4px;
+    width:8px;
+    height:100%;
+    cursor:col-resize;
+    z-index:4;
+  }
+  #page-audits .monthly-timesheet-resizer::after{
+    content:"";
+    position:absolute;
+    top:4px;
+    bottom:4px;
+    left:3px;
+    width:2px;
+    border-radius:999px;
+    background:rgba(37,99,235,.0);
+  }
+  #page-audits .monthly-timesheet th:hover .monthly-timesheet-resizer::after,
+  #page-audits .monthly-timesheet.is-resizing .monthly-timesheet-resizer::after{
+    background:rgba(37,99,235,.55);
+  }
+  #page-audits .monthly-timesheet .timesheet-section-title{
+    text-align:left;
+  }
+  #page-audits .monthly-timesheet .timesheet-name{
+    text-align:left;
+    background:#fff;
+  }
+  #page-audits .monthly-timesheet .align-left{text-align:left !important;}
+  #page-audits .monthly-timesheet .align-center{text-align:center !important;}
+  #page-audits .monthly-timesheet .align-right{text-align:right !important;}
+  #page-audits .monthly-timesheet .align-left .missing-chip-stack{
+    justify-content:flex-start !important;
+    align-items:flex-start !important;
+  }
+  #page-audits .monthly-timesheet .align-center .missing-chip-stack{
+    justify-content:center !important;
+    align-items:center !important;
+  }
+  #page-audits .monthly-timesheet .align-right .missing-chip-stack{
+    justify-content:flex-end !important;
+    align-items:flex-end !important;
+  }
+  #page-audits .monthly-timesheet .timesheet-off,
+  #page-audits .monthly-timesheet .timesheet-missing{
+    text-align:center;
+  }
+  #page-audits .monthly-timesheet .timesheet-missing{
+    white-space:normal;
+    text-overflow:clip;
+    overflow:visible;
+  }
+  #page-audits .monthly-timesheet .timesheet-missing.has-missing{
+    color:#b91c1c;
+    font-weight:700;
+    cursor:pointer;
+  }
+  #page-audits .monthly-timesheet .timesheet-missing.is-complete{
+    color:#15803d;
+    font-weight:800;
+  }
+  #page-audits .monthly-timesheet .timesheet-gap td{
+    height:18px;
+    background:#fff;
+  }
+  #page-audits .missing-chip-stack{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    padding:3px 0;
+    width:100%;
+  }
+  #page-audits .missing-chip{
+    position:relative;
+    z-index:5;
+    max-width:100%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:22px;
+    padding:3px 9px;
+    border-radius:999px;
+    border:1px solid #fecaca;
+    background:#fff1f2;
+    color:#b91c1c;
+    font-size:13px;
+    font-weight:800;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    overflow-wrap:normal;
+    cursor:pointer;
+    pointer-events:auto;
+  }
+  #page-audits .missing-chip-remove{
+    width:16px;
+    height:16px;
+    margin-left:7px;
+    border:0;
+    border-radius:999px;
+    background:#fecaca;
+    color:#991b1b;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    line-height:1;
+    font-weight:900;
+    cursor:pointer;
+    flex:0 0 auto;
+  }
+  #page-audits .missing-chip.is-remove-open .missing-chip-remove{
+    display:inline-flex;
+  }
+  #page-audits .missing-chip-remove.is-confirm{
+    background:#bbf7d0;
+    color:#166534;
+  }
+  #page-audits .missing-chip-remove.is-confirm:hover{
+    background:#86efac;
+    color:#14532d;
+  }
+  #page-audits .missing-chip-remove:hover{
+    background:#fca5a5;
+    color:#7f1d1d;
+  }
+  #page-audits .missing-chip:hover{
+    border-color:#f87171;
+    background:#ffe4e6;
+  }
+  #page-audits .monthly-timesheet .timesheet-empty td{
+    height:30px;
+    color:#6b7280;
+    font-style:italic;
+    text-align:center;
+    background:#fff;
+  }
+  @media (max-width: 800px){
+    #page-audits .audits-wrap{padding:22px 14px 24px !important;}
+    #page-audits .roster-section-head{grid-template-columns:1fr !important;align-items:start !important;}
+    #page-audits #train-count-label{justify-self:start !important;}
+    #page-audits .roster-section-title strong{font-size:30px !important;}
+    #page-audits #train-table-wrap{overflow-x:auto !important;}
+    #page-audits #train-table-wrap .roster-table{min-width:760px !important;}
+    #page-audits #train-table-wrap .roster-table th,
+    #page-audits #train-table-wrap .roster-table td{padding-left:18px !important;padding-right:18px !important;}
+    #page-audits .monthly-kanban{grid-template-columns:1fr !important;}
+  }
+
+  /* Modern Timesheet polish */
+  #page-audits .audits-wrap{
+    background:
+      radial-gradient(circle at 100% 100%, rgba(124,58,237,.13), transparent 28%),
+      linear-gradient(180deg,#ffffff 0%,#f8fafc 100%) !important;
+  }
+  #page-audits #train-filter-row{
+    padding:16px !important;
+    border:1px solid rgba(226,232,240,.92) !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.94) !important;
+    box-shadow:0 18px 45px rgba(15,23,42,.13) !important;
+  }
+  #page-audits .roster-filter-btn{
+    height:40px !important;
+    min-width:76px !important;
+    padding:0 16px !important;
+    border-radius:10px !important;
+    border-color:#e5eaf3 !important;
+    font-size:13px !important;
+    font-weight:800 !important;
+    box-shadow:0 8px 18px rgba(15,23,42,.06) !important;
+  }
+  #page-audits .roster-filter-btn.active{
+    background:#2563eb !important;
+    color:#fff !important;
+    box-shadow:0 14px 30px rgba(37,99,235,.30) !important;
+  }
+  #page-audits .roster-section-head{
+    padding:10px 8px 22px 8px !important;
+    border-bottom:0 !important;
+    background:transparent !important;
+    margin:0 0 8px !important;
+  }
+  #page-audits .roster-section-title strong{
+    font-family:Georgia, "Times New Roman", serif !important;
+    font-size:46px !important;
+    letter-spacing:-.2px !important;
+  }
+  #page-audits .roster-section-title::after{
+    font-size:22px !important;
+    margin-top:4px !important;
+  }
+  #page-audits #train-count-label{
+    border-radius:999px !important;
+    background:rgba(255,255,255,.85) !important;
+    box-shadow:0 10px 25px rgba(15,23,42,.08) !important;
+  }
+  #page-audits .monthly-summary-strip{
+    padding:14px 18px !important;
+    border:1px solid #e5eaf3 !important;
+    border-radius:14px !important;
+    background:rgba(255,255,255,.90) !important;
+    box-shadow:0 10px 26px rgba(15,23,42,.07) !important;
+  }
+  #page-audits #train-table-wrap.timesheet-mode{
+    padding:0 !important;
+    border:1px solid #dfe7f2 !important;
+    border-radius:14px !important;
+    background:#fff !important;
+    box-shadow:0 20px 50px rgba(30,64,175,.12) !important;
+    overflow:hidden !important;
+  }
+  #page-audits .monthly-timesheet{
+    min-width:780px !important;
+    font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
+    font-size:13px !important;
+    color:#14213d !important;
+    border-collapse:separate !important;
+    border-spacing:0 !important;
+  }
+  #page-audits .monthly-timesheet th,
+  #page-audits .monthly-timesheet td{
+    height:40px !important;
+    border:0 !important;
+    border-right:1px solid #edf2f7 !important;
+    border-bottom:1px solid #edf2f7 !important;
+    padding:7px 12px !important;
+  }
+  #page-audits .monthly-timesheet th{
+    height:44px !important;
+    background:linear-gradient(180deg,#dbeafe 0%,#bfdbfe 100%) !important;
+    color:#1e3a8a !important;
+    font-size:14px !important;
+    font-weight:800 !important;
+    letter-spacing:-.5px !important;
+    letter-spacing:1.6px !important;
+    text-transform:uppercase !important;
+    border-bottom:1px solid #93c5fd !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.75) !important;
+  }
+  #page-audits .monthly-timesheet .timesheet-section-title{
+    color:#1e3a8a !important;
+  }
+  #page-audits .monthly-timesheet .timesheet-name{
+    font-weight:800 !important;
+    color:#172554 !important;
+  }
+  #page-audits .monthly-timesheet tr:nth-child(even) td{
+    background:#f5f9ff !important;
+  }
+  #page-audits .monthly-timesheet tr:nth-child(even) .timesheet-name,
+  #page-audits .monthly-timesheet tr:nth-child(even) .timesheet-off,
+  #page-audits .monthly-timesheet tr:nth-child(even) .timesheet-missing{
+    background:#f5f9ff !important;
+  }
+  #page-audits .monthly-timesheet .timesheet-off{
+    font-weight:700 !important;
+    color:#243b69 !important;
+  }
+  #page-audits .monthly-timesheet .timesheet-missing.is-complete{
+    color:#059669 !important;
+  }
+  #page-audits .missing-chip-stack{
+    gap:6px !important;
+  }
+  #page-audits .missing-chip{
+    min-height:24px !important;
+    max-width:100% !important;
+    padding:4px 11px 4px 10px !important;
+    border-radius:999px !important;
+    border-color:#fecaca !important;
+    background:#fff5f5 !important;
+    color:#dc2626 !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.55) !important;
+  }
+  #page-audits .missing-chip::before{
+    content:"";
+    width:8px;
+    height:8px;
+    border-radius:999px;
+    background:#ef4444;
+    margin-right:7px;
+    flex:0 0 auto;
+  }
+
+  @media print{
+    @page{
+      size:letter portrait;
+      margin:.06in;
+    }
+    html,
+    body{
+      width:8.5in !important;
+      min-height:11in !important;
+      background:#fff !important;
+      overflow:visible !important;
+    }
+    body *{
+      visibility:hidden !important;
+    }
+    #page-audits,
+    #page-audits *{
+      visibility:visible !important;
+    }
+    .page-nav,
+    #page-audits .header,
+    #page-audits #train-filter-row,
+    #page-audits #train-count-label,
+    #page-audits #monthly-training-summary-strip,
+    #save-toast,
+    .modal-bg{
+      display:none !important;
+      visibility:hidden !important;
+    }
+    #page-audits{
+      position:absolute !important;
+      inset:0 auto auto 0 !important;
+      width:100% !important;
+      min-height:0 !important;
+      background:#fff !important;
+      color:#111827 !important;
+      zoom:1 !important;
+    }
+    #page-audits .audits-wrap{
+      padding:0 !important;
+      background:#fff !important;
+    }
+    #page-audits .roster-section-head{
+      display:block !important;
+      margin:0 0 2px !important;
+      padding:0 !important;
+      page-break-after:avoid !important;
+      break-after:avoid !important;
+    }
+    #page-audits .roster-section-title strong{
+      font-size:26px !important;
+      line-height:1 !important;
+      font-family:Georgia, "Times New Roman", serif !important;
+    }
+    #page-audits .roster-section-title::after{
+      font-size:11px !important;
+      margin-top:1px !important;
+      color:#475569 !important;
+    }
+    #page-audits #train-table-wrap.timesheet-mode,
+    #page-audits #train-table-wrap{
+      border:1px solid #bfd7f8 !important;
+      border-radius:8px !important;
+      box-shadow:none !important;
+      overflow:hidden !important;
+      background:#fff !important;
+      page-break-before:avoid !important;
+      break-before:avoid !important;
+    }
+    #page-audits .monthly-timesheet{
+      min-width:0 !important;
+      width:100% !important;
+      font-size:9.2px !important;
+      transform:none !important;
+      border-collapse:collapse !important;
+      page-break-inside:avoid !important;
+    }
+    #page-audits .monthly-timesheet col:nth-child(1){width:20% !important;}
+    #page-audits .monthly-timesheet col:nth-child(2){width:17% !important;}
+    #page-audits .monthly-timesheet col:nth-child(3){width:12% !important;}
+    #page-audits .monthly-timesheet col:nth-child(4){width:51% !important;}
+    #page-audits .monthly-timesheet th,
+    #page-audits .monthly-timesheet td{
+      height:20px !important;
+      min-height:0 !important;
+      padding:3px 7px !important;
+      border:1px solid #d8e2ef !important;
+      line-height:1.15 !important;
+    }
+    #page-audits .monthly-timesheet th{
+      height:22px !important;
+      background:#cfe6ff !important;
+      color:#1e3a8a !important;
+      font-size:7.2px !important;
+      letter-spacing:1px !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    #page-audits .monthly-timesheet tr:nth-child(even) td,
+    #page-audits .monthly-timesheet tr:nth-child(even) .timesheet-name,
+    #page-audits .monthly-timesheet tr:nth-child(even) .timesheet-off,
+    #page-audits .monthly-timesheet tr:nth-child(even) .timesheet-missing{
+      background:#eaf4ff !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    #page-audits .missing-chip-stack{
+      display:flex !important;
+      flex-direction:row !important;
+      flex-wrap:nowrap !important;
+      gap:3px !important;
+      justify-content:center !important;
+      padding:0 !important;
+    }
+    #page-audits .missing-chip{
+      min-height:14px !important;
+      max-width:48% !important;
+      padding:2px 6px !important;
+      border-radius:999px !important;
+      font-size:6.7px !important;
+      line-height:1.1 !important;
+      box-shadow:none !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    #page-audits .missing-chip::before,
+    #page-audits .missing-chip-remove,
+    #page-audits .monthly-timesheet-resizer{
+      display:none !important;
+    }
+  }
+</style>
+
+<script id="monthly-training-clean-white-renderer">
+(function(){
+  function esc(value){
+    return String(value == null ? '' : value)
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+  function initials(name){
+    var parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+    if(!parts.length) return '?';
+    return ((parts[0][0] || '') + (parts.length > 1 ? (parts[parts.length - 1][0] || '') : '')).toUpperCase();
+  }
+  function shiftKey(shift){
+    return shift === 'Day' ? 'day' : (shift === 'Night' ? 'night' : 'other');
+  }
+  function icon(name){
+    if(name === 'users') return '<svg viewBox="0 0 24 24" class="monthly-summary-icon" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+    if(name === 'sun') return '<svg viewBox="0 0 24 24" class="monthly-shift-icon monthly-summary-day" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+    if(name === 'moon') return '<svg viewBox="0 0 24 24" class="monthly-shift-icon monthly-summary-night" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8Z"/></svg>';
+    if(name === 'other') return '<svg viewBox="0 0 24 24" class="monthly-shift-icon monthly-summary-other" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>';
+    if(name === 'trash') return '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>';
+    if(name === 'star') return '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>';
+    if(name === 'board') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></svg>';
+    if(name === 'sheet') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16M4 15h16M10 4v16"/></svg>';
+    if(name === 'plus') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>';
+    if(name === 'clear') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg>';
+    if(name === 'eye') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
+    if(name === 'edit') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+    if(name === 'print') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>';
+    if(name === 'download') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>';
+    if(name === 'upload') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>';
+    return '';
+  }
+  var TIMESHEET_GROUPS = [
+    { title:'1st SHIFT', rows:[
+      ['Branford Alton','Mon, Tues'], ['Castruita Armando','Wed, Thurs'], ['Frazer Dacoyea','Mon, Tues'],
+      ['Citizen Dante','Thurs, Fri'], ['McDaniel Charles','Fri , Sat'], ['Towler Demeatrius','Thurs , Fri'],
+      ['Stewart Dexter','Sat, Sun'], ['Gardner Dorrean','Tues, Wed'], ['Thomas Henry','Sat, Sun'],
+      ['Brown James','Thurs , Fri'], ['Herrera Jose','Sat, Sun'], ['Player Keyston','Mon, Sun'],
+      ['Hickman Makia','Mon, Sun'], ['Dever Mikey','Tues, Wed'], ['Wanza Myles','Mon, Tues'],
+      ['Romero Nelson','Tues, Wed'], ['Nava Ramon','Sat, Sun'], ['Tran Tyler','Thurs , Fri']
+    ]},
+    { title:'2nd SHIFT', rows:[
+      ['Benavides Robert','Wed, Sun'], ['Bookman Derrell','Thurs , Fri'], ['Brown Brandy','Wed, Thurs'],
+      ['Caceres Virula Victor','Mon, Tues'], ['Carruthers Timothy','Mon, Sun'], ['Contrerras Marco','Sat, Sun'],
+      ['Delgado Jose','Fri , Sat'], ['Echendu Chimenjem','Wed, Thurs'], ['Gilder Rufus II','Tues, Wed'],
+      ['Hopkins Alexander','Mon, Sun'], ['Hosey Kevin','Mon, Tues'], ['Johnson Messiah','Tues, Thurs'],
+      ['Keme Aweri Jr.','Mon, Tues'], ['Mejia Aaron','Thurs , Fri'], ['Tingle Jason','Sat, Sun'],
+      ['Urtado Ernest','Tues, Wed']
+    ]},
+    { title:'GATE', rows:[
+      ['Candace Warren','Sat, Sun'], ['Connie Johnson','Sat, Sun'], ['Jarade Douglas','Sat, Sun'],
+      ['Gregory Watson II','Sat, Sun'], ['Bryce Alexander','Thurs , Fri'], ['Naomisha Hunt','Thurs , Fri, Sat'],
+      ['Ramacacondra Pratt','Thurs , Fri'], ['Kane Cabral','Mon, Tues'], ['Tavares Gariet','Mon, Tues']
+    ]}
+  ];
+  function nameKey(name){
+    return String(name || '')
+      .toLowerCase()
+      .replace(/\b(jr|ii|iii|iv)\b\.?/g,'')
+      .replace(/[^a-z\s]/g,' ')
+      .split(/\s+/)
+      .filter(Boolean)
+      .sort()
+      .join(' ');
+  }
+  function allTimesheetNames(){
+    var out = [];
+    TIMESHEET_GROUPS.forEach(function(group){
+      group.rows.forEach(function(row){ out.push(row[0]); });
+    });
+    return out;
+  }
+  function nameVariants(name){
+    var raw = String(name || '').trim();
+    var parts = raw.split(/\s+/).filter(Boolean);
+    var variants = [raw];
+    if(parts.length >= 2) variants.push(parts.slice(1).join(' ') + ' ' + parts[0]);
+    return variants;
+  }
+  function cleanCourseText(text){
+    return String(text || '')
+      .replace(/\b(completed|complete|not started|in progress|past due|overdue|due|assigned)\b/ig,' ')
+      .replace(/\s{2,}/g,' ')
+      .replace(/^[\s:,-]+|[\s:,-]+$/g,'')
+      .trim();
+  }
+  function parseSmartTrainingText(text){
+    var people = allTimesheetNames().map(function(name){
+      return { name:name, key:nameKey(name), variants:nameVariants(name).sort(function(a,b){ return b.length - a.length; }) };
+    });
+    var batchesByCourse = {};
+    String(text || '').split(/\r?\n/).forEach(function(line){
+      var original = String(line || '').trim();
+      if(!original) return;
+      var compact = original.replace(/\s+/g,' ').trim();
+      var found = null;
+      var foundVariant = '';
+      people.some(function(person){
+        return person.variants.some(function(variant){
+          var lower = compact.toLowerCase();
+          var v = variant.toLowerCase();
+          if(lower.indexOf(v) === 0 || lower.indexOf(v + ' ') >= 0 || lower.indexOf(v + '\t') >= 0){
+            found = person;
+            foundVariant = variant;
+            return true;
+          }
+          return false;
+        });
+      });
+      if(!found) return;
+      var idx = compact.toLowerCase().indexOf(foundVariant.toLowerCase());
+      var course = cleanCourseText(compact.slice(0, idx) + ' ' + compact.slice(idx + foundVariant.length));
+      if(!course) return;
+      if(!batchesByCourse[course]) batchesByCourse[course] = [];
+      if(batchesByCourse[course].indexOf(found.name) === -1) batchesByCourse[course].push(found.name);
+    });
+    return Object.keys(batchesByCourse).sort().map(function(course){
+      return { training: course, names: batchesByCourse[course] };
+    });
+  }
+  function trainingLabel(item){
+    return item.training || item.training_name || item.trainingName || item.course || item.title || 'Monthly Training';
+  }
+  function getTimesheetWidths(){
+    try{
+      var raw = localStorage.getItem('monthly_training_timesheet_widths_v1');
+      var parsed = raw ? JSON.parse(raw) : null;
+      if(Array.isArray(parsed) && parsed.length === 4) return parsed;
+      if(Array.isArray(parsed) && parsed.length === 3) return [parsed[0], parsed[1], 12, parsed[2]];
+    }catch(e){}
+    return [38,22,12,28];
+  }
+  function getTimesheetAlignments(){
+    try{
+      var raw = localStorage.getItem('monthly_training_timesheet_alignments_v1');
+      var parsed = raw ? JSON.parse(raw) : null;
+      if(Array.isArray(parsed) && parsed.length === 4) return parsed;
+    }catch(e){}
+    return ['left','center','center','center'];
+  }
+  function alignmentClass(index){
+    var value = getTimesheetAlignments()[index] || 'center';
+    return 'align-' + value;
+  }
+  window.toggleTimesheetColumnAlignment = function(index, event){
+    if(event && event.target && event.target.closest && event.target.closest('.monthly-timesheet-resizer')) return;
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    var order = ['left','center','right'];
+    var alignments = getTimesheetAlignments();
+    var current = alignments[index] || 'center';
+    alignments[index] = order[(order.indexOf(current) + 1) % order.length];
+    try{ localStorage.setItem('monthly_training_timesheet_alignments_v1', JSON.stringify(alignments)); }catch(e){}
+    try{ renderRosterTable('trainings'); }catch(e){}
+  };
+  function setTimesheetWidths(widths){
+    try{ localStorage.setItem('monthly_training_timesheet_widths_v1', JSON.stringify(widths)); }catch(e){}
+  }
+  function applyTimesheetWidths(table, widths){
+    if(!table) return;
+    var cols = table.querySelectorAll('col');
+    widths.forEach(function(width, index){
+      if(cols[index]) cols[index].style.width = width + '%';
+    });
+  }
+  window.startTimesheetColumnResize = function(event, index){
+    event.preventDefault();
+    event.stopPropagation();
+    var table = event.target.closest ? event.target.closest('.monthly-timesheet') : null;
+    if(!table) return;
+    var startX = event.clientX;
+    var widths = getTimesheetWidths();
+    var startA = widths[index];
+    var startB = widths[index + 1];
+    table.classList.add('is-resizing');
+    function move(e){
+      var tableWidth = table.getBoundingClientRect().width || 1;
+      var delta = ((e.clientX - startX) / tableWidth) * 100;
+      var minA = index === 2 ? 10 : 14;
+      var minB = index + 1 === 2 ? 10 : 14;
+      var nextA = Math.max(minA, Math.min(startA + delta, startA + startB - minB));
+      var nextB = startA + startB - nextA;
+      widths[index] = Math.round(nextA * 10) / 10;
+      widths[index + 1] = Math.round(nextB * 10) / 10;
+      applyTimesheetWidths(table, widths);
+    }
+    function up(){
+      table.classList.remove('is-resizing');
+      setTimesheetWidths(widths);
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseup', up);
+    }
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', up);
+  };
+  function buildTrainingItemsWithName(names, trainingName){
+    var label = String(trainingName || '').trim() || 'Monthly Training';
+    return buildRosterItems(names).map(function(item){
+      item.training = label;
+      item.training_name = label;
+      item.title = label;
+      return item;
+    });
+  }
+  window.monthlyTrainingImportBatches = window.monthlyTrainingImportBatches || [];
+  function renderTrainingImportBatches(){
+    var box = document.getElementById('training-import-staged-list');
+    if(!box) return;
+    var batches = window.monthlyTrainingImportBatches || [];
+    if(!batches.length){
+      box.innerHTML = '<div class="training-import-empty">No batches added yet.</div>';
+      return;
+    }
+    box.innerHTML = batches.map(function(batch, index){
+      return '<div class="training-import-batch"><span><strong>'+esc(batch.training)+'</strong> - '+batch.names.length+' name(s)</span><button type="button" onclick="removeTrainingImportBatch('+index+')">Remove</button></div>';
+    }).join('');
+  }
+  window.removeTrainingImportBatch = function(index){
+    window.monthlyTrainingImportBatches.splice(index, 1);
+    renderTrainingImportBatches();
+  };
+  window.addTrainingImportBatch = function(){
+    var nameInput = document.getElementById('training-import-name');
+    var namesInput = document.getElementById('training-import-names');
+    var training = nameInput ? String(nameInput.value || '').trim() : '';
+    var names = parseNameList(namesInput ? namesInput.value : '');
+    if(!training){
+      alert('Enter the name of the training first.');
+      return;
+    }
+    if(!names.length){
+      alert('Paste at least one name for this training.');
+      return;
+    }
+    window.monthlyTrainingImportBatches.push({ training: training, names: names });
+    if(nameInput) nameInput.value = '';
+    if(namesInput) namesInput.value = '';
+    renderTrainingImportBatches();
+  };
+  window.parseSmartTrainingImport = function(){
+    var raw = document.getElementById('training-smart-paste');
+    var batches = parseSmartTrainingText(raw ? raw.value : '');
+    if(!batches.length){
+      alert('No matching timesheet names and courses were found. Paste rows that include a person name and course name.');
+      return;
+    }
+    window.monthlyTrainingImportBatches = (window.monthlyTrainingImportBatches || []).concat(batches);
+    if(raw) raw.value = '';
+    renderTrainingImportBatches();
+  };
+  window.saveTrainingImportBatches = async function(){
+    var batches = window.monthlyTrainingImportBatches || [];
+    if(!batches.length){
+      alert('Add at least one batch before saving.');
+      return;
+    }
+    pushRosterUndo('Imported monthly training batches');
+    var existing = loadRosterList('trainings') || emptyRosterPayload();
+    var items = Array.isArray(existing.items) ? existing.items.slice() : [];
+    batches.forEach(function(batch){
+      items = items.concat(buildTrainingItemsWithName(batch.names, batch.training));
+    });
+    await saveRosterList('trainings', { items: items });
+    rosterFilters.trainings = { shift:'all', working:false };
+    window.monthlyTrainingImportBatches = [];
+    closeRosterModal();
+    await renderRosterPanels();
+    try{ logActivity('notes','Imported <strong>Monthly Training</strong> batches', batches.length + ' batch(es) added'); }catch(e){}
+  };
+  window.clearAllMonthlyTrainings = async function(){
+    if(!confirm('Clear all monthly training records? This will remove every missing training from the list.')) return;
+    pushRosterUndo('Cleared all monthly trainings');
+    await saveRosterList('trainings', emptyRosterPayload());
+    rosterFilters.trainings = { shift:'all', working:false };
+    await renderRosterPanels();
+  };
+  function uniqueTrainingCourses(){
+    var payload = loadRosterList('trainings') || emptyRosterPayload();
+    var items = Array.isArray(payload.items) ? payload.items : [];
+    var seen = {};
+    items.forEach(function(item){
+      var label = trainingLabel(item);
+      if(label) seen[label] = true;
+    });
+    return Object.keys(seen).sort();
+  }
+  window.openCourseManagerModal = function(){
+    var courses = uniqueTrainingCourses();
+    var bg = document.getElementById('roster-modal-bg');
+    var modal = bg ? bg.querySelector('.modal') : null;
+    if(!bg || !modal) return;
+    modal.innerHTML = '<div class="training-import-modal">'
+      + '<div class="training-import-title"><span>Edit Courses</span><button class="training-import-close" type="button" onclick="closeRosterModal()">&times;</button></div>'
+      + '<div class="training-import-help">Rename a course here and it will update every matching Missing chip across the Timesheet.</div>'
+      + (courses.length ? '<div class="course-manager-list">' + courses.map(function(course, index){
+        return '<div class="course-manager-row"><div class="course-manager-current">'+esc(course)+'</div><input type="text" data-old-course="'+esc(course)+'" value="'+esc(course)+'" aria-label="Rename '+esc(course)+'"></div>';
+      }).join('') + '</div>' : '<div class="training-import-staged"><div class="training-import-empty">No missing courses to edit.</div></div>')
+      + '<div class="training-import-actions"><button type="button" onclick="closeRosterModal()">Cancel</button><button type="button" class="primary" onclick="saveCourseManagerRenames()">Save Course Names</button></div>'
+      + '</div>';
+    bg.classList.add('open');
+  };
+  window.saveCourseManagerRenames = async function(){
+    var inputs = Array.prototype.slice.call(document.querySelectorAll('#roster-modal-bg [data-old-course]'));
+    if(!inputs.length){
+      closeRosterModal();
+      return;
+    }
+    var map = {};
+    inputs.forEach(function(input){
+      var oldCourse = input.getAttribute('data-old-course') || '';
+      var newCourse = String(input.value || '').trim();
+      if(oldCourse && newCourse && oldCourse !== newCourse) map[oldCourse] = newCourse;
+    });
+    var keys = Object.keys(map);
+    if(!keys.length){
+      closeRosterModal();
+      return;
+    }
+    pushRosterUndo('Renamed monthly training courses');
+    var payload = loadRosterList('trainings') || emptyRosterPayload();
+    var items = Array.isArray(payload.items) ? payload.items.slice() : [];
+    items.forEach(function(item){
+      var label = trainingLabel(item);
+      if(map[label]){
+        item.training = map[label];
+        item.training_name = map[label];
+        item.trainingName = map[label];
+        item.title = map[label];
+      }
+    });
+    await saveRosterList('trainings', { items: items });
+    closeRosterModal();
+    await renderRosterPanels();
+  };
+  window.renameMissingTrainingCourse = async function(oldLabel){
+    oldLabel = String(oldLabel || '').trim();
+    if(!oldLabel) return;
+    var nextLabel = prompt('Rename this course everywhere:', oldLabel);
+    if(nextLabel == null) return;
+    nextLabel = String(nextLabel || '').trim();
+    if(!nextLabel || nextLabel === oldLabel) return;
+    pushRosterUndo('Renamed monthly training course');
+    var payload = loadRosterList('trainings') || emptyRosterPayload();
+    var items = Array.isArray(payload.items) ? payload.items.slice() : [];
+    var changed = 0;
+    items.forEach(function(item){
+      if(trainingLabel(item) === oldLabel){
+        item.training = nextLabel;
+        item.training_name = nextLabel;
+        item.trainingName = nextLabel;
+        item.title = nextLabel;
+        changed++;
+      }
+    });
+    if(!changed){
+      alert('No matching courses were found.');
+      return;
+    }
+    await saveRosterList('trainings', { items: items });
+    await renderRosterPanels();
+  };
+  window.renameMissingTrainingCourseFromChip = function(chip, event){
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if(!chip) return;
+    window.renameMissingTrainingCourse(chip.getAttribute('data-course') || chip.textContent || '');
+  };
+  window.removeMissingCourseFromPerson = async function(personName, courseLabel){
+    personName = String(personName || '').trim();
+    courseLabel = String(courseLabel || '').trim();
+    if(!personName || !courseLabel) return;
+    pushRosterUndo('Removed one missing training from one person');
+    var payload = loadRosterList('trainings') || emptyRosterPayload();
+    var items = Array.isArray(payload.items) ? payload.items.slice() : [];
+    var personKey = nameKey(personName);
+    var removed = 0;
+    var nextItems = items.filter(function(item){
+      var match = nameKey(item.name) === personKey && trainingLabel(item) === courseLabel;
+      if(match) removed++;
+      return !match;
+    });
+    if(!removed){
+      alert('That course was not found for ' + personName + '.');
+      return;
+    }
+    await saveRosterList('trainings', { items: nextItems });
+    await renderRosterPanels();
+  };
+  window.removeMissingCourseFromChip = function(btn, event){
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if(!btn) return;
+    if(!btn.classList.contains('is-confirm')){
+      btn.classList.add('is-confirm');
+      btn.innerHTML = '&#10003;';
+      btn.title = 'Click again to confirm removal';
+      return;
+    }
+    window.removeMissingCourseFromPerson(btn.getAttribute('data-person') || '', btn.getAttribute('data-course') || '');
+  };
+  if(!window.__monthlyMissingChipRenameBound){
+    window.__monthlyMissingChipRenameBound = true;
+    function handleMissingCourseEditEvent(event){
+      var chip = event.target && event.target.closest ? event.target.closest('.missing-chip[data-course]') : null;
+      if(event.target && event.target.closest && event.target.closest('.missing-chip-remove')) return;
+      if(!chip){
+        var cell = event.target && event.target.closest ? event.target.closest('.timesheet-missing.has-missing') : null;
+        chip = cell && cell.querySelector ? cell.querySelector('.missing-chip[data-course]') : null;
+      }
+      if(!chip) return;
+      if(event.type === 'click' && chip.dataset && chip.dataset.openedOnMouseDown === '1'){
+        chip.dataset.openedOnMouseDown = '';
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      Array.prototype.forEach.call(document.querySelectorAll('.missing-chip.is-remove-open'), function(node){
+        if(node !== chip){
+          node.classList.remove('is-remove-open');
+          var btn = node.querySelector('.missing-chip-remove');
+          if(btn){
+            btn.classList.remove('is-confirm');
+            btn.innerHTML = '&times;';
+            btn.title = 'Remove this course from this person';
+          }
+        }
+      });
+      chip.classList.toggle('is-remove-open');
+      if(event.type === 'mousedown' && chip.dataset) chip.dataset.openedOnMouseDown = '1';
+      var openBtn = chip.querySelector('.missing-chip-remove');
+      if(openBtn && !chip.classList.contains('is-remove-open')){
+        openBtn.classList.remove('is-confirm');
+        openBtn.innerHTML = '&times;';
+        openBtn.title = 'Remove this course from this person';
+      }
+    }
+    document.addEventListener('mousedown', handleMissingCourseEditEvent, true);
+    document.addEventListener('click', handleMissingCourseEditEvent, true);
+  }
+  window.openTrainingImportModal = function(){
+    var bg = document.getElementById('roster-modal-bg');
+    var modal = bg ? bg.querySelector('.modal') : null;
+    if(!bg || !modal) return;
+    window.monthlyTrainingImportBatches = [];
+    modal.innerHTML = '<div class="training-import-modal">'
+      + '<div class="training-import-title"><span>Import Monthly Trainings</span><button class="training-import-close" type="button" onclick="closeRosterModal()">&times;</button></div>'
+      + '<div class="training-import-help">Enter the training name, paste the people missing it, then add the batch. Repeat for each different training. Save when all batches are ready.</div>'
+      + '<div class="training-import-field"><label for="training-smart-paste">Smart Paste Full Report</label><textarea id="training-smart-paste" class="training-smart-paste" placeholder="Paste report rows here. The app will match Timesheet names and group missing courses automatically."></textarea></div>'
+      + '<div class="training-import-actions"><button type="button" onclick="parseSmartTrainingImport()">Parse Courses</button></div>'
+      + '<div class="training-import-field"><label for="training-import-name">Training Missing</label><input id="training-import-name" type="text" placeholder="Example: HazCom Monthly Training"></div>'
+      + '<div class="training-import-field"><label for="training-import-names">People Missing This Training</label><textarea id="training-import-names" placeholder="Paste names here, one per line."></textarea></div>'
+      + '<div class="training-import-actions"><button type="button" class="primary" onclick="addTrainingImportBatch()">Add Batch</button></div>'
+      + '<div class="training-import-staged"><div class="training-import-staged-title">Batches to save</div><div id="training-import-staged-list"></div></div>'
+      + '<div class="training-import-actions"><button type="button" class="danger" onclick="window.monthlyTrainingImportBatches=[];renderTrainingImportBatches()">Clear Batches</button><button type="button" onclick="closeRosterModal()">Cancel</button><button type="button" class="primary" onclick="saveTrainingImportBatches()">Save Trainings</button></div>'
+      + '</div>';
+    bg.classList.add('open');
+    renderTrainingImportBatches();
+    setTimeout(function(){ var input = document.getElementById('training-import-name'); if(input) input.focus(); }, 0);
+  };
+  function renderTimesheet(items){
+    var missingByName = {};
+    items.forEach(function(item){
+      var key = nameKey(item.name);
+      var label = trainingLabel(item);
+      if(!missingByName[key]) missingByName[key] = [];
+      if(missingByName[key].indexOf(label) === -1) missingByName[key].push(label);
+    });
+    var totalPeople = TIMESHEET_GROUPS.reduce(function(sum, group){ return sum + group.rows.length; }, 0);
+    var widths = getTimesheetWidths();
+    var html = '<table class="monthly-timesheet"><colgroup><col style="width:'+widths[0]+'%"><col style="width:'+widths[1]+'%"><col style="width:'+widths[2]+'%"><col style="width:'+widths[3]+'%"></colgroup><tbody>';
+    TIMESHEET_GROUPS.forEach(function(group, groupIndex){
+      html += '<tr><th class="timesheet-section-title '+alignmentClass(0)+'" onclick="toggleTimesheetColumnAlignment(0,event)">'+esc(group.title)+'<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,0)"></span></th><th class="'+alignmentClass(1)+'" onclick="toggleTimesheetColumnAlignment(1,event)">Off Days<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,1)"></span></th><th class="'+alignmentClass(2)+'" onclick="toggleTimesheetColumnAlignment(2,event)"># Missing<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,2)"></span></th><th class="'+alignmentClass(3)+'" onclick="toggleTimesheetColumnAlignment(3,event)">Missing</th></tr>';
+      var visibleRows = 0;
+      group.rows.forEach(function(row){
+        var missingList = missingByName[nameKey(row[0])] || [];
+        if(window.monthlyTrainingHideCompleted && !missingList.length) return;
+        visibleRows++;
+        var missingHtml = missingList.length
+          ? '<div class="missing-chip-stack">' + missingList.map(function(label){ return '<span class="missing-chip" data-course="'+esc(label)+'" title="'+esc(label)+'"><span>'+esc(label)+'</span><button type="button" class="missing-chip-remove" data-person="'+esc(row[0])+'" data-course="'+esc(label)+'" title="Remove this course from this person" onclick="removeMissingCourseFromChip(this,event)">&times;</button></span>'; }).join('') + '</div>'
+          : 'Completed';
+        html += '<tr><td class="timesheet-name '+alignmentClass(0)+'">'+esc(row[0])+'</td><td class="timesheet-off '+alignmentClass(1)+'">'+esc(row[1])+'</td><td class="timesheet-off '+alignmentClass(2)+'">'+(missingList.length || '')+'</td><td class="timesheet-missing '+alignmentClass(3)+(missingList.length ? ' has-missing' : ' is-complete')+'">'+missingHtml+'</td></tr>';
+      });
+      if(!visibleRows){
+        html += '<tr class="timesheet-empty"><td colspan="4">No missing trainings in this group.</td></tr>';
+      }
+    });
+    html += '</tbody></table>';
+    return html;
+  }
+  function confirmRosterDelete(type, id, name){
+    var label = name || 'this person';
+    if(window.confirm('Remove ' + label + ' from Monthly Trainings?')){
+      removeRosterItem(type, id);
+    }
+  }
+  function openDeleteForCard(el){
+    if(!el) return;
+    var wrap = document.getElementById('train-table-wrap');
+    if(wrap){
+      Array.prototype.forEach.call(wrap.querySelectorAll('.is-delete-open'), function(node){
+        if(node !== el) node.classList.remove('is-delete-open');
+      });
+    }
+    el.classList.toggle('is-delete-open');
+  }
+  window.monthlyTrainingCardClick = function(el, event){
+    if(event && event.target && event.target.closest && event.target.closest('.monthly-reveal-delete')) return;
+    openDeleteForCard(el);
+  };
+  window.monthlyTrainingConfirmDelete = function(btn, event){
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if(!btn) return;
+    confirmRosterDelete(btn.getAttribute('data-roster-type') || 'trainings', btn.getAttribute('data-roster-id') || '', btn.getAttribute('data-roster-name') || '');
+  };
+  window.monthlyTrainingViewMode = window.monthlyTrainingViewMode || 'timesheet';
+  window.monthlyTrainingHideCompleted = !!window.monthlyTrainingHideCompleted;
+  window.toggleMonthlyTrainingKanban = function(){
+    window.monthlyTrainingViewMode = window.monthlyTrainingViewMode === 'board' ? 'table' : 'board';
+    try{ renderRosterTable('trainings'); }catch(e){}
+  };
+  window.toggleMonthlyTrainingTimesheet = function(){
+    window.monthlyTrainingViewMode = window.monthlyTrainingViewMode === 'timesheet' ? 'table' : 'timesheet';
+    try{ renderRosterTable('trainings'); }catch(e){}
+  };
+  window.toggleMonthlyTrainingHideCompleted = function(){
+    window.monthlyTrainingHideCompleted = !window.monthlyTrainingHideCompleted;
+    try{ renderRosterTable('trainings'); }catch(e){}
+  };
+  window.printMonthlyTimesheet = function(){
+    window.monthlyTrainingViewMode = 'timesheet';
+    try{ renderRosterTable('trainings'); }catch(e){}
+    setTimeout(function(){ window.print(); }, 80);
+  };
+  function downloadTextFile(filename, text){
+    var blob = new Blob([text], { type:'application/json;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){
+      URL.revokeObjectURL(url);
+      if(a.parentNode) a.parentNode.removeChild(a);
+    }, 0);
+  }
+  window.exportMonthlyTrainingBackup = function(){
+    var payload = loadRosterList('trainings') || emptyRosterPayload();
+    var items = Array.isArray(payload.items) ? payload.items : [];
+    var backup = {
+      version: 1,
+      exported_at: new Date().toISOString(),
+      type: 'monthly_training_missing_courses',
+      items: items.map(function(item){
+        return {
+          name: item.name || '',
+          training: trainingLabel(item),
+          shift: item.shift || 'Other',
+          matched: !!item.matched,
+          employee: item.employee || ''
+        };
+      })
+    };
+    var stamp = new Date().toISOString().slice(0,10);
+    downloadTextFile('monthly_training_missing_courses_' + stamp + '.json', JSON.stringify(backup, null, 2));
+  };
+  window.openMonthlyTrainingRestorePicker = function(){
+    var input = document.getElementById('monthly-training-restore-file');
+    if(!input){
+      input = document.createElement('input');
+      input.type = 'file';
+      input.id = 'monthly-training-restore-file';
+      input.accept = '.json,application/json';
+      input.style.display = 'none';
+      input.addEventListener('change', function(){
+        var file = input.files && input.files[0];
+        if(!file) return;
+        var reader = new FileReader();
+        reader.onload = async function(){
+          try{
+            var parsed = JSON.parse(String(reader.result || '{}'));
+            var rawItems = Array.isArray(parsed.items) ? parsed.items : [];
+            if(!rawItems.length) throw new Error('No items found in backup.');
+            if(!confirm('Import ' + rawItems.length + ' saved missing training record(s)? This will add them to the current list.')) return;
+            pushRosterUndo('Imported monthly training backup');
+            var existing = loadRosterList('trainings') || emptyRosterPayload();
+            var items = Array.isArray(existing.items) ? existing.items.slice() : [];
+            rawItems.forEach(function(row){
+              var built = buildTrainingItemsWithName([row.name || ''], row.training || row.training_name || row.title || 'Monthly Training')[0];
+              if(row.shift) built.shift = row.shift;
+              if(row.employee) built.employee = row.employee;
+              if(typeof row.matched === 'boolean') built.matched = row.matched;
+              items.push(built);
+            });
+            await saveRosterList('trainings', { items: items });
+            await renderRosterPanels();
+          }catch(err){
+            alert('Could not import that file: ' + (err && err.message ? err.message : err));
+          }finally{
+            input.value = '';
+          }
+        };
+        reader.readAsText(file);
+      });
+      document.body.appendChild(input);
+    }
+    input.click();
+  };
+  window.filterButtons = function(type){
+    var state = normalizeRosterFilterState(rosterFilters[type]);
+    var defs = [
+      ['all','All',''],
+      ['Day','Day','<span class="filter-dot filter-dot-day"></span>'],
+      ['Night','Night','<span class="filter-dot filter-dot-night"></span>'],
+      ['Other','Other','<span class="filter-dot filter-dot-other"></span>']
+    ];
+    var shiftButtons = defs.map(function(pair){
+      var key = pair[0], label = pair[1], marker = pair[2];
+      return '<button class="roster-filter-btn'+(state.shift===key?' active':'')+'" onclick="setRosterFilter(\''+type+'\',\''+key+'\')">'+marker+'<span>'+label+'</span></button>';
+    }).join('');
+    var workingButton = '<button class="roster-filter-btn working-today'+(state.working?' active':'')+'" onclick="setRosterFilter(\''+type+'\',\'working\')"><span class="filter-star">'+icon('star')+'</span><span>Working Today</span></button>';
+    var kanbanButton = type === 'trainings'
+      ? '<span class="roster-filter-spacer"></span><button class="roster-filter-btn print-timesheet-toggle" onclick="printMonthlyTimesheet()" type="button">'+icon('print')+'<span>Print</span></button><button class="roster-filter-btn training-import-toggle" onclick="openTrainingImportModal()" type="button">'+icon('plus')+'<span>Import</span></button><button class="roster-filter-btn export-trainings-toggle" onclick="exportMonthlyTrainingBackup()" type="button">'+icon('download')+'<span>Export</span></button><button class="roster-filter-btn restore-trainings-toggle" onclick="openMonthlyTrainingRestorePicker()" type="button">'+icon('upload')+'<span>Restore</span></button><button class="roster-filter-btn edit-courses-toggle" onclick="openCourseManagerModal()" type="button">'+icon('edit')+'<span>Edit Courses</span></button><button class="roster-filter-btn training-clear-toggle" onclick="clearAllMonthlyTrainings()" type="button">'+icon('clear')+'<span>Clear All</span></button><button class="roster-filter-btn hide-completed-toggle'+(window.monthlyTrainingHideCompleted?' active':'')+'" onclick="toggleMonthlyTrainingHideCompleted()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideCompleted?'Show Completed':'Hide Completed')+'</span></button><button class="roster-filter-btn timesheet-toggle'+(window.monthlyTrainingViewMode === 'timesheet'?' active':'')+'" onclick="toggleMonthlyTrainingTimesheet()" type="button">'+icon('sheet')+'<span>Timesheet</span></button><button class="roster-filter-btn kanban-toggle'+(window.monthlyTrainingViewMode === 'board'?' active':'')+'" onclick="toggleMonthlyTrainingKanban()" type="button">'+icon('board')+'<span>'+(window.monthlyTrainingViewMode === 'board'?'Table View':'Board View')+'</span></button>'
+      : '';
+    return shiftButtons + workingButton + kanbanButton;
+  };
+  window.renderRosterTable = function(type){
+    var key = normalizeRosterType(type);
+    var data = loadRosterList(key);
+    var items = data.items || [];
+    var filtered = filterRosterItems(items, rosterFilters[key]);
+    var wrap = document.getElementById(key === 'audits' ? 'audit-table-wrap' : 'train-table-wrap');
+    var countLabel = document.getElementById(key === 'audits' ? 'audit-count-label' : 'train-count-label');
+    var summaryLabel = document.getElementById(key === 'audits' ? 'audit-shift-summary' : 'train-shift-summary');
+    var totalLabel = document.getElementById(key === 'audits' ? 'audit-total-count' : 'train-total-count');
+    var filtersWrap = document.getElementById(key === 'audits' ? 'audit-filter-row' : 'train-filter-row');
+    var updatedLabel = document.getElementById('roster-updated');
+    if(filtersWrap) filtersWrap.innerHTML = window.filterButtons(key);
+    if(key === 'trainings' && filtersWrap){
+      var trainingSectionForToolbar = document.querySelector('#page-audits .audits-wrap > .roster-section:last-of-type');
+      if(trainingSectionForToolbar && trainingSectionForToolbar.firstElementChild !== filtersWrap){
+        trainingSectionForToolbar.insertBefore(filtersWrap, trainingSectionForToolbar.firstElementChild);
+      }
+    }
+    var counts = countsByShift(items);
+    if(totalLabel) totalLabel.textContent = String(counts.all);
+    if(summaryLabel) summaryLabel.textContent = 'Day ' + counts.Day + ' - Night ' + counts.Night + ' - Other ' + counts.Other;
+    if(countLabel) countLabel.textContent = filtered.length + ' shown  -  ' + counts.all + ' total';
+    if(updatedLabel){
+      var latest = rosterLastUpdated.audits || rosterLastUpdated.trainings || data.updated_at || null;
+      updatedLabel.textContent = formatRosterTimestamp(latest);
+    }
+    if(key === 'trainings'){
+      var section = document.querySelector('#page-audits .audits-wrap > .roster-section:last-of-type');
+      var oldSummary = document.getElementById('monthly-training-summary-strip');
+      var summaryHtml = '<div class="monthly-summary-strip" id="monthly-training-summary-strip">'
+        + '<span class="monthly-summary-item">'+icon('users')+'<span>'+counts.all+' total</span></span>'
+        + '<span class="monthly-summary-separator"></span>'
+        + '<span class="monthly-summary-item">'+icon('sun')+'<span>Day&nbsp; <u>'+counts.Day+'</u></span></span>'
+        + '<span class="monthly-summary-separator"></span>'
+        + '<span class="monthly-summary-item">'+icon('moon')+'<span>Night&nbsp; '+counts.Night+'</span></span>'
+        + '<span class="monthly-summary-separator"></span>'
+        + '<span class="monthly-summary-item">'+icon('other')+'<span>Other&nbsp; '+counts.Other+'</span></span>'
+        + '</div>';
+      if(section && !oldSummary){
+        var head = section.querySelector('.roster-section-head');
+        if(head) head.insertAdjacentHTML('afterend', summaryHtml);
+        else section.insertAdjacentHTML('afterbegin', summaryHtml);
+      }else if(oldSummary){
+        oldSummary.outerHTML = summaryHtml;
+      }
+    }
+    if(!wrap) return;
+    if(key === 'trainings' && window.monthlyTrainingViewMode === 'timesheet'){
+      wrap.classList.remove('kanban-mode');
+      wrap.classList.add('timesheet-mode');
+      wrap.innerHTML = renderTimesheet(items);
+      return;
+    }
+    if(!items.length){
+      wrap.classList.remove('kanban-mode','timesheet-mode');
+      wrap.innerHTML = '<div class="roster-empty">No names yet. Click Paste Names to import a list.</div>';
+      return;
+    }
+    if(!filtered.length){
+      wrap.classList.remove('kanban-mode','timesheet-mode');
+      wrap.innerHTML = '<div class="roster-empty">No names match this filter.</div>';
+      return;
+    }
+    function personRow(item){
+      var sk = shiftKey(item.shift);
+      var safeId = esc(String(item.id || ''));
+      var safeName = esc(item.name || '');
+      var attrName = esc(item.name || '');
+      var shiftLabel = esc(item.shift || 'Other');
+      var shiftIcon = sk === 'day' ? icon('sun') : (sk === 'night' ? icon('moon') : icon('other'));
+      return '<tr class="monthly-click-row" onclick="monthlyTrainingCardClick(this,event)">'
+        + '<td><div class="monthly-name-cell"><span class="monthly-status-dot"></span><span class="monthly-avatar monthly-avatar-'+sk+'">'+esc(initials(item.name))+'</span><span class="monthly-name">'+safeName+'</span></div></td>'
+        + '<td><span class="monthly-shift-pill monthly-shift-'+sk+'">'+shiftIcon+'<span>'+shiftLabel+'</span></span></td>'
+        + '<td><button type="button" class="monthly-reveal-delete" aria-label="Remove '+attrName+'" title="Remove '+attrName+'" data-roster-type="'+key+'" data-roster-id="'+safeId+'" data-roster-name="'+attrName+'" onclick="monthlyTrainingConfirmDelete(this,event)">&times;</button></td>'
+        + '</tr>';
+    }
+    function kanbanCard(item){
+      var sk = shiftKey(item.shift);
+      var safeId = esc(String(item.id || ''));
+      var safeName = esc(item.name || '');
+      var attrName = esc(item.name || '');
+      return '<div class="monthly-kanban-card" onclick="monthlyTrainingCardClick(this,event)">'
+        + '<div class="monthly-kanban-person"><span class="monthly-status-dot"></span><span class="monthly-avatar monthly-avatar-'+sk+'">'+esc(initials(item.name))+'</span><span class="monthly-name">'+safeName+'</span></div>'
+        + '<button type="button" class="monthly-reveal-delete" aria-label="Remove '+attrName+'" title="Remove '+attrName+'" data-roster-type="'+key+'" data-roster-id="'+safeId+'" data-roster-name="'+attrName+'" onclick="monthlyTrainingConfirmDelete(this,event)">&times;</button>'
+        + '</div>';
+    }
+    if(key === 'trainings' && window.monthlyTrainingViewMode === 'board'){
+      var groups = [
+        { shift:'Day', label:'Day', sk:'day', icon:icon('sun') },
+        { shift:'Night', label:'Night', sk:'night', icon:icon('moon') },
+        { shift:'Other', label:'Other', sk:'other', icon:icon('other') }
+      ];
+      var board = groups.map(function(group){
+        var groupItems = filtered.filter(function(item){ return (item.shift === group.shift) || (group.shift === 'Other' && item.shift !== 'Day' && item.shift !== 'Night'); });
+        return '<section class="monthly-kanban-column monthly-kanban-'+group.sk+'">'
+          + '<div class="monthly-kanban-head"><div class="monthly-kanban-title">'+group.icon+'<span>'+group.label+'</span></div><span class="monthly-kanban-count">'+groupItems.length+'</span></div>'
+          + '<div class="monthly-kanban-list">' + (groupItems.length ? groupItems.map(kanbanCard).join('') : '<div class="monthly-kanban-empty">No names in this group.</div>') + '</div>'
+          + '</section>';
+      }).join('');
+      wrap.classList.add('kanban-mode');
+      wrap.classList.remove('timesheet-mode');
+      wrap.innerHTML = '<div class="monthly-kanban">' + board + '</div>';
+      return;
+    }
+    wrap.classList.remove('kanban-mode');
+    wrap.classList.remove('timesheet-mode');
+    var rows = filtered.map(personRow).join('');
+    wrap.innerHTML = '<table class="roster-table roster-table-no-match">'
+      + '<thead><tr><th style="width:62%">Name</th><th style="width:24%">Shift</th><th style="width:14%"></th></tr></thead>'
+      + '<tbody>' + rows + '</tbody></table>';
+  };
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ try{ renderRosterPanels(); }catch(e){} });
+  }else{
+    try{ renderRosterPanels(); }catch(e){}
+  }
+})();
+</script>
 </body>
 </html>
-
