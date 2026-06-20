@@ -319,11 +319,11 @@ select option{background:var(--surface)}
 .revert-meta strong{color:var(--text);font-size:12px;display:block;margin-bottom:2px}
 .revert-btn{font-family:var(--mono);font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;border:1px solid var(--accent);color:var(--accent);background:transparent;transition:all .15s;white-space:nowrap}
 .revert-btn:hover{background:rgba(74,158,255,.12)}
-.revert-current .revert-meta strong::after{content:' â€” current';color:var(--success);font-size:10px}
+.revert-current .revert-meta strong::after{content:' Ã¢â‚¬â€ current';color:var(--success);font-size:10px}
 /* SAVE TOAST */
 #save-toast{position:fixed;bottom:20px;right:20px;z-index:999;background:var(--surface);border:1px solid rgba(34,197,94,.4);border-left:3px solid var(--success);border-radius:6px;padding:8px 14px;font-family:var(--mono);font-size:11px;color:var(--success);display:flex;align-items:center;gap:7px;letter-spacing:.5px;opacity:0;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
 #save-toast.show{opacity:1;transform:translateY(0)}
-/* EQUIPMENT â€” table layout */
+/* EQUIPMENT Ã¢â‚¬â€ table layout */
 .equip-page-wrap{padding:16px 0 36px;width:100%}
 .equip-section{margin:0 0 8px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
 .equip-section-title{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:8px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:0;background:rgba(255,255,255,.01)}
@@ -481,7 +481,7 @@ select option{background:var(--surface)}
   color:#fca5a5 !important;
 }
 .eq-note-alert::before{
-  content:'âš ';
+  content:'Ã¢Å¡Â ';
   margin-right:6px;
 }
 /* Whole-row flash when unit is down/maint and has no notes */
@@ -1106,7 +1106,7 @@ textarea{
 }
 
 
-/* â”€â”€ ACTIVITY FEED â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ ACTIVITY FEED Ã¢â€â‚¬Ã¢â€â‚¬ */
 .af-day-group{margin-bottom:24px}
 .af-day-label{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:0 0 8px;border-bottom:1px solid var(--border);margin-bottom:10px;display:flex;align-items:center;gap:10px}
 .af-day-label span{color:var(--text);font-size:11px}
@@ -1142,7 +1142,7 @@ textarea{
   .af-msg{font-size:11px}
 }
 
-/* â”€â”€ AUTH BAR MOBILE â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ AUTH BAR MOBILE Ã¢â€â‚¬Ã¢â€â‚¬ */
 #auth-bar { display: flex; }
 @media (max-width: 640px) {
   #auth-bar { padding: 10px 12px; gap: 8px; }
@@ -1349,7 +1349,7 @@ textarea{
 
 
 
-/* MOBILE EQUIPMENT TABLE REBUILD â€” card layout */
+/* MOBILE EQUIPMENT TABLE REBUILD Ã¢â‚¬â€ card layout */
 @media (max-width: 768px){
   #page-equipment .equip-page-wrap{
     padding:10px 10px 34px !important;
@@ -1510,7 +1510,7 @@ textarea{
 }
 
 
-/* FANCY EQUIPMENT NOTES TOGGLE â€” reliable, mobile-safe */
+/* FANCY EQUIPMENT NOTES TOGGLE Ã¢â‚¬â€ reliable, mobile-safe */
 #page-equipment .eq-action-cell{
   display:flex !important;
   align-items:center !important;
@@ -1542,7 +1542,7 @@ textarea{
   transition:transform .12s ease, border-color .12s ease, background .12s ease, color .12s ease !important;
 }
 #page-equipment .eq-notes-toggle::before{
-  content:'ðŸ“';
+  content:'Ã°Å¸â€œÂ';
   font-size:12px;
   line-height:1;
 }
@@ -1558,8 +1558,8 @@ textarea{
   color:#d1fae5 !important;
   box-shadow:0 8px 18px rgba(16,185,129,.12), inset 0 1px 0 rgba(255,255,255,.08) !important;
 }
-#page-equipment .eq-notes-toggle.notes-open::before{content:'â–¾'; font-size:14px;}
-#page-equipment .eq-notes-toggle.notes-closed::before{content:'â–¸'; font-size:14px;}
+#page-equipment .eq-notes-toggle.notes-open::before{content:'Ã¢â€“Â¾'; font-size:14px;}
+#page-equipment .eq-notes-toggle.notes-closed::before{content:'Ã¢â€“Â¸'; font-size:14px;}
 #page-equipment .eq-notes-toggle.notes-needed{
   border-color:rgba(239,68,68,.65) !important;
   background:linear-gradient(180deg, rgba(239,68,68,.24), rgba(127,29,29,.16)) !important;
@@ -1595,7 +1595,7 @@ textarea{
 
 
 
-/* FINAL EQUIPMENT NOTES TOGGLE FIX â€” actual button + reliable mobile layout */
+/* FINAL EQUIPMENT NOTES TOGGLE FIX Ã¢â‚¬â€ actual button + reliable mobile layout */
 #page-equipment .eq-action-cell{
   display:flex !important;
   align-items:center !important;
@@ -1931,7 +1931,7 @@ th:hover{
 }
 
 
-/* CARD VIEW STATUS MARKERS â€” status color overrides equipment-type color */
+/* CARD VIEW STATUS MARKERS Ã¢â‚¬â€ status color overrides equipment-type color */
 #page-equipment .eq-card[data-status="operational"]{
   border-left-color:#22c55e !important;
 }
@@ -2092,7 +2092,7 @@ th:hover{
 }
 
 
-/* RED/GOLD OUT-OF-SERVICE EQUIPMENT BORDERS â€” final override
+/* RED/GOLD OUT-OF-SERVICE EQUIPMENT BORDERS Ã¢â‚¬â€ final override
    Down = red. Maintenance and Standby = gold. Operational remains clean/green only. */
 #page-equipment .equip-table tr.eq-main-row[data-status="down"],
 #page-equipment .equip-table tr.eq-notes-row[data-status="down"],
@@ -2157,9 +2157,9 @@ th:hover{
 
 
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
    FUTURISTIC TOP PAGE SELECTOR OVERHAUL
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .app-command-nav.page-nav{
   zoom:1 !important;
   position:sticky;
@@ -2449,7 +2449,7 @@ th:hover{
 
 
 
-/* UNDO BUTTONS â€” equipment + audits/training */
+/* UNDO BUTTONS Ã¢â‚¬â€ equipment + audits/training */
 .eq-undo-btn,
 .undo-roster-btn{
   font-family:var(--mono);
@@ -2533,7 +2533,7 @@ th:hover{
 }
 
 
-/* FINAL EMPLOYEE MODAL CLEANUP â€” remove status selector from Add/Edit popup */
+/* FINAL EMPLOYEE MODAL CLEANUP Ã¢â‚¬â€ remove status selector from Add/Edit popup */
 #modal-bg .status-row,
 #modal-bg input[name="status"],
 #modal-bg input[name="status"] + label{
@@ -2543,7 +2543,7 @@ th:hover{
 
 
 /* =========================================================
-   EQUIPMENT PAGE â€” FANCY PRO DASHBOARD SKIN
+   EQUIPMENT PAGE Ã¢â‚¬â€ FANCY PRO DASHBOARD SKIN
    Adds glass panels, status glow, premium controls, and
    mobile card polish without changing Supabase/schema logic.
    ========================================================= */
@@ -2829,7 +2829,7 @@ th:hover{
 
 
 /* ==========================================================
-   EQUIPMENT CARD VIEW FINAL REDESIGN â€” FIX BROKEN CARD HEADERS
+   EQUIPMENT CARD VIEW FINAL REDESIGN Ã¢â‚¬â€ FIX BROKEN CARD HEADERS
    This bypasses the older eq-card-head/header stack and gives
    card view its own stable title/action/header grid.
    ========================================================== */
@@ -3021,7 +3021,7 @@ th:hover{
 
 
 /* =========================================================
-   EQUIPMENT BOARD HEADER REDESIGN â€” FINAL OVERRIDE
+   EQUIPMENT BOARD HEADER REDESIGN Ã¢â‚¬â€ FINAL OVERRIDE
    Purpose: replace the fragile table-style header with a
    stable grid header that cannot float over equipment rows.
    ========================================================= */
@@ -3142,7 +3142,7 @@ th:hover{
 
 
 
-/* PREMIUM BRAND CARD REDESIGN â€” safe visual-only patch */
+/* PREMIUM BRAND CARD REDESIGN Ã¢â‚¬â€ safe visual-only patch */
 .nav-brand-panel.premium-brand-card{
   position:relative;
   isolation:isolate;
@@ -3669,7 +3669,7 @@ setInterval(function(){
 
 <style>
 
-/* EQUIPMENT TABLE REFORMAT â€” aligned notes + readable grid */
+/* EQUIPMENT TABLE REFORMAT Ã¢â‚¬â€ aligned notes + readable grid */
 #page-equipment .equip-section{
   overflow:hidden !important;
 }
@@ -3878,7 +3878,7 @@ setInterval(function(){
 </style>
 
 <style>
-/* SCREEN-LOCKED EQUIPMENT TABLE â€” prevents horizontal page blowout */
+/* SCREEN-LOCKED EQUIPMENT TABLE Ã¢â‚¬â€ prevents horizontal page blowout */
 html, body { max-width:100vw !important; overflow-x:hidden !important; }
 #page-equipment,
 #page-equipment .equip-page-wrap,
@@ -3984,7 +3984,7 @@ html, body { max-width:100vw !important; overflow-x:hidden !important; }
 
 
 <style id="equipment-notes-redesign">
-/* EQUIPMENT NOTES REDESIGN â€” notes are no longer a table column */
+/* EQUIPMENT NOTES REDESIGN Ã¢â‚¬â€ notes are no longer a table column */
 #page-equipment .equip-section{max-width:100% !important; overflow:hidden !important;}
 #page-equipment .equip-page-wrap{max-width:100% !important; overflow-x:hidden !important;}
 #page-equipment .equip-table{width:100% !important; min-width:0 !important; table-layout:fixed !important; border-collapse:separate !important; border-spacing:0 !important;}
@@ -4025,7 +4025,7 @@ html, body { max-width:100vw !important; overflow-x:hidden !important; }
   #page-equipment .name-input,#page-equipment .tablet-input,#page-equipment .eq-status-select,#page-equipment .charged-select{flex:1 1 auto !important; min-width:0 !important; max-width:100% !important;}
 }
 
-/* CONDITIONAL EQUIPMENT NOTES â€” hidden unless unit is not Operational */
+/* CONDITIONAL EQUIPMENT NOTES Ã¢â‚¬â€ hidden unless unit is not Operational */
 
 #page-equipment .eq-notes-toggle{
   font-family:var(--mono);
@@ -4086,7 +4086,7 @@ html, body { max-width:100vw !important; overflow-x:hidden !important; }
 
 
 
-/* FINAL NOTES TOGGLE POLISH â€” operational notes stay collapsed; non-op stays open */
+/* FINAL NOTES TOGGLE POLISH Ã¢â‚¬â€ operational notes stay collapsed; non-op stays open */
 #page-equipment .eq-action-cell{
   display:flex !important;
   align-items:center !important;
@@ -4628,7 +4628,7 @@ function clearEqNotesInline(btn){
 
 
 <style id="status-horizontal-alignment-v4">
-/* STATUS HORIZONTAL ALIGNMENT â€” dropdown, timer, and timestamp in one baseline row */
+/* STATUS HORIZONTAL ALIGNMENT Ã¢â‚¬â€ dropdown, timer, and timestamp in one baseline row */
 #page-equipment .equip-table{
   table-layout:fixed !important;
 }
@@ -5245,7 +5245,7 @@ function clearEqNotesInline(btn){
 .emp-flag.dup{border-color:rgba(245,158,11,.38);background:rgba(245,158,11,.12);color:#fcd34d!important;}
 .emp-flag.good{border-color:rgba(34,197,94,.30);background:rgba(34,197,94,.10);color:#86efac!important;}
 .employee-note-flag{display:inline-flex;align-items:center;justify-content:center;margin-left:7px;padding:2px 7px;border-radius:999px;border:1px solid rgba(245,158,11,.42);background:rgba(245,158,11,.16);color:#fcd34d!important;font-family:var(--mono);font-size:9px;font-weight:900;letter-spacing:.65px;text-transform:uppercase;vertical-align:middle;box-shadow:0 0 0 1px rgba(245,158,11,.05),0 6px 14px rgba(0,0,0,.18);white-space:nowrap;}
-.employee-note-flag::before{content:'ðŸ“';font-size:11px;margin-right:4px;line-height:1;}
+.employee-note-flag::before{content:'Ã°Å¸â€œÂ';font-size:11px;margin-right:4px;line-height:1;}
 #page-employees .employee-card-name .employee-note-flag{font-size:8px;padding:2px 6px;margin-left:6px;transform:translateY(-1px);}
 
 tr.employee-delete-pending td{background:rgba(127,29,29,.48)!important;box-shadow:inset 0 0 0 9999px rgba(239,68,68,.08);}
@@ -5369,7 +5369,7 @@ body.employee-card-mode #employee-card-list{display:grid!important;}
   letter-spacing:.06em !important;
 }
 #page-employees .missing-field-btn.missing-password::before{
-  content:'â†»' !important;
+  content:'Ã¢â€ Â»' !important;
   color:#cbd5e1 !important;
   font-size:12px !important;
 }
@@ -5435,7 +5435,7 @@ body.employee-card-mode #employee-card-list{display:grid!important;}
   box-shadow:0 0 14px rgba(239,68,68,.22);
 }
 #page-employees .employee-card-missing::before{
-  content:'âš ';
+  content:'Ã¢Å¡Â ';
   color:#fecaca;
   font-size:12px;
   line-height:1;
@@ -6072,7 +6072,7 @@ body.employee-card-mode #employee-card-list{display:grid!important;}
 
 <style id="equipment-header-v5-final-redesign">
 /* =========================================================
-   EQUIPMENT HEADER V5 â€” HARD REDESIGN
+   EQUIPMENT HEADER V5 Ã¢â‚¬â€ HARD REDESIGN
    This avoids table-header behavior entirely. It is a normal
    grid banner inside the equipment board, never sticky/fixed.
    ========================================================= */
@@ -6622,6 +6622,14 @@ body.employee-card-mode #employee-card-list{display:grid!important;}
     overflow:hidden !important;
   }
 </style>
+<style id="monthly-training-initial-paint-guard">
+  #page-audits:not(.monthly-render-ready){
+    opacity:0 !important;
+  }
+  #page-audits.monthly-render-ready{
+    opacity:1 !important;
+  }
+</style>
 </head>
 <body>
 <!-- PAGE: AUDITS & TRAINING -->
@@ -6630,7 +6638,7 @@ body.employee-card-mode #employee-card-list{display:grid!important;}
     <div>
       <div class="header-title">Audits &amp; Monthly Training</div>
       <div class="header-sub"></div>
-      <div id="roster-updated" style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:4px;">Last updated: â€”</div>
+      <div id="roster-updated" style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:4px;">Last updated: Ã¢â‚¬â€</div>
     </div>
     <div class="roster-page-actions">
       <button class="roster-btn primary" onclick="openRosterModal()">
@@ -6675,7 +6683,7 @@ body.employee-card-mode #employee-card-list{display:grid!important;}
           <div class="audit-hero-unit">names</div>
         </div>
         <div class="audit-hero-divider"></div>
-        <div class="roster-summary-sub audit-hero-breakdown" id="audit-shift-summary">Day 0 Â· Night 0 Â· Other 0</div>
+        <div class="roster-summary-sub audit-hero-breakdown" id="audit-shift-summary">Day 0 Ã‚Â· Night 0 Ã‚Â· Other 0</div>
       </div>
       <div class="roster-summary-card roster-summary-train audit-hero-card">
         <div class="audit-hero-card-top">
@@ -6693,7 +6701,7 @@ body.employee-card-mode #employee-card-list{display:grid!important;}
           <div class="audit-hero-unit">names</div>
         </div>
         <div class="audit-hero-divider"></div>
-        <div class="roster-summary-sub audit-hero-breakdown" id="train-shift-summary">Day 0 Â· Night 0 Â· Other 0</div>
+        <div class="roster-summary-sub audit-hero-breakdown" id="train-shift-summary">Day 0 Ã‚Â· Night 0 Ã‚Â· Other 0</div>
       </div>
     </div>
 
@@ -6757,11 +6765,11 @@ body.employee-card-mode #employee-card-list{display:grid!important;}
 
 
 <script>
-// â”€â”€ EMPLOYEE DATA â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ EMPLOYEE DATA Ã¢â€â‚¬Ã¢â€â‚¬
 var STORAGE_KEY = 'eit_v1';
 var HISTORY_KEY = 'eit_hist_v1';
 
-/* â”€â”€ ACTIVITY LOG ENGINE â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ ACTIVITY LOG ENGINE Ã¢â€â‚¬Ã¢â€â‚¬ */
 var ACTIVITY_KEY = 'eit_activity_v1';
 var _toastTimer2;
 
@@ -6850,7 +6858,7 @@ function afPill(s) {
   return '<span class="af-pill ' + (map[s]||'') + '">' + (labels[s]||s) + '</span>';
 }
 
-var AF_ICONS = { employee:'ðŸ‘¤', equipment:'ðŸ”§', status:'âš ', notes:'ðŸ“', system:'âš™' };
+var AF_ICONS = { employee:'Ã°Å¸â€˜Â¤', equipment:'Ã°Å¸â€Â§', status:'Ã¢Å¡Â ', notes:'Ã°Å¸â€œÂ', system:'Ã¢Å¡â„¢' };
 var AF_ICON_CLS = { employee:'af-icon-employee', equipment:'af-icon-equipment', status:'af-icon-status', notes:'af-icon-notes', system:'af-icon-system' };
 var AF_TAG_CLS  = { employee:'af-tag-employee',  equipment:'af-tag-equipment',  status:'af-tag-status',  notes:'af-tag-notes',  system:'af-tag-system' };
 
@@ -6876,7 +6884,7 @@ function renderActivityFeed() {
     html += '<div class="af-day-group"><div class="af-day-label">' + day + '<span>' + entries.length + ' event' + (entries.length !== 1 ? 's' : '') + '</span></div>';
     entries.forEach(function(e) {
       html += '<div class="af-entry">'
-        + '<div class="af-icon ' + (AF_ICON_CLS[e.type]||'af-icon-system') + '">' + (AF_ICONS[e.type]||'âš™') + '</div>'
+        + '<div class="af-icon ' + (AF_ICON_CLS[e.type]||'af-icon-system') + '">' + (AF_ICONS[e.type]||'Ã¢Å¡â„¢') + '</div>'
         + '<div class="af-body">'
         + '<div class="af-msg">' + (e.author ? '<span class="af-author">' + String(e.author).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</span>' : '') + e.msg + '<span class="af-tag ' + (AF_TAG_CLS[e.type]||'af-tag-system') + '">' + e.type + '</span></div>'
         + (e.sub ? '<div class="af-sub">' + e.sub + '</div>' : '')
@@ -7256,7 +7264,7 @@ function seedData(){
   normalizeEmployeeRoster();
   save();
 }
-// â”€â”€ DAY ALIASES â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ DAY ALIASES Ã¢â€â‚¬Ã¢â€â‚¬
 var DAY_ALIASES={sun:0,sunday:0,mon:1,monday:1,tue:2,tues:2,tuesday:2,wed:3,wednesday:3,thu:4,thur:4,thurs:4,thursday:4,fri:5,friday:5,sat:6,saturday:6};
 
 function isOffToday(e){
@@ -7288,7 +7296,7 @@ function updateEmployeeNeedsAttentionButton(){
   }
 }
 
-// â”€â”€ TABS â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ TABS Ã¢â€â‚¬Ã¢â€â‚¬
 function setTab(t){
   currentTab=t;
   employeeNeedsAttentionOnly=false;
@@ -7313,7 +7321,7 @@ function getFiltered(){
   });
 }
 
-// â”€â”€ RENDER â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ RENDER Ã¢â€â‚¬Ã¢â€â‚¬
 function shiftBadge(s){var m={Day:'badge-day',Night:'badge-night',Gate:'badge-gate'};return '<span class="shift-badge '+( m[s]||'')+'">'+ s+'</span>';}
 function statusDotEl(s){var m={active:'status-active',callout:'status-callout',waiting:'status-waiting',off:'status-off'};return '<span class="status-dot '+(m[s]||'')+'"></span>';}
 function isComplete(e){return !!(e.first&&e.last&&e.empId&&e.upId&&e.phone&&e.daysOff&&e.first.trim()&&e.last.trim()&&e.empId.trim()&&e.upId.trim()&&e.phone.trim()&&e.daysOff.trim());}
@@ -7430,7 +7438,7 @@ function render(){
     var canSeePw = (typeof canViewEmployeePasswords === 'function') ? canViewEmployeePasswords() : false;
     var pwText = e.password && String(e.password).trim() ? String(e.password).trim() : '';
     var pwCell = pwText
-      ? '<span class="emp-id emp-table-value emp-password-cell" title="'+(canSeePw ? pwText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : 'Password hidden')+'">'+(canSeePw ? pwText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : 'â€¢â€¢â€¢â€¢â€¢â€¢')+'</span>'
+      ? '<span class="emp-id emp-table-value emp-password-cell" title="'+(canSeePw ? pwText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : 'Password hidden')+'">'+(canSeePw ? pwText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : 'Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢')+'</span>'
       : '<button type="button" class="missing-field-btn missing-password" data-eid="'+e.id+'" title="Update password">Update</button>';
     var emailCell=(e.email&&String(e.email).trim())
       ?'<span class="phone-cell emp-table-value">'+String(e.email).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</span>'
@@ -7441,7 +7449,7 @@ function render(){
       +'<td>'+upCell+'</td>'
       +'<td>'+emailCell+'</td>'
       +'<td>'+shiftBadge(e.shift)+'</td>'
-      +'<td><span class="days-off emp-table-value">'+(e.daysOff||'â€”')+'</span></td>'
+      +'<td><span class="days-off emp-table-value">'+(e.daysOff||'Ã¢â‚¬â€')+'</span></td>'
       +'<td>'+phoneCell+'</td>'
       +'<td><button class="action-btn" data-eid="'+e.id+'">Edit</button></td>'
       +'</tr>';
@@ -7451,7 +7459,7 @@ function render(){
   updateStats(); updateBanner(); updateTabCounts(); updateEmployeeNeedsAttentionButton();
 }
 
-// â”€â”€ MODAL â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ MODAL Ã¢â€â‚¬Ã¢â€â‚¬
 function openModal(id){
   editId=id||null;
   var title=document.getElementById('modal-title');
@@ -7469,12 +7477,12 @@ function openModal(id){
     pwInput.readOnly = !canSeePw;
     pwInput.dataset.lockedPassword = canSeePw ? '' : String(value || '');
     if(!canSeePw){
-      pwInput.value = value ? 'â€¢â€¢â€¢â€¢â€¢â€¢' : '';
+      pwInput.value = value ? 'Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢' : '';
       pwInput.placeholder = 'Password hidden';
       if(wrap){
         var note=document.createElement('div');
         note.className='password-locked-note';
-        note.textContent='Password hidden â€” admin permission required.';
+        note.textContent='Password hidden Ã¢â‚¬â€ admin permission required.';
         wrap.appendChild(note);
       }
     }else{
@@ -7521,10 +7529,10 @@ function saveEmp(){
   var data={first:first,last:last,empId:document.getElementById('f-empid').value.trim(),upId:document.getElementById('f-upid').value.trim(),password:safePassword,email:document.getElementById('f-email').value.trim(),shift:document.getElementById('f-shift').value,phone:formatEmployeePhone(document.getElementById('f-phone').value.trim()),daysOff:document.getElementById('f-days').value.trim(),status:(currentEmp && currentEmp.status) ? currentEmp.status : 'active',mobileToken:!!(document.getElementById('f-mobile-token')&&document.getElementById('f-mobile-token').checked)};
   if(editId){
     var idx=employees.findIndex(function(x){return x.id===editId;});
-    if(idx>-1){ employees[idx]=Object.assign({},employees[idx],data); logActivity('employee','<strong>'+data.first+' '+data.last+'</strong> updated','Shift: '+data.shift+' Â· Emp ID: '+(data.empId||'â€”')); }
+    if(idx>-1){ employees[idx]=Object.assign({},employees[idx],data); logActivity('employee','<strong>'+data.first+' '+data.last+'</strong> updated','Shift: '+data.shift+' Ã‚Â· Emp ID: '+(data.empId||'Ã¢â‚¬â€')); }
   } else {
     employees.push(Object.assign({id:uid()},data));
-    logActivity('employee','<strong>'+data.first+' '+data.last+'</strong> added to roster','Shift: '+data.shift+' Â· Days off: '+(data.daysOff||'â€”'));
+    logActivity('employee','<strong>'+data.first+' '+data.last+'</strong> added to roster','Shift: '+data.shift+' Ã‚Â· Days off: '+(data.daysOff||'Ã¢â‚¬â€'));
   }
   save(); render(); closeModal();
 }
@@ -7533,7 +7541,7 @@ function deleteEmp(){
   if(!editId) return;
   if(!confirm('Delete this employee?')) return;
   var e=employees.find(function(x){return x.id===editId;});
-  if(e) logActivity('employee','<strong>'+e.first+' '+e.last+'</strong> removed from roster','Shift: '+e.shift+' Â· Emp ID: '+(e.empId||'â€”'));
+  if(e) logActivity('employee','<strong>'+e.first+' '+e.last+'</strong> removed from roster','Shift: '+e.shift+' Ã‚Â· Emp ID: '+(e.empId||'Ã¢â‚¬â€'));
   employees=employees.filter(function(x){return x.id!==editId;});
   save(); render(); closeModal();
 }
@@ -7544,7 +7552,7 @@ function exportCSV(){
   var a=document.createElement('a');a.href='data:text/csv,'+encodeURIComponent(csv);a.download='employees.csv';a.click();
 }
 
-// â”€â”€ REVERT â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ REVERT Ã¢â€â‚¬Ã¢â€â‚¬
 function openRevertModal(){
   if(!currentActivityUserIsAdmin()){ alert('Only admin can use Revert.'); return; }
   var hist=JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]');
@@ -7571,7 +7579,7 @@ function restoreSnapshot(i){
 }
 function closeRevertModal(){var m=document.getElementById('revert-modal-bg');if(m)m.classList.remove('open');}
 
-// â”€â”€ FONT SIZE â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ FONT SIZE Ã¢â€â‚¬Ã¢â€â‚¬
 var APP_SCALE_KEY = 'eit_app_scale_v1';
 
 function setGlobalScale(val){
@@ -7606,7 +7614,7 @@ function initGlobalScale(){
   setGlobalScale(saved);
 }
 
-// â”€â”€ PAGE SWITCHING â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ PAGE SWITCHING Ã¢â€â‚¬Ã¢â€â‚¬
 function switchPage(p){
   document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});
   document.querySelectorAll('.page-nav-btn').forEach(function(el){el.classList.remove('active');});
@@ -7619,7 +7627,7 @@ function switchPage(p){
   if(p==='activity') renderActivityFeed();
 }
 
-// â”€â”€ EQUIPMENT â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ EQUIPMENT Ã¢â€â‚¬Ã¢â€â‚¬
 var EQ_KEY='eit_eq_v4';
 var EQ_IMPORT_VERSION='equipment_import_2026_05_22_exact_photo_v3_force_restore';
 var EQ_TYPES=['Hostler','Crane','Forklift','Reach Stacker','Side-Loader','Ops Truck'];
@@ -7936,7 +7944,7 @@ async function loadEquipment(){
     if(!loadEquipmentFromCache()) seedEquipment();
   }
 
-  // Then try Supabase in background â€” only replace if we actually get data back
+  // Then try Supabase in background Ã¢â‚¬â€ only replace if we actually get data back
   try{
     const { data, error } = await supabaseClient
       .from('equipment')
@@ -8185,7 +8193,7 @@ async function updateEqStatus(id,val){
   }
 
   var unitLabel = (e.name && e.name.trim()) ? e.unit+' ('+e.name.trim()+')' : e.unit;
-  if(val==='down')         logActivity('status','<strong>'+unitLabel+'</strong> marked '+afPill('down'),e.type+(e.notes?' Â· '+e.notes:''));
+  if(val==='down')         logActivity('status','<strong>'+unitLabel+'</strong> marked '+afPill('down'),e.type+(e.notes?' Ã‚Â· '+e.notes:''));
   else if(val==='maintenance') logActivity('status','<strong>'+unitLabel+'</strong> sent to '+afPill('maintenance'),e.type);
   else if(val==='standby') logActivity('status','<strong>'+unitLabel+'</strong> set to '+afPill('standby'),e.type);
   else if(val==='operational'&&prev!=='operational') logActivity('equipment','<strong>'+unitLabel+'</strong> back '+afPill('operational')+' (was '+afPill(prev)+')',e.type);
@@ -8252,7 +8260,7 @@ function updateEqNotes(id,val){
   queueEqNotesSave(id,val);
 }
 
-// Log note changes on blur â€” captures original on focus, logs on blur if changed
+// Log note changes on blur Ã¢â‚¬â€ captures original on focus, logs on blur if changed
 (function(){
   document.addEventListener('focusin', function(ev){
     var inp = ev.target;
@@ -8370,7 +8378,7 @@ function toggleEquipmentNotesButton(btn){
   if(label) label.textContent = shouldOpen ? 'Hide Notes' : 'Show Notes';
 
   var icon = btn.querySelector('.eq-notes-toggle-v2-icon');
-  if(icon) icon.textContent = shouldOpen ? 'â–¾' : 'â–¸';
+  if(icon) icon.textContent = shouldOpen ? 'Ã¢â€“Â¾' : 'Ã¢â€“Â¸';
 
   btn.title = shouldOpen ? 'Hide equipment notes' : 'Show equipment notes';
   if(shouldOpen){
@@ -8460,22 +8468,22 @@ function eqRowHtml(e, idx){
   var tablet = (e.tabletAssigned||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;');
   var tabletCell = tablet.trim()
     ? '<input class="tablet-input" type="text" value="'+tablet+'" placeholder="Tablet ID" data-eid="'+e.id+'">'
-    : '<span class="tablet-missing">âš  Missing</span><input class="tablet-input" type="text" value="" placeholder="Tablet ID" data-eid="'+e.id+'" style="margin-left:6px;width:auto;">';
+    : '<span class="tablet-missing">Ã¢Å¡Â  Missing</span><input class="tablet-input" type="text" value="" placeholder="Tablet ID" data-eid="'+e.id+'" style="margin-left:6px;width:auto;">';
   var assignedValue = String(e.assignedTo || '').trim();
   var assignedCell = '<select class="assigned-select" data-eid="'+e.id+'">' + getEmployeeAssignmentOptions(assignedValue) + '</select>';
 
-  var statusTimerHtml = '<span class="eq-status-dash">â€”</span>';
-  var statusSinceHtml = '<span class="eq-status-dash">â€”</span>';
+  var statusTimerHtml = '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
+  var statusSinceHtml = '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
   if(status !== 'operational'){
     var dayStamp = formatStatusChangedDay(e.status_changed_at);
     var ageMeta = getEquipmentAgeMeta(e);
     var statusText = (status === 'down' ? 'Down' : (status === 'maintenance' ? 'Maintenance' : 'Standby'));
     statusTimerHtml = ageMeta
       ? '<span class="eq-age-pill eq-age-'+ageMeta.severity+'" data-equipment-age="1" data-age-start="'+(e.status_changed_at || e.updated_at || '')+'" data-age-kind="'+statusText.toLowerCase()+'">'+ageMeta.label+'</span>'
-      : '<span class="eq-status-dash">â€”</span>';
+      : '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
     statusSinceHtml = dayStamp
       ? '<span class="eq-status-date" title="Left operational on '+dayStamp+'">'+dayStamp+'</span>'
-      : '<span class="eq-status-dash">â€”</span>';
+      : '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
   }
 
   var isOperational = status === 'operational';
@@ -8496,7 +8504,7 @@ function eqRowHtml(e, idx){
   var notesToggleLabel = notesOpen ? 'Hide Notes' : 'Show Notes';
   var notesToggleClass = 'eq-notes-toggle-v2 ' + (notesOpen ? 'notes-open' : 'notes-closed') + (needsAttention ? ' notes-needed' : '') + (hasNotes ? ' has-notes' : '');
   var notesToggleTitle = notesOpen ? 'Hide equipment notes' : 'Show equipment notes';
-  var notesButton = isOperational ? '' : '<button type="button" class="'+notesToggleClass+'" data-status="'+status+'" data-eid="'+e.id+'" title="'+notesToggleTitle+'" aria-expanded="'+(notesOpen?'true':'false')+'"><span class="eq-notes-toggle-v2-icon">'+(notesOpen?'â–¾':'â–¸')+'</span><span class="eq-notes-toggle-v2-text">'+notesToggleLabel+'</span>'+(hasNotes ? '<span class="eq-notes-toggle-v2-dot" aria-hidden="true"></span>' : '')+'</button>';
+  var notesButton = isOperational ? '' : '<button type="button" class="'+notesToggleClass+'" data-status="'+status+'" data-eid="'+e.id+'" title="'+notesToggleTitle+'" aria-expanded="'+(notesOpen?'true':'false')+'"><span class="eq-notes-toggle-v2-icon">'+(notesOpen?'Ã¢â€“Â¾':'Ã¢â€“Â¸')+'</span><span class="eq-notes-toggle-v2-text">'+notesToggleLabel+'</span>'+(hasNotes ? '<span class="eq-notes-toggle-v2-dot" aria-hidden="true"></span>' : '')+'</button>';
 
   var forceOpen = notesOpen;
   var notesBtnText = forceOpen ? 'Hide Notes' : 'Show Notes';
@@ -8522,7 +8530,7 @@ function eqRowHtml(e, idx){
     +'<option value="pending"' +((!e.staysCharged||e.staysCharged==='pending')?' selected':'')+'>&ndash; Pending</option>'
     +'</select></td>'
     +'<td class="eq-assigned-cell">'+assignedCell+'</td>'
-    +'<td class="eq-action-cell">'+notesButtonV3+'<button type="button" class="equip-del-btn" data-eid="'+e.id+'" title="Remove">âœ•</button></td>'
+    +'<td class="eq-action-cell">'+notesButtonV3+'<button type="button" class="equip-del-btn" data-eid="'+e.id+'" title="Remove">Ã¢Å“â€¢</button></td>'
     +'</tr>';
 
   return mainRow
@@ -8564,7 +8572,7 @@ function renderCalloutComposer(){
     + '<div class="callout-row">'
       + '<button class="callout-send" onclick="sendCallout()">Send Callout</button>'
     + '</div>'
-    + '<div class="callout-note">If Supabase is offline or blocked, callouts stay in this deviceâ€™s queue and remain visible in the app.</div>';
+    + '<div class="callout-note">If Supabase is offline or blocked, callouts stay in this deviceÃ¢â‚¬â„¢s queue and remain visible in the app.</div>';
 
   if(openCallouts.length){
     html += '<div class="callout-list">' + openCallouts.map(function(c){
@@ -8572,7 +8580,7 @@ function renderCalloutComposer(){
         + '<div>'
           + '<strong>' + escapeHtml(c.subject || 'Callout') + '</strong>'
           + '<small>' + escapeHtml(c.message || '') + '</small>'
-          + '<small>' + new Date(c.created_at).toLocaleString() + ' Â· ' + escapeHtml(c.priority || 'info') + '</small>'
+          + '<small>' + new Date(c.created_at).toLocaleString() + ' Ã‚Â· ' + escapeHtml(c.priority || 'info') + '</small>'
         + '</div>'
         + '<span class="callout-pending' + (c.status === 'sent' ? ' callout-sent' : '') + '">' + escapeHtml(c.status || 'pending') + '</span>'
       + '</div>';
@@ -8693,7 +8701,7 @@ function updateEquipmentViewButton(){
   if(!btn) return;
   btn.classList.toggle('active', !!equipmentCardView);
   btn.setAttribute('aria-pressed', equipmentCardView ? 'true' : 'false');
-  btn.innerHTML = '<span class="eq-view-toggle-icon">'+(equipmentCardView ? 'â–¤' : 'â–¦')+'</span>' + (equipmentCardView ? 'Table View' : 'Card View');
+  btn.innerHTML = '<span class="eq-view-toggle-icon">'+(equipmentCardView ? 'Ã¢â€“Â¤' : 'Ã¢â€“Â¦')+'</span>' + (equipmentCardView ? 'Table View' : 'Card View');
 }
 
 function eqCardHtml(e, idx){
@@ -8706,17 +8714,17 @@ function eqCardHtml(e, idx){
   var tablet = (e.tabletAssigned||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;');
   var tabletCell = tablet.trim()
     ? '<input class="tablet-input" type="text" value="'+tablet+'" placeholder="Tablet ID" data-eid="'+e.id+'">'
-    : '<div class="eq-card-v2-tablet-stack"><span class="tablet-missing">âš  Missing</span><input class="tablet-input" type="text" value="" placeholder="Tablet ID" data-eid="'+e.id+'"></div>';
+    : '<div class="eq-card-v2-tablet-stack"><span class="tablet-missing">Ã¢Å¡Â  Missing</span><input class="tablet-input" type="text" value="" placeholder="Tablet ID" data-eid="'+e.id+'"></div>';
   var assignedValue = String(e.assignedTo || '').trim();
   var assignedCell = '<select class="assigned-select" data-eid="'+e.id+'">' + getEmployeeAssignmentOptions(assignedValue) + '</select>';
-  var statusTimerHtml = '<span class="eq-status-dash">â€”</span>';
-  var statusSinceHtml = '<span class="eq-status-dash">â€”</span>';
+  var statusTimerHtml = '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
+  var statusSinceHtml = '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
   if(status !== 'operational'){
     var dayStamp = formatStatusChangedDay(e.status_changed_at);
     var ageMeta = getEquipmentAgeMeta(e);
     var statusText = (status === 'down' ? 'Down' : (status === 'maintenance' ? 'Maintenance' : 'Standby'));
-    statusTimerHtml = ageMeta ? '<span class="eq-age-pill eq-age-'+ageMeta.severity+'" data-equipment-age="1" data-age-start="'+(e.status_changed_at || e.updated_at || '')+'" data-age-kind="'+statusText.toLowerCase()+'">'+ageMeta.label+'</span>' : '<span class="eq-status-dash">â€”</span>';
-    statusSinceHtml = dayStamp ? '<span class="eq-status-date" title="Left operational on '+dayStamp+'">'+dayStamp+'</span>' : '<span class="eq-status-dash">â€”</span>';
+    statusTimerHtml = ageMeta ? '<span class="eq-age-pill eq-age-'+ageMeta.severity+'" data-equipment-age="1" data-age-start="'+(e.status_changed_at || e.updated_at || '')+'" data-age-kind="'+statusText.toLowerCase()+'">'+ageMeta.label+'</span>' : '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
+    statusSinceHtml = dayStamp ? '<span class="eq-status-date" title="Left operational on '+dayStamp+'">'+dayStamp+'</span>' : '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
   }
   var isOperational = status === 'operational';
   var hasNotes = !!notesRaw.trim();
@@ -8730,7 +8738,7 @@ function eqCardHtml(e, idx){
     +'<div class="eq-card-v2-top">'
       +'<div class="eq-card-v2-count">#'+(idx+1)+'</div>'
       +'<div class="eq-card-v2-title"><div class="eq-card-v2-kicker">Equipment / Unit Name</div><input class="name-input" type="text" value="'+name+'" placeholder="Name / ID" data-eid="'+e.id+'"></div>'
-      +'<div class="eq-card-v2-actions"><button type="button" class="eq-history-btn" data-eid="'+e.id+'">Timeline</button><button type="button" class="equip-del-btn" data-eid="'+e.id+'" title="Remove">âœ•</button></div>'
+      +'<div class="eq-card-v2-actions"><button type="button" class="eq-history-btn" data-eid="'+e.id+'">Timeline</button><button type="button" class="equip-del-btn" data-eid="'+e.id+'" title="Remove">Ã¢Å“â€¢</button></div>'
     +'</div>'
     +'<div class="eq-card-v2-status-band">'
       +'<div class="eq-card-v2-field"><div class="eq-card-v2-field-label">Status</div><select class="eq-status-select '+sc+'" id="sel-'+e.id+'" data-eid="'+e.id+'"><option value="operational"'+(status==='operational'?' selected':'')+'>Operational</option><option value="down"'+(status==='down'?' selected':'')+'>Down</option><option value="maintenance"'+(status==='maintenance'?' selected':'')+'>Maintenance</option><option value="standby"'+(status==='standby'?' selected':'')+'>Standby</option></select></div>'
@@ -8756,17 +8764,17 @@ function eqBoardRowHtml(e, idx){
   var notes = notesRaw.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   var name = (e.name||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;');
   var tablet = (e.tabletAssigned||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;');
-  var tabletCell = tablet.trim() ? '<input class="tablet-input" type="text" value="'+tablet+'" placeholder="Tablet ID" data-eid="'+e.id+'">' : '<div class="eq-tablet-stack"><span class="tablet-missing">âš  Missing</span><input class="tablet-input" type="text" value="" placeholder="Tablet ID" data-eid="'+e.id+'"></div>';
+  var tabletCell = tablet.trim() ? '<input class="tablet-input" type="text" value="'+tablet+'" placeholder="Tablet ID" data-eid="'+e.id+'">' : '<div class="eq-tablet-stack"><span class="tablet-missing">Ã¢Å¡Â  Missing</span><input class="tablet-input" type="text" value="" placeholder="Tablet ID" data-eid="'+e.id+'"></div>';
   var assignedValue = String(e.assignedTo || '').trim();
   var assignedCell = '<select class="assigned-select" data-eid="'+e.id+'">' + getEmployeeAssignmentOptions(assignedValue) + '</select>';
-  var statusTimerHtml = '<span class="eq-status-dash">â€”</span>';
-  var statusSinceHtml = '<span class="eq-status-dash">â€”</span>';
+  var statusTimerHtml = '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
+  var statusSinceHtml = '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
   if(status !== 'operational'){
     var dayStamp = formatStatusChangedDay(e.status_changed_at);
     var ageMeta = getEquipmentAgeMeta(e);
     var statusText = (status === 'down' ? 'Down' : (status === 'maintenance' ? 'Maintenance' : 'Standby'));
-    statusTimerHtml = ageMeta ? '<span class="eq-age-pill eq-age-'+ageMeta.severity+'" data-equipment-age="1" data-age-start="'+(e.status_changed_at || e.updated_at || '')+'" data-age-kind="'+statusText.toLowerCase()+'">'+ageMeta.label+'</span>' : '<span class="eq-status-dash">â€”</span>';
-    statusSinceHtml = dayStamp ? '<span class="eq-status-date" title="Left operational on '+dayStamp+'">'+dayStamp+'</span>' : '<span class="eq-status-dash">â€”</span>';
+    statusTimerHtml = ageMeta ? '<span class="eq-age-pill eq-age-'+ageMeta.severity+'" data-equipment-age="1" data-age-start="'+(e.status_changed_at || e.updated_at || '')+'" data-age-kind="'+statusText.toLowerCase()+'">'+ageMeta.label+'</span>' : '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
+    statusSinceHtml = dayStamp ? '<span class="eq-status-date" title="Left operational on '+dayStamp+'">'+dayStamp+'</span>' : '<span class="eq-status-dash">Ã¢â‚¬â€</span>';
   }
   var isOperational = status === 'operational';
   var hasNotes = !!notesRaw.trim();
@@ -8784,9 +8792,9 @@ function eqBoardRowHtml(e, idx){
     +'<div class="eq-cell eq-timer-cell" data-label="Timer">'+statusTimerHtml+'</div>'
     +'<div class="eq-cell eq-since-cell" data-label="Since">'+statusSinceHtml+'</div>'
     +'<div class="eq-cell eq-tablet-cell" data-label="Tablet">'+tabletCell+'</div>'
-    +'<div class="eq-cell eq-charged-cell" data-label="Stays Charged?"><select class="charged-select charged-'+(e.staysCharged||'pending')+'" data-eid="'+e.id+'" data-field="staysCharged"><option value="yes"'+(e.staysCharged==='yes'?' selected':'')+'>âœ“ Yes</option><option value="no"'+(e.staysCharged==='no'?' selected':'')+'>âœ• No</option><option value="pending"'+((!e.staysCharged||e.staysCharged==='pending')?' selected':'')+'>â€“ Pending</option></select></div>'
+    +'<div class="eq-cell eq-charged-cell" data-label="Stays Charged?"><select class="charged-select charged-'+(e.staysCharged||'pending')+'" data-eid="'+e.id+'" data-field="staysCharged"><option value="yes"'+(e.staysCharged==='yes'?' selected':'')+'>Ã¢Å“â€œ Yes</option><option value="no"'+(e.staysCharged==='no'?' selected':'')+'>Ã¢Å“â€¢ No</option><option value="pending"'+((!e.staysCharged||e.staysCharged==='pending')?' selected':'')+'>Ã¢â‚¬â€œ Pending</option></select></div>'
     +'<div class="eq-cell eq-assigned-cell" data-label="Assigned To">'+assignedCell+'</div>'
-    +'<div class="eq-cell eq-action-cell" data-label="Actions"><button type="button" class="eq-history-btn" data-eid="'+e.id+'">Timeline</button><button type="button" class="eq-notes-toggle-v3'+(notesOpen ? ' is-open' : '')+'" data-eid="'+e.id+'" aria-expanded="'+(notesOpen ? 'true' : 'false')+'">'+notesBtnText+'</button><button type="button" class="equip-del-btn" data-eid="'+e.id+'" title="Remove">âœ•</button></div>'
+    +'<div class="eq-cell eq-action-cell" data-label="Actions"><button type="button" class="eq-history-btn" data-eid="'+e.id+'">Timeline</button><button type="button" class="eq-notes-toggle-v3'+(notesOpen ? ' is-open' : '')+'" data-eid="'+e.id+'" aria-expanded="'+(notesOpen ? 'true' : 'false')+'">'+notesBtnText+'</button><button type="button" class="equip-del-btn" data-eid="'+e.id+'" title="Remove">Ã¢Å“â€¢</button></div>'
     +'<div class="eq-board-notes eq-card-notes '+notesOpenClass+'" data-eid="'+e.id+'" data-status="'+status+'" style="display:'+notesDisplay+';"><div class="eq-notes-shell"><div class="eq-notes-head"><span>Notes</span><button type="button" class="eq-notes-clear-btn" data-eid="'+e.id+'" onclick="return clearEqNotesInline(this);">Clear Note</button>'+notesBadge+'</div><textarea class="notes-input'+(needsAttention ? ' eq-note-alert' : '')+'" placeholder="Add maintenance, down-time, damage, tablet, or handoff notes..." data-eid="'+e.id+'">'+notes+'</textarea></div></div>'
     +'</div>';
 }
@@ -8846,7 +8854,7 @@ function renderEquipment(){
     var downCount  = allUnits.filter(function(e){ return normalizeEqStatus(e.status)==='down'; }).length;
     var maintCount = allUnits.filter(function(e){ return normalizeEqStatus(e.status)==='maintenance'; }).length;
     var shownLabel = showOutOnly
-      ? units.length+' shown Â· '+allUnits.length+' total'
+      ? units.length+' shown Ã‚Â· '+allUnits.length+' total'
       : units.length+' unit'+(units.length!==1?'s':'');
     if(isHostlerSection && equipmentHostlerChargeReviewOnly){
       shownLabel = '';
@@ -8914,7 +8922,7 @@ function renderEquipment(){
     var td = this.closest('td'); if(!td) return;
     var flag = td.querySelector('.tablet-missing');
     if(this.value.trim()){ if(flag) flag.remove(); }
-    else if(!flag){ var d=document.createElement('span'); d.className='tablet-missing'; d.textContent='âš  Missing'; td.insertBefore(d,this); }
+    else if(!flag){ var d=document.createElement('span'); d.className='tablet-missing'; d.textContent='Ã¢Å¡Â  Missing'; td.insertBefore(d,this); }
   }); });
   container.querySelectorAll('.notes-input[data-eid]').forEach(function(inp){
     inp.addEventListener('focus', function(){ this.setAttribute('data-has-focus','1'); });
@@ -8945,8 +8953,8 @@ function renderEquipment(){
       await saveEquipment();
       if(val !== prev){
         var ul = (e.name&&e.name.trim()) ? e.unit+' ('+e.name.trim()+')' : e.unit;
-        var labels = {yes:'âœ“ Yes',no:'âœ• No',pending:'â€“ Pending'};
-        logActivity('notes','<strong>'+ul+'</strong> â€” Stays Charged set to <strong>'+labels[val]+'</strong>','Type: '+e.type);
+        var labels = {yes:'Ã¢Å“â€œ Yes',no:'Ã¢Å“â€¢ No',pending:'Ã¢â‚¬â€œ Pending'};
+        logActivity('notes','<strong>'+ul+'</strong> Ã¢â‚¬â€ Stays Charged set to <strong>'+labels[val]+'</strong>','Type: '+e.type);
       }
       updateEquipmentStatusMeta();
       renderEquipmentAttention();
@@ -9035,7 +9043,7 @@ function refreshEquipmentAgingDisplay(){
   });
 }
 
-// â”€â”€ WEEKLY SCHEDULE â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ WEEKLY SCHEDULE Ã¢â€â‚¬Ã¢â€â‚¬
 var WEEKLY_SCHEDULE = {
   1: { // Monday
     day:   ['Demetrius Towler','Dante Citizen','Ramon Nava','Tran Tyler','Dorrean Gardner','Nelson Romero','Mikey Dever','Armando Castruita','James Brown','Dexter Stewart','Henry Thomas','Jose Herrera'],
@@ -9115,13 +9123,13 @@ function getCurrentShiftCoverageState(){
 
 function formatEquipmentUpdated(){
   var stamps = equipment.map(function(e){ return e.updated_at || null; }).filter(Boolean).sort();
-  if(!stamps.length) return 'Last updated: â€”';
+  if(!stamps.length) return 'Last updated: Ã¢â‚¬â€';
   try{
     var d = new Date(stamps[stamps.length - 1]);
-    if(isNaN(d.getTime())) return 'Last updated: â€”';
+    if(isNaN(d.getTime())) return 'Last updated: Ã¢â‚¬â€';
     return 'Last updated: ' + d.toLocaleString([], { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit' });
   }catch(e){
-    return 'Last updated: â€”';
+    return 'Last updated: Ã¢â‚¬â€';
   }
 }
 
@@ -9200,7 +9208,7 @@ function renderEquipmentAttention(){
 
   var sample = list.slice(0, 3).map(function(e){
     return (e.name && String(e.name).trim()) ? e.name : e.unit;
-  }).join(' Â· ');
+  }).join(' Ã‚Â· ');
 
   wrap.innerHTML =
     '<div class="equipment-attention-head">'
@@ -9216,7 +9224,7 @@ function renderEquipmentAttention(){
       + '<div class="equipment-attention-item">'
         + '<div class="equipment-attention-meta">'
           + '<div class="equipment-attention-name">' + (list.length ? (sample || 'None listed') : 'All down / maintenance units are documented') + '</div>'
-          + '<div class="equipment-attention-reason">' + (list.length ? 'Top items Â· notes required' : 'Good operational discipline') + '</div>'
+          + '<div class="equipment-attention-reason">' + (list.length ? 'Top items Ã‚Â· notes required' : 'Good operational discipline') + '</div>'
         + '</div>'
         + '<span class="eq-status-badge ' + (list.length ? 'eq-status-badge-warn eq-note-alert' : 'eq-status-badge-ok') + '">' + (list.length ? 'Review' : 'Clear') + '</span>'
       + '</div>'
@@ -9233,7 +9241,7 @@ function updateEquipmentStatusMeta(){
   var dot=document.getElementById('equipment-kpi-dot');
   if(label){
     if(!equipment.length){
-      label.textContent = 'Coverage: â€”';
+      label.textContent = 'Coverage: Ã¢â‚¬â€';
     }else if(state.enough){
       label.textContent = 'Coverage: enough';
     }else{
@@ -9299,7 +9307,7 @@ function renderShiftReadinessDashboard(){
   var diffLabel = s.diff > 0 ? ('+' + s.diff + ' excess') : (s.diff < 0 ? (Math.abs(s.diff) + ' short') : 'Balanced');
   var statusClass = s.coverageStatus === 'GOOD' ? 'good' : (s.coverageStatus === 'WATCH' ? 'watch' : (s.coverageStatus === 'SHORT' ? 'short' : 'neutral'));
   var statusText = s.coverageStatus;
-  var shiftLabel = 'Day ' + s.dayShiftCount + ' Â· Night ' + s.nightShiftCount + ' Â· Current ' + s.currentShiftLabel;
+  var shiftLabel = 'Day ' + s.dayShiftCount + ' Ã‚Â· Night ' + s.nightShiftCount + ' Ã‚Â· Current ' + s.currentShiftLabel;
 
   wrap.innerHTML =
     '<div class="shift-readiness-head">'
@@ -9312,7 +9320,7 @@ function renderShiftReadinessDashboard(){
       +'<div class="shift-kpi '+(s.diff >= 0 ? 'good' : 'short')+'">'
         +'<div class="shift-kpi-label">Coverage</div>'
         +'<div class="shift-kpi-value">'+statusText+'</div>'
-        +'<div class="trend '+(s.diff >= 0 ? 'good' : 'short')+'">'+s.currentShiftLabel+' Â· need '+s.requiredHostlers+' Â· '+diffLabel+'</div>'
+        +'<div class="trend '+(s.diff >= 0 ? 'good' : 'short')+'">'+s.currentShiftLabel+' Ã‚Â· need '+s.requiredHostlers+' Ã‚Â· '+diffLabel+'</div>'
       +'</div>'
       +'<div class="shift-kpi '+(s.diff >= 0 ? 'good' : 'short')+'">'
         +'<div class="shift-kpi-label">Operational Hostlers</div>'
@@ -9322,12 +9330,12 @@ function renderShiftReadinessDashboard(){
       +'<div class="shift-kpi info">'
         +'<div class="shift-kpi-label">Shift Counts</div>'
         +'<div class="shift-kpi-value shift-count-pair"><span class="shift-count-day">'+s.dayShiftCount+'<small>DAY</small></span><span class="shift-count-sep">/</span><span class="shift-count-night">'+s.nightShiftCount+'<small>NIGHT</small></span></div>'
-        +'<div class="trend neutral">Current: '+s.currentShiftLabel+' Â· '+s.currentShiftCount+' scheduled</div>'
+        +'<div class="trend neutral">Current: '+s.currentShiftLabel+' Ã‚Â· '+s.currentShiftCount+' scheduled</div>'
       +'</div>'
       +'<div class="shift-kpi '+(s.hostlersOutOfService ? 'warn' : 'good')+'">'
         +'<div class="shift-kpi-label">Hostlers Out of Service</div>'
         +'<div class="shift-kpi-value">'+s.hostlersOutOfService+'</div>'
-        +'<div class="trend '+(s.hostlersOutOfService ? 'watch' : 'good')+'">Down '+s.hostlersDown+' Â· Maint '+s.hostlersMaintenance+' Â· Standby '+s.hostlersStandby+'</div>'
+        +'<div class="trend '+(s.hostlersOutOfService ? 'watch' : 'good')+'">Down '+s.hostlersDown+' Ã‚Â· Maint '+s.hostlersMaintenance+' Ã‚Â· Standby '+s.hostlersStandby+'</div>'
       +'</div>'
     +'</div>';
 }
@@ -9356,23 +9364,23 @@ function renderStaffingWidget(){
 
   var verdictClass, verdictIcon, verdictMsg;
   if(totalHostlers === 0){
-    verdictClass='verdict-warn'; verdictIcon='âš ';
-    verdictMsg='No hostler data yet â€” add equipment to check coverage.';
+    verdictClass='verdict-warn'; verdictIcon='Ã¢Å¡Â ';
+    verdictMsg='No hostler data yet Ã¢â‚¬â€ add equipment to check coverage.';
   } else if(shortage <= 0){
-    verdictClass='verdict-ok'; verdictIcon='âœ“';
+    verdictClass='verdict-ok'; verdictIcon='Ã¢Å“â€œ';
     verdictMsg='Coverage is healthy for the current shift.';
   } else if(shortage === 1){
-    verdictClass='verdict-warn'; verdictIcon='âš ';
+    verdictClass='verdict-warn'; verdictIcon='Ã¢Å¡Â ';
     verdictMsg='Short by 1 hostler for '+currentShiftLabel+'.';
   } else {
-    verdictClass='verdict-bad'; verdictIcon='âœ•';
+    verdictClass='verdict-bad'; verdictIcon='Ã¢Å“â€¢';
     verdictMsg='Short by '+shortage+' hostlers for '+currentShiftLabel+'.';
   }
 
   wrap.innerHTML =
     '<div class="staffing-header">'
     +'<span class="staffing-title">Today\'s Staffing & Coverage</span>'
-    +'<span class="staffing-day-label">'+DAY_NAMES[dow]+' Â· <span style="color:'+(isDay ? 'var(--day)' : 'var(--night)')+'">'+currentShiftLabel+' Active</span></span>'
+    +'<span class="staffing-day-label">'+DAY_NAMES[dow]+' Ã‚Â· <span style="color:'+(isDay ? 'var(--day)' : 'var(--night)')+'">'+currentShiftLabel+' Active</span></span>'
     +'</div>'
     +'<div class="staffing-strip">'
     +'<div class="staffing-mini staffing-mini-day"><div class="staffing-mini-inline"><div class="staffing-mini-label">Day Shift</div><div class="staffing-mini-note">Scheduled today</div></div><div class="staffing-mini-val" style="color:var(--day)">'+dayCount+'</div></div>'
@@ -9383,7 +9391,7 @@ function renderStaffingWidget(){
     +'<div class="staffing-summary-line">'
       +'<span class="staffing-chip staffing-chip-day"><strong>Day</strong> '+dayCount+'</span>'
       +'<span class="staffing-chip staffing-chip-night"><strong>Night</strong> '+nightCount+'</span>'
-      +'<span class="staffing-chip staffing-chip-active"><strong>Now</strong> '+currentShiftLabel+' Â· '+currentShiftCount+'</span>'
+      +'<span class="staffing-chip staffing-chip-active"><strong>Now</strong> '+currentShiftLabel+' Ã‚Â· '+currentShiftCount+'</span>'
       +'<span class="staffing-chip staffing-chip-hostler"><strong>Hostlers</strong> '+operationalHostlers+' / '+neededHostlers+'</span>'
     +'</div>'
     +'<div class="staffing-verdict '+verdictClass+'"><span class="verdict-icon">'+verdictIcon+'</span><span>'+verdictMsg+'</span></div>'    +(function(){      var dayWorkers  = sched.day  || [];      var nightWorkers= sched.night|| [];      if(!dayWorkers.length && !nightWorkers.length) return '';      function nameItem(n){        var matched = (Array.isArray(employees)?employees:[]).find(function(e){          var full=(e.first+' '+e.last).toLowerCase();          var rev=(e.last+' '+e.first).toLowerCase();          var q=n.toLowerCase();          return full===q||rev===q||full.indexOf(q)!==-1||q.indexOf(e.last.toLowerCase())!==-1;        });        var dot = matched          ? (matched.status==='callout'?'background:#ef4444':'background:#22c55e')          : 'background:#7a87a8';        return '<div class="staffing-name-item"><span class="sname-dot" style="'+dot+';"></span>'+n+'</div>';      }      return '<div class="staffing-names">'        +'<div class="staffing-names-col">'          +'<div class="staffing-col-title"><span class="sname-dot" style="background:var(--day);"></span>Day Shift ('+dayWorkers.length+')</div>'          +dayWorkers.map(nameItem).join('')        +'</div>'        +'<div class="staffing-names-col">'          +'<div class="staffing-col-title"><span class="sname-dot" style="background:var(--night);"></span>Night Shift ('+nightWorkers.length+')</div>'          +nightWorkers.map(nameItem).join('')        +'</div>'      +'</div>';    })();  applyStaffingNamesHidden();
@@ -9392,7 +9400,7 @@ function renderStaffingWidget(){
 
 
 
-// â”€â”€ AUDITS & TRAINING â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ AUDITS & TRAINING Ã¢â€â‚¬Ã¢â€â‚¬
 
 var ROSTER_AUDIT_KEY = 'eit_audit_roster_v3';
 var ROSTER_TRAIN_KEY = 'eit_train_roster_v3';
@@ -9527,13 +9535,13 @@ function rosterStorageKey(type){
 }
 
 function formatRosterTimestamp(value){
-  if(!value) return 'Last updated: â€”';
+  if(!value) return 'Last updated: Ã¢â‚¬â€';
   try{
     var d = new Date(value);
-    if(isNaN(d.getTime())) return 'Last updated: â€”';
+    if(isNaN(d.getTime())) return 'Last updated: Ã¢â‚¬â€';
     return 'Last updated: ' + d.toLocaleString([], { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit' });
   }catch(e){
-    return 'Last updated: â€”';
+    return 'Last updated: Ã¢â‚¬â€';
   }
 }
 
@@ -9762,7 +9770,7 @@ function exportRosterExcel(type){
       return String((a && a.name) || '').localeCompare(String((b && b.name) || ''), undefined, { sensitivity:'base' });
     });
     var now = new Date();
-    var filterLabel = 'Shift: ' + (state.shift || 'all') + (state.working ? ' Â· Working Today Only' : '');
+    var filterLabel = 'Shift: ' + (state.shift || 'all') + (state.working ? ' Ã‚Â· Working Today Only' : '');
     var rows = [];
     rows.push(['Name','Shift','Working Today','List Type','Roster Last Updated','Exported At']);
     exportItems.forEach(function(item){
@@ -9791,7 +9799,7 @@ function exportRosterExcel(type){
       + '<table><thead><tr>' + rows[0].map(function(h){return '<th>'+rosterExportEscape(h)+'</th>';}).join('') + '</tr></thead><tbody>'
       + rows.slice(1).map(function(r){return '<tr>'+r.map(function(c){return '<td>'+rosterExportEscape(c)+'</td>';}).join('')+'</tr>';}).join('')
       + '</tbody></table></body></html>';
-    var blob = new Blob(['ï»¿', html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+    var blob = new Blob(['Ã¯Â»Â¿', html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url;
@@ -9822,8 +9830,8 @@ function renderRosterTable(type){
 
   var counts = countsByShift(items);
   if(totalLabel) totalLabel.textContent = String(counts.all);
-  if(summaryLabel) summaryLabel.textContent = 'Day ' + counts.Day + ' Â· Night ' + counts.Night + ' Â· Other ' + counts.Other;
-  if(countLabel) countLabel.textContent = filtered.length + ' shown Â· ' + counts.all + ' total';
+  if(summaryLabel) summaryLabel.textContent = 'Day ' + counts.Day + ' Ã‚Â· Night ' + counts.Night + ' Ã‚Â· Other ' + counts.Other;
+  if(countLabel) countLabel.textContent = filtered.length + ' shown Ã‚Â· ' + counts.all + ' total';
   if(updatedLabel){
     var latest = rosterLastUpdated.audits || rosterLastUpdated.trainings || data.updated_at || null;
     updatedLabel.textContent = formatRosterTimestamp(latest);
@@ -9835,7 +9843,7 @@ function renderRosterTable(type){
     var latest2 = rosterLastUpdated.audits || rosterLastUpdated.trainings || auditData.updated_at || trainData.updated_at || data.updated_at || null;
     var auditCount = (auditData.items || []).length;
     var trainCount = (trainData.items || []).length;
-    bannerText.textContent = formatRosterTimestamp(latest2).replace('Last updated: ', '') + ' Â· Audits ' + auditCount + ' Â· Training ' + trainCount;
+    bannerText.textContent = formatRosterTimestamp(latest2).replace('Last updated: ', '') + ' Ã‚Â· Audits ' + auditCount + ' Ã‚Â· Training ' + trainCount;
   }
 
   if(!wrap) return;
@@ -9868,8 +9876,10 @@ function renderRosterTable(type){
 }
 
 async function renderRosterPanels(){
-  await syncRosterFromSupabase('audits');
-  await syncRosterFromSupabase('trainings');
+  var now = Date.now();
+  var suppress = window.__rosterImportNoSyncUntil || {};
+  if(!suppress.audits || suppress.audits < now) await syncRosterFromSupabase('audits');
+  if(!suppress.trainings || suppress.trainings < now) await syncRosterFromSupabase('trainings');
   renderRosterTable('audits');
   renderRosterTable('trainings');
   updateRosterUndoButton();
@@ -9948,7 +9958,7 @@ async function removeRosterItem(type, id){
     var auditData = loadRosterList('audits');
     var trainData = loadRosterList('trainings');
     var latest = rosterLastUpdated.audits || rosterLastUpdated.trainings || auditData.updated_at || trainData.updated_at || data.updated_at || null;
-    bannerText.textContent = formatRosterTimestamp(latest).replace('Last updated: ', '') + ' Â· Audits ' + ((auditData.items || []).length) + ' Â· Training ' + ((trainData.items || []).length);
+    bannerText.textContent = formatRosterTimestamp(latest).replace('Last updated: ', '') + ' Ã‚Â· Audits ' + ((auditData.items || []).length) + ' Ã‚Â· Training ' + ((trainData.items || []).length);
   }
 
   var displayName = removedItem && removedItem.name ? removedItem.name : 'one name';
@@ -10005,7 +10015,7 @@ document.addEventListener('input',function(e){
     if(!flag){
       var d=document.createElement('div');
       d.className='tablet-missing';
-      d.textContent='âš  Missing';
+      d.textContent='Ã¢Å¡Â  Missing';
       cell.insertBefore(d,input);
     }
     input.style.marginTop='6px';
@@ -10063,10 +10073,10 @@ window.addEventListener('load',function(){
 </script>
 
 <style id="audits-training-command-center-overhaul">
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-   AUDITS & TRAINING â€” COMMAND CENTER OVERHAUL
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+   AUDITS & TRAINING Ã¢â‚¬â€ COMMAND CENTER OVERHAUL
    Reworks the section into a cleaner, scan-first dashboard.
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 #page-audits{
   min-height:100vh;
   background:
@@ -10181,7 +10191,7 @@ window.addEventListener('load',function(){
   text-transform:uppercase;
 }
 #page-audits .roster-updated-banner strong::before{
-  content:'â—';
+  content:'Ã¢â€”Â';
   color:#22c55e;
   font-size:11px;
   text-shadow:0 0 12px rgba(34,197,94,.9);
@@ -10495,7 +10505,7 @@ window.addEventListener('load',function(){
 </style>
 
 <style id="audit-training-summary-card-rehaul">
-/* AUDIT LIST / MONTHLY TRAINING SUMMARY CARDS â€” REHAUL */
+/* AUDIT LIST / MONTHLY TRAINING SUMMARY CARDS Ã¢â‚¬â€ REHAUL */
 #page-audits .audit-training-hero-cards{
   gap:18px !important;
   align-items:stretch;
@@ -10691,7 +10701,7 @@ window.addEventListener('load',function(){
       if(typeof rosterLastUpdated !== 'undefined') latest = rosterLastUpdated.audits || rosterLastUpdated.trainings || latest;
       var bannerText = document.getElementById('roster-updated-banner-text');
       if(bannerText && typeof formatRosterTimestamp === 'function'){
-        bannerText.textContent = formatRosterTimestamp(latest).replace('Last updated: ', '') + ' Â· Audits ' + auditData.items.length + ' Â· Training ' + trainData.items.length;
+        bannerText.textContent = formatRosterTimestamp(latest).replace('Last updated: ', '') + ' Ã‚Â· Audits ' + auditData.items.length + ' Ã‚Â· Training ' + trainData.items.length;
       }
       var updatedLabel = document.getElementById('roster-updated');
       if(updatedLabel && typeof formatRosterTimestamp === 'function') updatedLabel.textContent = formatRosterTimestamp(latest);
@@ -10881,7 +10891,7 @@ window.addEventListener('load',function(){
       var latest = (window.rosterLastUpdated && (rosterLastUpdated.audits || rosterLastUpdated.trainings)) || new Date().toISOString();
       var label = typeof formatRosterTimestamp === 'function' ? formatRosterTimestamp(latest).replace('Last updated: ','') : new Date(latest).toLocaleString();
       var text = document.getElementById('roster-updated-banner-text');
-      if(text) text.textContent = label + ' Â· Audits ' + auditCount + ' Â· Training ' + trainCount;
+      if(text) text.textContent = label + ' Ã‚Â· Audits ' + auditCount + ' Ã‚Â· Training ' + trainCount;
       var top = document.getElementById('roster-updated');
       if(top) top.textContent = 'Last updated: ' + label;
     }catch(e){}
@@ -10971,7 +10981,7 @@ window.addEventListener('load',function(){
     var trainPayload = { items: (typeof buildRosterItems === 'function' ? buildRosterItems(trainNames) : trainNames.map(function(n){return {id:'rs_'+Date.now()+Math.random(),name:n,shift:'Other',matched:false,employee:''};})), updated_at: stamp };
     try{ if(typeof closeRosterModal === 'function') closeRosterModal(); }catch(e){}
     await hardSaveBoth(auditPayload, trainPayload, 'Names imported');
-    try{ if(typeof logActivity === 'function') logActivity('notes','Imported <strong>Audits & Monthly Training</strong> names','Audits '+auditNames.length+' Â· Training '+trainNames.length); }catch(e){}
+    try{ if(typeof logActivity === 'function') logActivity('notes','Imported <strong>Audits & Monthly Training</strong> names','Audits '+auditNames.length+' Ã‚Â· Training '+trainNames.length); }catch(e){}
   };
 
   // Make undo quiet too when there is nothing to undo.
@@ -11028,7 +11038,7 @@ window.addEventListener('load',function(){
       .split(/\n|;/g)
       .map(function(line){
         return line
-          .replace(/^\s*[-*â€¢]+\s*/,'')
+          .replace(/^\s*[-*Ã¢â‚¬Â¢]+\s*/,'')
           .replace(/^\s*\d+[\.)-]?\s*/,'')
           .replace(/\s+/g,' ')
           .trim();
@@ -11114,7 +11124,7 @@ window.addEventListener('load',function(){
       try{ label = typeof formatRosterTimestamp === 'function' ? formatRosterTimestamp(latest).replace('Last updated: ','') : new Date(latest).toLocaleString(); }
       catch(e){ label = new Date().toLocaleString(); }
       var text = document.getElementById('roster-updated-banner-text');
-      if(text) text.textContent = label + ' Â· Audits ' + ((a.items || []).length) + ' Â· Training ' + ((t.items || []).length);
+      if(text) text.textContent = label + ' Ã‚Â· Audits ' + ((a.items || []).length) + ' Ã‚Â· Training ' + ((t.items || []).length);
       var top = document.getElementById('roster-updated');
       if(top) top.textContent = 'Last updated: ' + label;
       var ac = document.getElementById('audit-total-count');
@@ -11176,11 +11186,11 @@ window.addEventListener('load',function(){
     renderNow();
 
     if((aSave.ok || aSave.skipped) && (tSave.ok || tSave.skipped)){
-      notice('Names imported Â· Audits ' + (auditPayload.items || []).length + ' Â· Training ' + (trainPayload.items || []).length, 'ok');
+      notice('Names imported Ã‚Â· Audits ' + (auditPayload.items || []).length + ' Ã‚Â· Training ' + (trainPayload.items || []).length, 'ok');
     }else{
       notice('Names imported on screen; Supabase table may need checking', 'warn');
     }
-    try{ if(typeof logActivity === 'function') logActivity('notes','Imported <strong>Audits & Monthly Training</strong> names','Audits '+auditNames.length+' Â· Training '+trainNames.length); }catch(e){}
+    try{ if(typeof logActivity === 'function') logActivity('notes','Imported <strong>Audits & Monthly Training</strong> names','Audits '+auditNames.length+' Ã‚Â· Training '+trainNames.length); }catch(e){}
   }
 
   window.importRosterLists = finalImportRosterLists;
@@ -11189,6 +11199,7 @@ window.addEventListener('load',function(){
   document.addEventListener('click', function(e){
     var btn = e.target && e.target.closest ? e.target.closest('#roster-modal-bg button') : null;
     if(!btn) return;
+    if(btn.id && /^training-/.test(btn.id)) return;
     var txt = (btn.textContent || '').toLowerCase();
     if(txt.indexOf('import') === -1) return;
     e.preventDefault();
@@ -11289,7 +11300,7 @@ window.addEventListener('load',function(){
       if(text){
         var latest = a.updated_at || t.updated_at || new Date().toISOString();
         var label = (typeof formatRosterTimestamp === 'function') ? formatRosterTimestamp(latest).replace('Last updated: ','') : new Date(latest).toLocaleString();
-        text.textContent = label + ' Â· Audits ' + ((a.items||[]).length) + ' Â· Training ' + ((t.items||[]).length);
+        text.textContent = label + ' Ã‚Â· Audits ' + ((a.items||[]).length) + ' Ã‚Â· Training ' + ((t.items||[]).length);
       }
     }catch(e){}
   }
@@ -11544,14 +11555,14 @@ window.addEventListener('load',function(){
     if(!rows.length){list.innerHTML='<div class="audit-log-empty">No formal audit entries yet. Make an employee edit, save it, then reopen this table. If you already ran edits on another device, run the employee_audit_log Supabase SQL and use Refresh.</div>';return;}
     list.innerHTML='<div class="audit-log-table-wrap"><table class="audit-log-table"><thead><tr><th>Time</th><th>Action</th><th>Employee</th><th>Field</th><th>Old Value</th><th>New Value</th><th>User</th><th>Source</th></tr></thead><tbody>'+
       rows.slice(0,750).map(function(r){
-        var when=r.changedAt?new Date(r.changedAt).toLocaleString():(r.ts?new Date(r.ts).toLocaleString():'â€”');
-        return '<tr><td title="'+esc(r.changedAt||'')+'">'+esc(when)+'</td><td>'+actionPill(r.action)+'</td><td title="'+esc(r.employeeName||'')+'">'+esc(r.employeeName||'â€”')+'</td><td title="'+esc(r.field||'')+'">'+esc(r.fieldLabel||r.field||'â€”')+'</td><td title="'+esc(r.oldValue||'')+'">'+esc(r.oldValue||'â€”')+'</td><td title="'+esc(r.newValue||'')+'">'+esc(r.newValue||'â€”')+'</td><td title="'+esc(r.changedBy||'')+'">'+esc(r.changedBy||'â€”')+'</td><td title="'+esc(r.source||'')+'">'+esc(r.source||'â€”')+'</td></tr>';
+        var when=r.changedAt?new Date(r.changedAt).toLocaleString():(r.ts?new Date(r.ts).toLocaleString():'Ã¢â‚¬â€');
+        return '<tr><td title="'+esc(r.changedAt||'')+'">'+esc(when)+'</td><td>'+actionPill(r.action)+'</td><td title="'+esc(r.employeeName||'')+'">'+esc(r.employeeName||'Ã¢â‚¬â€')+'</td><td title="'+esc(r.field||'')+'">'+esc(r.fieldLabel||r.field||'Ã¢â‚¬â€')+'</td><td title="'+esc(r.oldValue||'')+'">'+esc(r.oldValue||'Ã¢â‚¬â€')+'</td><td title="'+esc(r.newValue||'')+'">'+esc(r.newValue||'Ã¢â‚¬â€')+'</td><td title="'+esc(r.changedBy||'')+'">'+esc(r.changedBy||'Ã¢â‚¬â€')+'</td><td title="'+esc(r.source||'')+'">'+esc(r.source||'Ã¢â‚¬â€')+'</td></tr>';
       }).join('')+'</tbody></table></div>';
   };
   window.refreshEmployeeAuditLog=async function(){
     ensureModal();
     var local=localRows();
-    if(!window.supabaseClient){window.renderEmployeeAuditLog(local, local.length?('Local audit only Â· '+local.length+' entries loaded. Supabase client not available.'): 'Local audit empty Â· Supabase client not available.', local.length?'warn':'warn'); return;}
+    if(!window.supabaseClient){window.renderEmployeeAuditLog(local, local.length?('Local audit only Ã‚Â· '+local.length+' entries loaded. Supabase client not available.'): 'Local audit empty Ã‚Â· Supabase client not available.', local.length?'warn':'warn'); return;}
     setStatus('Checking Supabase employee_audit_log table...','');
     try{
       var res=await window.supabaseClient.from('employee_audit_log').select('*').order('changed_at',{ascending:false}).limit(1000);
@@ -11559,7 +11570,7 @@ window.addEventListener('load',function(){
       var remote=(res&&Array.isArray(res.data)?res.data:[]).map(normalizeRemote);
       var merged=mergeRows(local,remote);
       if(remote.length) saveLocalRows(merged);
-      window.renderEmployeeAuditLog(merged, 'Loaded '+merged.length+' audit entr'+(merged.length===1?'y':'ies')+' Â· Supabase '+remote.length+' Â· Local '+local.length+'.', 'good');
+      window.renderEmployeeAuditLog(merged, 'Loaded '+merged.length+' audit entr'+(merged.length===1?'y':'ies')+' Ã‚Â· Supabase '+remote.length+' Ã‚Â· Local '+local.length+'.', 'good');
     }catch(err){
       window.renderEmployeeAuditLog(local, 'Local audit loaded only. Supabase audit table is missing or blocked: '+((err&&err.message)||err||'unknown error'), local.length?'warn':'warn');
     }
@@ -11713,13 +11724,10 @@ window.addEventListener('load',function(){
     color:#111827 !important;
   }
   #page-audits .roster-section-title::after{
-    content:"People pending training completion";
+    content:"";
     display:block;
-    margin-top:6px;
-    font-size:19px;
-    line-height:1.25;
-    font-weight:500;
-    color:#6b7280;
+    margin:0;
+    height:0;
   }
   #page-audits #train-count-label{
     justify-self:end !important;
@@ -11730,7 +11738,7 @@ window.addEventListener('load',function(){
     background:#f7f9fc !important;
     color:#4b5563 !important;
     font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
-    font-size:16px !important;
+    font-size:18px !important;
     font-weight:500 !important;
     letter-spacing:0 !important;
     text-transform:none !important;
@@ -11786,6 +11794,109 @@ window.addEventListener('load',function(){
   #page-audits .filter-dot-night{background:#3b82f6;}
   #page-audits .filter-dot-other{background:#7c3aed;}
   #page-audits .filter-star{color:#059669;display:inline-flex;}
+  #page-audits .training-filter-menu-wrap{
+    position:relative;
+    display:inline-flex;
+    z-index:1200;
+  }
+  #page-audits .training-filter-menu-wrap > .roster-filter-btn{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:9px !important;
+    text-align:center !important;
+    line-height:1 !important;
+  }
+  #page-audits .training-filter-menu-wrap > .roster-filter-btn span,
+  #page-audits .training-filter-menu-wrap > .roster-filter-btn strong{
+    display:inline-flex !important;
+    align-items:center !important;
+    line-height:1 !important;
+  }
+  #page-audits .training-filter-menu{
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;
+    min-width:230px;
+    padding:8px;
+    border:1px solid #e5eaf3;
+    border-radius:14px;
+    background:#fff;
+    box-shadow:0 18px 45px rgba(15,23,42,.18);
+    z-index:1000;
+    display:none;
+  }
+  #page-audits .training-filter-menu.is-open{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  #page-audits .training-filter-choice{
+    width:100%;
+    height:38px;
+    border:0;
+    border-radius:10px;
+    background:#fff;
+    color:#111827;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 12px;
+    font-size:14px;
+    font-weight:800;
+    cursor:pointer;
+  }
+  #page-audits .training-filter-choice:hover,
+  #page-audits .training-filter-choice.active{
+    background:#eff6ff;
+    color:#2563eb;
+  }
+  #roster-modal-bg.open{
+    z-index:5000 !important;
+  }
+  #roster-modal-bg.open .modal{
+    position:relative;
+    z-index:5001 !important;
+  }
+  #page-audits .audits-wrap > .roster-section:last-of-type,
+  #page-audits #train-filter-row{
+    overflow:visible !important;
+  }
+  #page-audits #train-filter-row{
+    position:relative !important;
+    z-index:900 !important;
+  }
+  #page-audits .timesheet-display-controls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:8px 10px;
+    border:1px solid #dbe7ff;
+    border-radius:12px;
+    background:rgba(255,255,255,.82);
+    box-shadow:0 8px 22px rgba(30,64,175,.08);
+  }
+  #page-audits .timesheet-display-control{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    min-width:132px;
+    color:#334155;
+    font-size:12px;
+    font-weight:800;
+    white-space:nowrap;
+  }
+  #page-audits .timesheet-display-control input{
+    width:72px;
+    accent-color:#2563eb;
+  }
+  #page-audits .timesheet-display-value{
+    min-width:34px;
+    color:#2563eb;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
   #page-audits .roster-filter-btn.kanban-toggle{
     min-width:154px !important;
     border-color:#cbd5e1 !important;
@@ -11797,8 +11908,10 @@ window.addEventListener('load',function(){
   #page-audits .roster-filter-btn.training-import-toggle,
   #page-audits .roster-filter-btn.training-clear-toggle,
   #page-audits .roster-filter-btn.hide-completed-toggle,
+  #page-audits .roster-filter-btn.hide-ojt-toggle,
   #page-audits .roster-filter-btn.edit-courses-toggle,
   #page-audits .roster-filter-btn.print-timesheet-toggle,
+  #page-audits .roster-filter-btn.training-csv-toggle,
   #page-audits .roster-filter-btn.export-trainings-toggle,
   #page-audits .roster-filter-btn.restore-trainings-toggle{
     min-width:120px !important;
@@ -11807,11 +11920,23 @@ window.addEventListener('load',function(){
   #page-audits .roster-filter-btn.training-import-toggle{
     color:#2563eb !important;
   }
+  #page-audits .roster-filter-btn.training-csv-toggle{
+    color:#0f766e !important;
+  }
   #page-audits .roster-filter-btn.training-clear-toggle{
     color:#dc2626 !important;
   }
+  #page-audits .roster-filter-btn.training-clear-toggle.active{
+    border-color:#dc2626 !important;
+    background:#dc2626 !important;
+    color:#fff !important;
+    box-shadow:0 14px 30px rgba(220,38,38,.24) !important;
+  }
   #page-audits .roster-filter-btn.hide-completed-toggle{
     color:#15803d !important;
+  }
+  #page-audits .roster-filter-btn.hide-ojt-toggle{
+    color:#b45309 !important;
   }
   #page-audits .roster-filter-btn.edit-courses-toggle{
     color:#7c3aed !important;
@@ -11827,6 +11952,11 @@ window.addEventListener('load',function(){
     border-color:#15803d !important;
     background:#ecfdf5 !important;
     color:#15803d !important;
+  }
+  #page-audits .roster-filter-btn.hide-ojt-toggle.active{
+    border-color:#b45309 !important;
+    background:#fffbeb !important;
+    color:#b45309 !important;
   }
   #page-audits .roster-filter-spacer{
     flex:1 1 auto;
@@ -11857,14 +11987,20 @@ window.addEventListener('load',function(){
     box-shadow:0 32px 90px rgba(15,23,42,.34) !important;
     padding:0 !important;
     overflow:hidden !important;
+    max-height:92vh !important;
+    display:flex !important;
+    flex-direction:column !important;
   }
   #roster-modal-bg .training-import-modal{
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:14px;
     padding:26px;
     background:
       linear-gradient(180deg,#ffffff,#f8fafc);
+    max-height:92vh;
+    overflow-y:auto;
+    overscroll-behavior:contain;
   }
   #roster-modal-bg .training-import-title{
     display:flex;
@@ -11955,13 +12091,13 @@ window.addEventListener('load',function(){
     padding:0 15px;
   }
   #roster-modal-bg .training-import-field textarea{
-    min-height:210px;
+    min-height:132px;
     resize:vertical;
     padding:14px 15px;
     line-height:1.45;
   }
   #roster-modal-bg .training-import-field textarea.training-smart-paste{
-    min-height:150px;
+    min-height:104px;
     font-family:"IBM Plex Mono", Consolas, monospace;
     font-size:13px;
   }
@@ -11972,6 +12108,7 @@ window.addEventListener('load',function(){
     padding:14px;
     min-height:64px;
     box-shadow:0 1px 2px rgba(15,23,42,.04);
+    overflow:hidden;
   }
   #roster-modal-bg .training-import-staged-title{
     font-size:13px;
@@ -11980,19 +12117,31 @@ window.addEventListener('load',function(){
     margin-bottom:10px;
     letter-spacing:.4px;
   }
+  #roster-modal-bg #training-import-staged-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
   #roster-modal-bg .training-import-batch{
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:12px;
-    padding:10px 0;
+    padding:10px 0 0;
     border-top:1px solid #e5e7eb;
     color:#111827;
     font-size:15px;
   }
+  #roster-modal-bg .training-import-batch span{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
   #roster-modal-bg .training-import-batch:first-of-type{border-top:0;}
   #roster-modal-bg .training-import-batch button{
-    height:32px;
+    height:34px;
+    flex:0 0 auto;
     border-radius:8px;
     border:1px solid #fecaca;
     background:#fff;
@@ -12012,6 +12161,16 @@ window.addEventListener('load',function(){
     align-items:center;
     gap:10px;
     flex-wrap:wrap;
+  }
+  #roster-modal-bg .training-import-actions.training-import-final-actions{
+    position:sticky;
+    bottom:-26px;
+    margin:0 -26px -26px;
+    padding:14px 26px;
+    background:rgba(255,255,255,.96);
+    border-top:1px solid #e5e7eb;
+    box-shadow:0 -12px 30px rgba(15,23,42,.08);
+    z-index:5;
   }
   #roster-modal-bg .training-import-actions button{
     height:44px;
@@ -12069,6 +12228,70 @@ window.addEventListener('load',function(){
     border-radius:9px;
     padding:0 12px;
     font-size:15px;
+  }
+  #roster-modal-bg .csv-preview-summary{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+  }
+  #roster-modal-bg .csv-preview-stat{
+    border:1px solid #dbe7ff;
+    border-radius:12px;
+    background:#f8fbff;
+    padding:12px;
+  }
+  #roster-modal-bg .csv-preview-stat strong{
+    display:block;
+    color:#111827;
+    font-size:22px;
+    line-height:1;
+  }
+  #roster-modal-bg .csv-preview-stat span{
+    display:block;
+    margin-top:5px;
+    color:#64748b;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  #roster-modal-bg .csv-preview-list{
+    display:block;
+    min-height:360px !important;
+    height:420px !important;
+    max-height:48vh !important;
+    width:100% !important;
+    overflow:auto;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    background:#fff;
+    padding:14px 16px 18px;
+    color:#334155;
+    font-size:14px;
+    line-height:1.55;
+    scrollbar-gutter:stable;
+  }
+  #roster-modal-bg .csv-preview-list div{
+    min-height:28px;
+    padding:5px 0;
+    border-bottom:1px solid #eef2f7;
+    overflow-wrap:anywhere;
+  }
+  #roster-modal-bg .csv-preview-list div:last-child{
+    border-bottom:0;
+  }
+  #roster-modal-bg .csv-preview-list strong{
+    color:#111827;
+  }
+  #roster-modal-bg .training-import-staged:has(.csv-preview-list){
+    display:block;
+    overflow:visible;
+    padding:18px !important;
+    min-height:500px !important;
+    width:100% !important;
+  }
+  #roster-modal-bg .training-import-staged:has(.csv-preview-list) .training-import-staged-title{
+    margin-bottom:12px;
   }
   #page-audits #train-table-wrap{
     overflow:hidden !important;
@@ -12347,6 +12570,342 @@ window.addEventListener('load',function(){
     font-size:15px;
     background:#fff;
   }
+  #page-audits .monthly-audit-board{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    background:#f8fafc;
+    padding:18px;
+    border-radius:18px;
+    min-height:100vh;
+    height:auto;
+  }
+  #page-audits .monthly-audit-shift{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  #page-audits .monthly-audit-shift-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:10px 4px;
+    border-bottom:2px solid #111;
+  }
+  #page-audits .monthly-audit-shift-title{
+    color:#111;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:.01em;
+  }
+  #page-audits .monthly-audit-shift-count{
+    border-radius:999px;
+    background:#111;
+    color:#fff;
+    padding:7px 12px;
+    font-size:13px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  #page-audits .monthly-audit-card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(240px,1fr));
+    gap:18px;
+  }
+  #page-audits .monthly-audit-card{
+    position:relative;
+    min-height:248px;
+    border:1px solid #ddd6cc;
+    border-radius:10px;
+    background:#fffefb;
+    padding:16px 18px 16px;
+    box-shadow:0 1px 2px rgba(15,23,42,.04);
+  }
+  #page-audits .monthly-audit-card-name{
+    padding-right:58px;
+    color:#050505;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:21px;
+    font-weight:900;
+    line-height:1.1;
+  }
+  #page-audits .monthly-audit-card-off{
+    margin-top:5px;
+    color:#6b5d4c;
+    font-family:"Courier New", monospace;
+    font-size:13px;
+    letter-spacing:.04em;
+  }
+  #page-audits .monthly-audit-due{
+    position:absolute;
+    top:16px;
+    right:18px;
+    width:50px;
+    height:52px;
+    border-radius:11px;
+    background:#111;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+    box-shadow:0 6px 14px rgba(0,0,0,.16);
+  }
+  #page-audits .monthly-audit-due strong{
+    font-size:26px;
+    font-weight:950;
+  }
+  #page-audits .monthly-audit-due span{
+    margin-top:4px;
+    font-size:9px;
+    font-weight:950;
+    letter-spacing:.12em;
+  }
+  #page-audits .monthly-audit-course-list{
+    margin:18px 0 0;
+    padding:14px 0 0;
+    border-top:1px solid #e8dfd2;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  #page-audits .monthly-audit-course{
+    display:grid;
+    grid-template-columns:10px 1fr;
+    align-items:start;
+    gap:9px;
+    color:#111;
+    font-size:14px;
+    line-height:1.25;
+  }
+  #page-audits .monthly-audit-course-dot{
+    width:9px;
+    height:9px;
+    border-radius:2px;
+    margin-top:4px;
+    background:#b77905;
+  }
+  #page-audits .monthly-audit-course.course-jsa .monthly-audit-course-dot{background:#5b4bd6;}
+  #page-audits .monthly-audit-course.course-ack .monthly-audit-course-dot{background:#b77905;}
+  #page-audits .monthly-audit-course.course-emergency .monthly-audit-course-dot{background:#b94045;}
+  #page-audits .monthly-audit-complete{
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px solid #e8dfd2;
+    color:#047857;
+    font-size:15px;
+    font-weight:900;
+  }
+  #page-audits .monthly-audit-empty{
+    padding:26px;
+    border:1px dashed #d8dee8;
+    border-radius:10px;
+    background:#fff;
+    color:#6b7280;
+    text-align:center;
+    font-size:15px;
+    font-weight:800;
+  }
+  #page-audits .audits-wrap > .roster-section:last-of-type{
+    background:#f8fafc !important;
+    min-height:100vh !important;
+  }
+  #page-audits #train-table-wrap.kanban-mode{
+    background:#f8fafc !important;
+    padding:0 !important;
+  }
+  #page-audits,
+  #page-audits .audits-wrap{
+    background:#f8fafc !important;
+    min-height:100vh !important;
+  }
+  #page-audits .monthly-audit-shift,
+  #page-audits .monthly-audit-card-grid{
+    background:#f8fafc !important;
+  }
+  #page-audits #train-table-wrap.matrix-mode{
+    border:0 !important;
+    background:transparent !important;
+    overflow:auto !important;
+    max-height:none !important;
+  }
+  #page-audits .monthly-matrix-wrap{
+    width:max-content;
+    min-width:100%;
+    padding:18px 0 14px;
+  }
+  #page-audits .monthly-matrix{
+    border-collapse:collapse;
+    min-width:980px;
+    width:max-content;
+    background:#fffefb;
+    color:#111;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  #page-audits .monthly-matrix th,
+  #page-audits .monthly-matrix td{
+    border-bottom:1px solid #e6ded2;
+    padding:9px 10px;
+    vertical-align:middle;
+  }
+  #page-audits .monthly-matrix thead th{
+    border-top:3px solid #111;
+    border-bottom:2px solid #111;
+    background:#fffefb;
+    color:#111;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    position:sticky;
+    top:0;
+    z-index:3;
+  }
+  #page-audits .monthly-matrix .matrix-name-head,
+  #page-audits .monthly-matrix .matrix-off-head{
+    min-width:210px;
+    text-align:left;
+    height:112px;
+    vertical-align:bottom;
+  }
+  #page-audits .monthly-matrix .matrix-off-head{min-width:130px;}
+  #page-audits .monthly-matrix .matrix-course-head{
+    width:118px;
+    min-width:118px;
+    height:170px;
+    padding:0 8px 12px;
+    vertical-align:bottom;
+    text-align:center;
+    overflow:visible;
+  }
+  #page-audits .matrix-course-angle{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    gap:7px;
+    width:118px;
+    min-height:132px;
+    transform:rotate(-32deg);
+    transform-origin:50% 100%;
+  }
+  #page-audits .matrix-course-swatch{
+    width:22px;
+    height:6px;
+    border-radius:999px;
+    background:#b77905;
+    flex:0 0 auto;
+  }
+  #page-audits .matrix-course-label{
+    display:block;
+    max-width:128px;
+    color:#111827;
+    font-size:12px;
+    line-height:1.12;
+    letter-spacing:.01em;
+    text-transform:none;
+    white-space:normal;
+    overflow-wrap:break-word;
+    word-break:normal;
+    hyphens:auto;
+    text-align:center;
+  }
+  #page-audits .matrix-course-head.course-jsa .matrix-course-swatch{background:#5b4bd6;}
+  #page-audits .matrix-course-head.course-ack .matrix-course-swatch{background:#b77905;}
+  #page-audits .matrix-course-head.course-emergency .matrix-course-swatch{background:#b94045;}
+  #page-audits .matrix-course-head.course-equipment .matrix-course-swatch{background:#0f766e;}
+  #page-audits .monthly-matrix .matrix-name{
+    min-width:210px;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:18px;
+    font-weight:900;
+    color:#050505;
+    white-space:nowrap;
+    position:sticky;
+    left:0;
+    z-index:2;
+    background:#fffefb;
+  }
+  #page-audits .monthly-matrix .matrix-name-head{
+    position:sticky;
+    left:0;
+    z-index:4;
+  }
+  #page-audits .monthly-matrix .matrix-off{
+    min-width:130px;
+    color:#374151;
+    font-family:"Courier New", monospace;
+    font-size:14px;
+    white-space:nowrap;
+  }
+  #page-audits .monthly-matrix .matrix-cell,
+  #page-audits .monthly-matrix .matrix-total{
+    text-align:center;
+    min-width:58px;
+  }
+  #page-audits .matrix-hit,
+  #page-audits .matrix-total-pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:34px;
+    height:30px;
+    border-radius:7px;
+    font-size:16px;
+    font-weight:900;
+  }
+  #page-audits .matrix-hit.course-jsa{background:#ece9ff;color:#5b4bd6;}
+  #page-audits .matrix-hit.course-ack{background:#fbefd8;color:#b77905;}
+  #page-audits .matrix-hit.course-emergency{background:#f8e0df;color:#b94045;}
+  #page-audits .matrix-hit.course-equipment{background:#dff3f0;color:#0f766e;}
+  #page-audits .matrix-dash{color:#c3b9ab;font-weight:900;}
+  #page-audits .matrix-total-pill{background:#111;color:#fff;}
+  #page-audits .matrix-group-row th{
+    background:#111;
+    color:#fff;
+    border-color:#111;
+    height:30px;
+    padding:6px 10px;
+    text-align:left;
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  #page-audits .matrix-total-row td{
+    border-top:2px solid #111;
+    border-bottom:0;
+    font-size:16px;
+    font-weight:900;
+  }
+  #page-audits .matrix-total-label{
+    text-align:left;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  #page-audits .roster-filter-btn.matrix-toggle{
+    min-width:126px !important;
+    border-color:#cbd5e1 !important;
+  }
+  #page-audits .roster-filter-btn.matrix-toggle.active{
+    border-color:#111827 !important;
+    background:#111827 !important;
+    color:#fff !important;
+    box-shadow:none !important;
+  }
+  @media (max-width: 980px){
+    #page-audits .monthly-audit-card-grid{
+      grid-template-columns:repeat(2,minmax(220px,1fr));
+    }
+  }
+  @media (max-width: 640px){
+    #page-audits .monthly-audit-card-grid{
+      grid-template-columns:1fr;
+    }
+  }
   #page-audits .monthly-timesheet{
     width:100%;
     min-width:620px;
@@ -12558,6 +13117,28 @@ window.addEventListener('load',function(){
       radial-gradient(circle at 100% 100%, rgba(124,58,237,.13), transparent 28%),
       linear-gradient(180deg,#ffffff 0%,#f8fafc 100%) !important;
   }
+  #page-audits.monthly-render-ready,
+  #page-audits.monthly-render-ready .audits-wrap,
+  #page-audits.monthly-render-ready .audits-wrap > .roster-section:last-of-type,
+  #page-audits.monthly-render-ready #train-table-wrap.kanban-mode,
+  #page-audits.monthly-render-ready .monthly-audit-board,
+  #page-audits.monthly-render-ready .monthly-audit-shift,
+  #page-audits.monthly-render-ready .monthly-audit-card-grid{
+    background:#f8fafc !important;
+    background-image:none !important;
+  }
+  html:has(#page-audits.active),
+  body:has(#page-audits.active){
+    background:#f8fafc !important;
+    min-height:100% !important;
+  }
+  #page-audits.monthly-render-ready{
+    min-height:max-content !important;
+    height:auto !important;
+    overflow:visible !important;
+    box-shadow:none !important;
+    clip-path:none !important;
+  }
   #page-audits #train-filter-row{
     padding:16px !important;
     border:1px solid rgba(226,232,240,.92) !important;
@@ -12571,7 +13152,7 @@ window.addEventListener('load',function(){
     padding:0 16px !important;
     border-radius:10px !important;
     border-color:#e5eaf3 !important;
-    font-size:13px !important;
+    font-size:15px !important;
     font-weight:800 !important;
     box-shadow:0 8px 18px rgba(15,23,42,.06) !important;
   }
@@ -12585,15 +13166,19 @@ window.addEventListener('load',function(){
     border-bottom:0 !important;
     background:transparent !important;
     margin:0 0 8px !important;
+    text-align:center !important;
+  }
+  #page-audits .roster-section-title{
+    text-align:center !important;
   }
   #page-audits .roster-section-title strong{
     font-family:Georgia, "Times New Roman", serif !important;
-    font-size:46px !important;
-    letter-spacing:-.2px !important;
+    font-size:56px !important;
+    letter-spacing:.2px !important;
+    text-transform:uppercase !important;
   }
   #page-audits .roster-section-title::after{
-    font-size:22px !important;
-    margin-top:4px !important;
+    display:none !important;
   }
   #page-audits #train-count-label{
     border-radius:999px !important;
@@ -12609,6 +13194,9 @@ window.addEventListener('load',function(){
   }
   #page-audits #train-table-wrap.timesheet-mode{
     padding:0 !important;
+    width:var(--timesheet-width, 100%) !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
     border:1px solid #dfe7f2 !important;
     border-radius:14px !important;
     background:#fff !important;
@@ -12618,33 +13206,37 @@ window.addEventListener('load',function(){
   #page-audits .monthly-timesheet{
     min-width:780px !important;
     font-family:Inter, "IBM Plex Sans", Arial, sans-serif !important;
-    font-size:13px !important;
+    font-size:var(--timesheet-body-size, 13px) !important;
     color:#14213d !important;
     border-collapse:separate !important;
     border-spacing:0 !important;
   }
   #page-audits .monthly-timesheet th,
   #page-audits .monthly-timesheet td{
-    height:40px !important;
+    height:var(--timesheet-row-height, 40px) !important;
+    min-height:var(--timesheet-row-height, 40px) !important;
     border:0 !important;
     border-right:1px solid #edf2f7 !important;
     border-bottom:1px solid #edf2f7 !important;
-    padding:7px 12px !important;
+    padding:0 12px !important;
+    overflow:visible !important;
+    line-height:1.1 !important;
   }
   #page-audits .monthly-timesheet th{
-    height:44px !important;
-    background:linear-gradient(180deg,#dbeafe 0%,#bfdbfe 100%) !important;
-    color:#1e3a8a !important;
-    font-size:14px !important;
+    height:var(--timesheet-header-height, 44px) !important;
+    max-height:var(--timesheet-header-height, 44px) !important;
+    background:#000 !important;
+    color:#fff !important;
+    font-size:var(--timesheet-header-size, 16px) !important;
     font-weight:800 !important;
     letter-spacing:-.5px !important;
     letter-spacing:1.6px !important;
     text-transform:uppercase !important;
-    border-bottom:1px solid #93c5fd !important;
+    border-bottom:1px solid #000 !important;
     box-shadow:inset 0 1px 0 rgba(255,255,255,.75) !important;
   }
   #page-audits .monthly-timesheet .timesheet-section-title{
-    color:#1e3a8a !important;
+    color:#fff !important;
   }
   #page-audits .monthly-timesheet .timesheet-name{
     font-weight:800 !important;
@@ -12665,19 +13257,50 @@ window.addEventListener('load',function(){
   #page-audits .monthly-timesheet .timesheet-missing.is-complete{
     color:#059669 !important;
   }
+  #page-audits .completed-chip{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    min-height:0 !important;
+    max-width:100% !important;
+    padding:2px 11px !important;
+    border-radius:999px !important;
+    border:1px solid #bbf7d0 !important;
+    background:#ecfdf5 !important;
+    color:#059669 !important;
+    font-size:var(--timesheet-course-size, 12px) !important;
+    font-weight:900 !important;
+    line-height:1.25 !important;
+    white-space:normal !important;
+    overflow:visible !important;
+    overflow-wrap:anywhere !important;
+    text-align:center !important;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.65) !important;
+  }
   #page-audits .missing-chip-stack{
     gap:6px !important;
+    flex-wrap:wrap !important;
+    max-height:none !important;
+    overflow:visible !important;
+    padding:0 !important;
   }
   #page-audits .missing-chip{
-    min-height:24px !important;
+    min-height:0 !important;
     max-width:100% !important;
-    padding:4px 11px 4px 10px !important;
+    padding:2px 9px !important;
     border-radius:999px !important;
     border-color:#fecaca !important;
     background:#fff5f5 !important;
     color:#dc2626 !important;
-    font-size:12px !important;
+    font-size:var(--timesheet-course-size, 12px) !important;
     font-weight:900 !important;
+    line-height:1.25 !important;
+    white-space:normal !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+    overflow-wrap:anywhere !important;
+    word-break:normal !important;
+    text-align:center !important;
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.55) !important;
   }
   #page-audits .missing-chip::before{
@@ -12688,6 +13311,206 @@ window.addEventListener('load',function(){
     background:#ef4444;
     margin-right:7px;
     flex:0 0 auto;
+  }
+  #page-audits .missing-chip.course-ack{
+    border-color:#fde68a !important;
+    background:#fffbeb !important;
+    color:#b45309 !important;
+  }
+  #page-audits .missing-chip.course-ack::before{
+    background:#f59e0b !important;
+  }
+  #page-audits .missing-chip.course-jsa{
+    border-color:#ddd6fe !important;
+    background:#f5f3ff !important;
+    color:#7c3aed !important;
+  }
+  #page-audits .missing-chip.course-jsa::before{
+    background:#8b5cf6 !important;
+  }
+  #page-audits .timesheet-manage-courses{
+    cursor:pointer !important;
+    position:relative;
+  }
+  #page-audits .timesheet-manage-courses::after{
+    content:'Click to manage';
+    display:inline-flex;
+    margin-left:10px;
+    padding:3px 8px;
+    border-radius:999px;
+    background:rgba(255,255,255,.14);
+    color:#fff;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.08em;
+    vertical-align:middle;
+  }
+  .shift-course-modal-bg{
+    position:fixed;
+    inset:0;
+    z-index:6200;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(15,23,42,.62);
+    backdrop-filter:blur(10px);
+  }
+  .shift-course-modal-bg.open{display:flex;}
+  .shift-course-modal{
+    width:min(860px,96vw);
+    max-height:88vh;
+    overflow:auto;
+    border-radius:22px;
+    border:1px solid rgba(203,213,225,.9);
+    background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+    box-shadow:0 30px 80px rgba(15,23,42,.28);
+    color:#111827;
+  }
+  .shift-course-modal-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    padding:22px 24px 16px;
+    border-bottom:1px solid #dbe7f7;
+  }
+  .shift-course-modal-kicker{
+    color:#2563eb;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .shift-course-modal-title{
+    margin:0;
+    color:#0f172a;
+    font-size:26px;
+    line-height:1.1;
+    font-weight:900;
+  }
+  .shift-course-modal-close{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    border:1px solid #cbd5e1;
+    background:#fff;
+    color:#334155;
+    font-size:22px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .shift-course-list{
+    display:grid;
+    gap:10px;
+    padding:18px 24px 24px;
+  }
+  .shift-course-row{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    border:1px solid #dbe7f7;
+    border-radius:14px;
+    background:#fff;
+    box-shadow:0 8px 20px rgba(15,23,42,.05);
+  }
+  .shift-course-name{
+    min-width:0;
+    font-size:15px;
+    font-weight:850;
+    color:#172033;
+    overflow-wrap:anywhere;
+  }
+  .shift-course-modal .missing-chip{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    max-width:100%;
+    padding:4px 10px;
+    border-radius:999px;
+    border:1px solid #fecaca;
+    background:#fff5f5;
+    color:#dc2626;
+    font-size:13px;
+    font-weight:900;
+    line-height:1.25;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    text-align:center;
+  }
+  .shift-course-modal .missing-chip::before{
+    content:'';
+    width:6px;
+    height:6px;
+    border-radius:999px;
+    background:#ef4444;
+    margin-right:6px;
+    flex:0 0 auto;
+  }
+  .shift-course-modal .missing-chip.course-ack{
+    border-color:#fde68a;
+    background:#fffbeb;
+    color:#b45309;
+  }
+  .shift-course-modal .missing-chip.course-ack::before{background:#f59e0b;}
+  .shift-course-modal .missing-chip.course-jsa{
+    border-color:#ddd6fe;
+    background:#f5f3ff;
+    color:#7c3aed;
+  }
+  .shift-course-modal .missing-chip.course-jsa::before{background:#8b5cf6;}
+  .shift-course-count{
+    white-space:nowrap;
+    border-radius:999px;
+    background:#eff6ff;
+    color:#1d4ed8;
+    padding:7px 10px;
+    font-size:12px;
+    font-weight:900;
+  }
+  .shift-course-delete{
+    border:1px solid #fecaca;
+    background:#fff5f5;
+    color:#dc2626;
+    border-radius:12px;
+    padding:9px 12px;
+    font-size:13px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  .shift-course-delete.confirm{
+    border-color:#86efac;
+    background:#ecfdf5;
+    color:#047857;
+  }
+  .shift-course-empty{
+    padding:30px;
+    text-align:center;
+    border:1px dashed #cbd5e1;
+    border-radius:16px;
+    color:#64748b;
+    font-weight:800;
+  }
+  @media print{
+    #page-audits .timesheet-manage-courses::after,
+    .shift-course-modal-bg{display:none !important;}
+  }
+  #page-audits #train-table-wrap.timesheet-mode{
+    line-height:0 !important;
+  }
+  #page-audits #train-table-wrap.timesheet-mode .monthly-timesheet{
+    margin:0 !important;
+    line-height:normal !important;
+  }
+  #page-audits #train-table-wrap.timesheet-mode .monthly-timesheet tbody,
+  #page-audits #train-table-wrap.timesheet-mode .monthly-timesheet tr:first-child,
+  #page-audits #train-table-wrap.timesheet-mode .monthly-timesheet tr:first-child th{
+    margin-top:0 !important;
+    border-top:0 !important;
   }
 
   @media print{
@@ -12721,7 +13544,10 @@ window.addEventListener('load',function(){
     }
     #page-audits{
       position:absolute !important;
-      inset:0 auto auto 0 !important;
+      left:0 !important;
+      right:0 !important;
+      top:.18in !important;
+      transform:none !important;
       width:100% !important;
       min-height:0 !important;
       background:#fff !important;
@@ -12729,7 +13555,7 @@ window.addEventListener('load',function(){
       zoom:1 !important;
     }
     #page-audits .audits-wrap{
-      padding:0 !important;
+      padding:0 .10in !important;
       background:#fff !important;
     }
     #page-audits .roster-section-head{
@@ -12751,6 +13577,8 @@ window.addEventListener('load',function(){
     }
     #page-audits #train-table-wrap.timesheet-mode,
     #page-audits #train-table-wrap{
+      width:calc(100% - .12in) !important;
+      margin:0 auto !important;
       border:1px solid #bfd7f8 !important;
       border-radius:8px !important;
       box-shadow:none !important;
@@ -12767,26 +13595,32 @@ window.addEventListener('load',function(){
       border-collapse:collapse !important;
       page-break-inside:avoid !important;
     }
-    #page-audits .monthly-timesheet col:nth-child(1){width:20% !important;}
-    #page-audits .monthly-timesheet col:nth-child(2){width:17% !important;}
-    #page-audits .monthly-timesheet col:nth-child(3){width:12% !important;}
-    #page-audits .monthly-timesheet col:nth-child(4){width:51% !important;}
     #page-audits .monthly-timesheet th,
     #page-audits .monthly-timesheet td{
       height:20px !important;
       min-height:0 !important;
-      padding:3px 7px !important;
+      padding:3px 4px !important;
       border:1px solid #d8e2ef !important;
       line-height:1.15 !important;
     }
     #page-audits .monthly-timesheet th{
       height:22px !important;
-      background:#cfe6ff !important;
-      color:#1e3a8a !important;
+      background:#000 !important;
+      color:#fff !important;
       font-size:7.2px !important;
       letter-spacing:1px !important;
       -webkit-print-color-adjust:exact;
       print-color-adjust:exact;
+    }
+    #page-audits .monthly-timesheet .timesheet-missing{
+      text-align:left !important;
+      padding-left:5px !important;
+      padding-right:5px !important;
+    }
+    #page-audits .monthly-timesheet .timesheet-off{
+      padding-left:2px !important;
+      padding-right:2px !important;
+      white-space:normal !important;
     }
     #page-audits .monthly-timesheet tr:nth-child(even) td,
     #page-audits .monthly-timesheet tr:nth-child(even) .timesheet-name,
@@ -12799,19 +13633,40 @@ window.addEventListener('load',function(){
     #page-audits .missing-chip-stack{
       display:flex !important;
       flex-direction:row !important;
-      flex-wrap:nowrap !important;
-      gap:3px !important;
-      justify-content:center !important;
+      flex-wrap:wrap !important;
+      gap:2px 4px !important;
+      justify-content:flex-start !important;
+      align-items:center !important;
       padding:0 !important;
     }
     #page-audits .missing-chip{
       min-height:14px !important;
-      max-width:48% !important;
-      padding:2px 6px !important;
+      flex:0 1 auto !important;
+      max-width:31% !important;
+      padding:2px 5px !important;
       border-radius:999px !important;
       font-size:6.7px !important;
       line-height:1.1 !important;
+      white-space:normal !important;
+      overflow-wrap:break-word !important;
+      word-break:normal !important;
       box-shadow:none !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    #page-audits .completed-chip{
+      display:inline-flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      min-height:14px !important;
+      padding:2px 6px !important;
+      border-radius:999px !important;
+      border:1px solid #bbf7d0 !important;
+      background:#ecfdf5 !important;
+      color:#059669 !important;
+      font-size:6.7px !important;
+      font-weight:900 !important;
+      line-height:1.1 !important;
       -webkit-print-color-adjust:exact;
       print-color-adjust:exact;
     }
@@ -12825,6 +13680,11 @@ window.addEventListener('load',function(){
 
 <script id="monthly-training-clean-white-renderer">
 (function(){
+  function revealMonthlyTrainingPage(){
+    var page = document.getElementById('page-audits');
+    if(page) page.classList.add('monthly-render-ready');
+  }
+  setTimeout(revealMonthlyTrainingPage, 1200);
   function esc(value){
     return String(value == null ? '' : value)
       .replace(/&/g,'&amp;')
@@ -12859,6 +13719,62 @@ window.addEventListener('load',function(){
     if(name === 'upload') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>';
     return '';
   }
+  var TIMESHEET_DISPLAY_STORAGE_KEY = 'monthly_training_display_settings_v1';
+  var TIMESHEET_DISPLAY_DEFAULTS = { body:13, course:12, header:16, width:100, row:40, headRow:44 };
+  function getTimesheetDisplaySettings(){
+    var saved = {};
+    try{
+      saved = JSON.parse(localStorage.getItem(TIMESHEET_DISPLAY_STORAGE_KEY) || '{}') || {};
+    }catch(e){
+      saved = {};
+    }
+    var settings = {};
+    Object.keys(TIMESHEET_DISPLAY_DEFAULTS).forEach(function(key){
+      var value = Number(saved[key]);
+      settings[key] = Number.isFinite(value) ? value : TIMESHEET_DISPLAY_DEFAULTS[key];
+    });
+    return settings;
+  }
+  function saveTimesheetDisplaySettings(settings){
+    localStorage.setItem(TIMESHEET_DISPLAY_STORAGE_KEY, JSON.stringify(settings));
+  }
+  function applyTimesheetDisplaySettings(){
+    var root = document.getElementById('page-audits');
+    if(!root) return;
+    var settings = getTimesheetDisplaySettings();
+    root.style.setProperty('--timesheet-body-size', settings.body + 'px');
+    root.style.setProperty('--timesheet-course-size', settings.course + 'px');
+    root.style.setProperty('--timesheet-header-size', settings.header + 'px');
+    root.style.setProperty('--timesheet-width', settings.width + '%');
+    root.style.setProperty('--timesheet-row-height', settings.row + 'px');
+    root.style.setProperty('--timesheet-header-height', settings.headRow + 'px');
+  }
+  window.updateTimesheetDisplaySetting = function(key, value){
+    var settings = getTimesheetDisplaySettings();
+    var next = Number(value);
+    if(!Number.isFinite(next)) return;
+    settings[key] = next;
+    saveTimesheetDisplaySettings(settings);
+    applyTimesheetDisplaySettings();
+    var valueLabel = document.querySelector('[data-timesheet-display-value="'+key+'"]');
+    if(valueLabel) valueLabel.textContent = next + (key === 'width' ? '%' : 'px');
+  };
+  function timesheetDisplaySlider(label, key, min, max, step){
+    var settings = getTimesheetDisplaySettings();
+    var value = settings[key];
+    return '<label class="timesheet-display-control"><span>'+label+'</span><input type="range" min="'+min+'" max="'+max+'" step="'+step+'" value="'+value+'" oninput="updateTimesheetDisplaySetting(\''+key+'\', this.value)"><span class="timesheet-display-value" data-timesheet-display-value="'+key+'">'+value+(key === 'width' ? '%' : 'px')+'</span></label>';
+  }
+  function timesheetDisplayControls(){
+    return '<div class="timesheet-display-controls">'
+      + timesheetDisplaySlider('Text', 'body', 10, 22, 1)
+      + timesheetDisplaySlider('Courses', 'course', 8, 20, 1)
+      + timesheetDisplaySlider('Header', 'header', 12, 28, 1)
+      + timesheetDisplaySlider('Width', 'width', 72, 100, 1)
+      + timesheetDisplaySlider('Rows', 'row', 1, 64, 1)
+      + timesheetDisplaySlider('Head H', 'headRow', 1, 76, 1)
+      + '</div>';
+  }
+  applyTimesheetDisplaySettings();
   var TIMESHEET_GROUPS = [
     { title:'1st SHIFT', rows:[
       ['Branford Alton','Mon, Tues'], ['Castruita Armando','Wed, Thurs'], ['Frazer Dacoyea','Mon, Tues'],
@@ -12971,6 +13887,143 @@ window.addEventListener('load',function(){
     var value = getTimesheetAlignments()[index] || 'center';
     return 'align-' + value;
   }
+  function courseChipClass(label){
+    var text = String(label || '').toLowerCase();
+    if(text.indexOf('acknowledgement') !== -1 || text.indexOf('acknowledgment') !== -1) return ' course-ack';
+    if(text.indexOf('jsa') !== -1) return ' course-jsa';
+    return '';
+  }
+  function auditCourseClass(label){
+    var text = String(label || '').toLowerCase();
+    if(text.indexOf('emergency') !== -1 || text.indexOf('evacuation') !== -1) return ' course-emergency';
+    if(text.indexOf('acknowledgement') !== -1 || text.indexOf('acknowledgment') !== -1) return ' course-ack';
+    if(text.indexOf('jsa') !== -1) return ' course-jsa';
+    return '';
+  }
+  function matrixCourseClass(label){
+    var text = String(label || '').toLowerCase();
+    if(text.indexOf('equipment') !== -1 || text.indexOf('chassis') !== -1) return ' course-equipment';
+    return auditCourseClass(label);
+  }
+  function courseSortPriority(label){
+    var text = String(label || '').toLowerCase();
+    if(text.indexOf('emergency') !== -1 || text.indexOf('evacuation') !== -1) return 1;
+    if(text.indexOf('acknowledgement') !== -1 || text.indexOf('acknowledgment') !== -1) return 2;
+    if(text.indexOf('jsa') !== -1) return 3;
+    return 4;
+  }
+  function sortCourseLabels(labels){
+    return (labels || []).slice().sort(function(a,b){
+      var pa = courseSortPriority(a);
+      var pb = courseSortPriority(b);
+      if(pa !== pb) return pa - pb;
+      return String(a || '').localeCompare(String(b || ''));
+    });
+  }
+  function getShiftCourseSummary(groupIndex){
+    var group = TIMESHEET_GROUPS[groupIndex];
+    if(!group) return { group:null, courses:[] };
+    var nameSet = {};
+    group.rows.forEach(function(row){ nameSet[nameKey(row[0])] = true; });
+    var data = loadRosterList('trainings') || emptyRosterPayload();
+    var counts = {};
+    (data.items || []).forEach(function(item){
+      var personKey = nameKey(item.name);
+      if(!nameSet[personKey]) return;
+      var label = trainingLabel(item);
+      if(window.monthlyTrainingHideOjt && String(label || '').toLowerCase().indexOf('ojt') !== -1) return;
+      if(!counts[label]) counts[label] = { label:label, count:0 };
+      counts[label].count++;
+    });
+    return {
+      group:group,
+      courses:sortCourseLabels(Object.keys(counts)).map(function(label){ return counts[label]; })
+    };
+  }
+  function ensureShiftCourseModal(){
+    var modal = document.getElementById('shift-course-modal-bg');
+    if(modal) return modal;
+    modal = document.createElement('div');
+    modal.id = 'shift-course-modal-bg';
+    modal.className = 'shift-course-modal-bg';
+    modal.onclick = function(event){
+      if(event.target === modal) closeShiftCourseModal();
+    };
+    modal.innerHTML = '<div class="shift-course-modal" role="dialog" aria-modal="true" aria-labelledby="shift-course-modal-title">'
+      + '<div class="shift-course-modal-head"><div><div class="shift-course-modal-kicker">Shift missing courses</div><h2 class="shift-course-modal-title" id="shift-course-modal-title">Missing Courses</h2></div><button type="button" class="shift-course-modal-close" onclick="closeShiftCourseModal()" aria-label="Close">&times;</button></div>'
+      + '<div class="shift-course-list" id="shift-course-list"></div>'
+      + '</div>';
+    document.body.appendChild(modal);
+    return modal;
+  }
+  window.closeShiftCourseModal = function(){
+    var modal = document.getElementById('shift-course-modal-bg');
+    if(modal) modal.classList.remove('open');
+  };
+  window.openShiftMissingCourses = function(groupIndex, event){
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    var summary = getShiftCourseSummary(Number(groupIndex));
+    var modal = ensureShiftCourseModal();
+    var title = document.getElementById('shift-course-modal-title');
+    var list = document.getElementById('shift-course-list');
+    if(title) title.textContent = (summary.group ? summary.group.title : 'Shift') + ' Missing Courses';
+    if(list){
+      list.innerHTML = summary.courses.length
+        ? summary.courses.map(function(course){
+            return '<div class="shift-course-row">'
+              + '<div class="shift-course-name"><span class="missing-chip'+courseChipClass(course.label)+'"><span>'+esc(course.label)+'</span></span></div>'
+              + '<div class="shift-course-count">'+course.count+' name'+(course.count === 1 ? '' : 's')+'</div>'
+              + '<button type="button" class="shift-course-delete" data-shift-index="'+esc(String(groupIndex))+'" data-course="'+esc(course.label)+'" onclick="deleteShiftMissingCourse(this,event)">Delete</button>'
+              + '</div>';
+          }).join('')
+        : '<div class="shift-course-empty">No missing courses found for this shift.</div>';
+    }
+    modal.classList.add('open');
+  };
+  window.deleteShiftMissingCourse = async function(btn, event){
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if(!btn) return;
+    if(!btn.classList.contains('confirm')){
+      Array.prototype.forEach.call(document.querySelectorAll('.shift-course-delete.confirm'), function(node){
+        node.classList.remove('confirm');
+        node.textContent = 'Delete';
+      });
+      btn.classList.add('confirm');
+      btn.textContent = 'Confirm';
+      return;
+    }
+    var groupIndex = Number(btn.getAttribute('data-shift-index'));
+    var course = btn.getAttribute('data-course') || '';
+    var group = TIMESHEET_GROUPS[groupIndex];
+    if(!group || !course) return;
+    var nameSet = {};
+    group.rows.forEach(function(row){ nameSet[nameKey(row[0])] = true; });
+    var data = loadRosterList('trainings') || emptyRosterPayload();
+    var before = (data.items || []).length;
+    data.items = (data.items || []).filter(function(item){
+      return !(nameSet[nameKey(item.name)] && trainingLabel(item) === course);
+    });
+    var removed = before - data.items.length;
+    if(!removed){
+      openShiftMissingCourses(groupIndex, event);
+      return;
+    }
+    try{ pushRosterUndo('Removed '+course+' from '+group.title); }catch(e){}
+    data.items = dedupeTrainingItems(data.items);
+    data.updated_at = new Date().toISOString();
+    saveRosterCacheOnly('trainings', data);
+    try{ if(window.rosterLastUpdated) rosterLastUpdated.trainings = data.updated_at; }catch(e){}
+    renderRosterTable('trainings');
+    await saveRosterList('trainings', data);
+    renderRosterTable('trainings');
+    openShiftMissingCourses(groupIndex, event);
+  };
   window.toggleTimesheetColumnAlignment = function(index, event){
     if(event && event.target && event.target.closest && event.target.closest('.monthly-timesheet-resizer')) return;
     if(event){
@@ -13007,8 +14060,8 @@ window.addEventListener('load',function(){
     function move(e){
       var tableWidth = table.getBoundingClientRect().width || 1;
       var delta = ((e.clientX - startX) / tableWidth) * 100;
-      var minA = index === 2 ? 10 : 14;
-      var minB = index + 1 === 2 ? 10 : 14;
+      var minA = 1;
+      var minB = 1;
       var nextA = Math.max(minA, Math.min(startA + delta, startA + startB - minB));
       var nextB = startA + startB - nextA;
       widths[index] = Math.round(nextA * 10) / 10;
@@ -13032,6 +14085,227 @@ window.addEventListener('load',function(){
       item.title = label;
       return item;
     });
+  }
+  function canonicalTimesheetName(name){
+    var key = nameKey(name);
+    var match = allTimesheetNames().find(function(rowName){ return nameKey(rowName) === key; });
+    return match || titleCaseName(name);
+  }
+  function parseCsvRows(text){
+    var rows = [];
+    var row = [];
+    var field = '';
+    var inQuotes = false;
+    text = String(text || '').replace(/^\uFEFF/, '');
+    for(var i = 0; i < text.length; i++){
+      var ch = text[i];
+      var next = text[i + 1];
+      if(inQuotes){
+        if(ch === '"' && next === '"'){
+          field += '"';
+          i++;
+        }else if(ch === '"'){
+          inQuotes = false;
+        }else{
+          field += ch;
+        }
+      }else if(ch === '"'){
+        inQuotes = true;
+      }else if(ch === ','){
+        row.push(field);
+        field = '';
+      }else if(ch === '\n'){
+        row.push(field);
+        rows.push(row);
+        row = [];
+        field = '';
+      }else if(ch !== '\r'){
+        field += ch;
+      }
+    }
+    if(field || row.length){
+      row.push(field);
+      rows.push(row);
+    }
+    return rows.filter(function(r){ return r.some(function(v){ return String(v || '').trim(); }); });
+  }
+  function csvRowsToObjects(text){
+    var rows = parseCsvRows(text);
+    if(!rows.length) return [];
+    var headers = rows.shift().map(function(h){ return String(h || '').trim(); });
+    return rows.map(function(row){
+      var obj = {};
+      headers.forEach(function(header, index){ obj[header] = row[index] || ''; });
+      return obj;
+    });
+  }
+  function csvProgressValue(row){
+    var raw = row['Progress (Percent)'];
+    if(raw === undefined || raw === '') raw = row['Progress (%)'];
+    if(raw === undefined || raw === '') raw = row.Progress;
+    var value = Number(String(raw || '').replace('%','').trim());
+    if(!Number.isFinite(value)) return 0;
+    if(value > 0 && value <= 1) return value * 100;
+    return value;
+  }
+  function monthlyTrainingItemsFromCsv(text){
+    var rows = csvRowsToObjects(text);
+    var items = [];
+    rows.forEach(function(row){
+      var progress = csvProgressValue(row);
+      if(progress >= 100) return;
+      var course = String(row.Course || row.course || row.training || '').trim();
+      var person = String(row['Full name'] || row['User Details'] || ((row['First Name'] || '') + ' ' + (row['Last Name'] || ''))).trim();
+      if(!person || !course) return;
+      var canonicalName = canonicalTimesheetName(person);
+      var built = buildTrainingItemsWithName([canonicalName], course)[0];
+      built.training = course;
+      built.training_name = course;
+      built.trainingName = course;
+      built.title = course;
+      built.csv_progress = progress;
+      items.push(built);
+    });
+    return dedupeTrainingItems(items);
+  }
+  window.openMonthlyTrainingCsvReview = function(items, fileName){
+    items = dedupeTrainingItems(items || []);
+    window.monthlyTrainingCsvReviewItems = items;
+    var bg = document.getElementById('roster-modal-bg');
+    var modal = bg ? bg.querySelector('.modal') : null;
+    if(!bg || !modal) return;
+    var courseCounts = {};
+    var people = {};
+    items.forEach(function(item){
+      var label = trainingLabel(item);
+      courseCounts[label] = (courseCounts[label] || 0) + 1;
+      people[nameKey(item.name)] = item.name;
+    });
+    var courses = Object.keys(courseCounts).sort();
+    var peopleCount = Object.keys(people).length;
+    var preview = courses.slice(0, 80).map(function(course){
+      return '<div><strong>'+esc(course)+'</strong> - '+courseCounts[course]+' person(s)</div>';
+    }).join('');
+    if(courses.length > 80) preview += '<div><strong>+'+(courses.length - 80)+' more courses</strong></div>';
+    modal.innerHTML = '<div class="training-import-modal">'
+      + '<div class="training-import-title"><span>Review CSV Import</span><button class="training-import-close" type="button" onclick="closeRosterModal()">&times;</button></div>'
+      + '<div class="training-import-help">Review the parsed missing courses before importing. Edit any course name below and it will rename that course for everyone in this CSV import.</div>'
+      + '<div class="csv-preview-summary">'
+      + '<div class="csv-preview-stat"><strong>'+items.length+'</strong><span>Missing Items</span></div>'
+      + '<div class="csv-preview-stat"><strong>'+peopleCount+'</strong><span>People</span></div>'
+      + '<div class="csv-preview-stat"><strong>'+courses.length+'</strong><span>Courses</span></div>'
+      + '</div>'
+      + '<div class="training-import-staged"><div class="training-import-staged-title">Parsed preview'+(fileName ? ' - '+esc(fileName) : '')+'</div><div class="csv-preview-list">'+(preview || '<div>No missing courses found.</div>')+'</div></div>'
+      + (courses.length ? '<div class="course-manager-list">' + courses.map(function(course){
+        return '<div class="course-manager-row"><div class="course-manager-current">'+esc(course)+'<br><small>'+courseCounts[course]+' person(s)</small></div><input type="text" data-csv-old-course="'+esc(course)+'" value="'+esc(course)+'" aria-label="Rename '+esc(course)+'"></div>';
+      }).join('') + '</div>' : '<div class="training-import-staged"><div class="training-import-empty">Nothing to import from this CSV.</div></div>')
+      + '<div class="training-import-actions training-import-final-actions"><button type="button" id="training-csv-review-cancel-btn">Cancel</button><button type="button" class="primary" id="training-csv-review-save-btn">Import Reviewed CSV</button></div>'
+      + '</div>';
+    bg.classList.add('open');
+    var cancelBtn = document.getElementById('training-csv-review-cancel-btn');
+    var saveBtn = document.getElementById('training-csv-review-save-btn');
+    if(cancelBtn) cancelBtn.onclick = function(e){ e.preventDefault(); closeRosterModal(); };
+    if(saveBtn) saveBtn.onclick = function(e){ e.preventDefault(); saveMonthlyTrainingCsvReview(); };
+  };
+  window.saveMonthlyTrainingCsvReview = async function(){
+    try{
+      var items = dedupeTrainingItems(window.monthlyTrainingCsvReviewItems || []);
+      var inputs = Array.prototype.slice.call(document.querySelectorAll('#roster-modal-bg [data-csv-old-course]'));
+      var map = {};
+      inputs.forEach(function(input){
+        var oldCourse = input.getAttribute('data-csv-old-course') || '';
+        var newCourse = String(input.value || '').trim();
+        if(oldCourse && newCourse && oldCourse !== newCourse) map[oldCourse] = newCourse;
+      });
+      items.forEach(function(item){
+        var label = trainingLabel(item);
+        if(map[label]){
+          item.training = map[label];
+          item.training_name = map[label];
+          item.trainingName = map[label];
+          item.title = map[label];
+        }
+      });
+      items = dedupeTrainingItems(items);
+      setTrainingForceEmpty(false);
+      delete window.__monthlyTrainingClearedItems;
+      var payload = { items: items, updated_at: new Date().toISOString() };
+      saveRosterCacheOnly('trainings', payload);
+      try{ if(window.rosterLastUpdated) rosterLastUpdated.trainings = payload.updated_at; }catch(e){}
+      rosterFilters.trainings = { shift:'all', working:false };
+      window.monthlyTrainingViewMode = 'timesheet';
+      window.monthlyTrainingHideCompleted = false;
+      window.monthlyTrainingCsvReviewItems = [];
+      closeRosterModal();
+      renderRosterTable('trainings');
+      try{ await renderRosterPanels(); }catch(e){}
+      saveRosterList('trainings', payload).catch(function(err){
+        console.warn('CSV remote save failed', err);
+      });
+      try{ logActivity('notes','Imported <strong>Monthly Training CSV</strong>', items.length + ' missing assignment(s) found'); }catch(e){}
+      alert('Imported ' + items.length + ' missing course assignment(s) to the timesheet.');
+    }catch(err){
+      alert('CSV import failed: ' + (err && err.message ? err.message : err));
+      throw err;
+    }
+  };
+  window.openMonthlyTrainingCsvPicker = function(){
+    var input = document.getElementById('monthly-training-csv-file');
+    if(!input){
+      input = document.createElement('input');
+      input.type = 'file';
+      input.id = 'monthly-training-csv-file';
+      input.accept = '.csv,text/csv';
+      input.style.display = 'none';
+      input.addEventListener('change', function(){
+        var file = input.files && input.files[0];
+        if(!file) return;
+        var reader = new FileReader();
+        reader.onload = function(){
+          try{
+            var items = monthlyTrainingItemsFromCsv(reader.result || '');
+            openMonthlyTrainingCsvReview(items, file.name || '');
+          }catch(err){
+            alert('Could not import that CSV: ' + (err && err.message ? err.message : err));
+          }finally{
+            input.value = '';
+          }
+        };
+        reader.readAsText(file);
+      });
+      document.body.appendChild(input);
+    }
+    input.click();
+  };
+  function dedupeTrainingItems(items){
+    var seen = {};
+    return (Array.isArray(items) ? items : []).filter(function(item){
+      var key = nameKey(item && item.name) + '|' + String(trainingLabel(item)).trim().toLowerCase();
+      if(!key || seen[key]) return false;
+      seen[key] = true;
+      return true;
+    });
+  }
+  function trainingForceEmptyActive(){
+    try{
+      return Date.now() < Number(localStorage.getItem('monthly_training_force_empty_until') || 0);
+    }catch(e){ return false; }
+  }
+  function setTrainingForceEmpty(active){
+    try{
+      if(active) localStorage.setItem('monthly_training_force_empty_until', String(Date.now() + 24 * 60 * 60 * 1000));
+      else localStorage.removeItem('monthly_training_force_empty_until');
+    }catch(e){}
+  }
+  function hardClearTrainingLocal(){
+    var empty = { items: [], updated_at: new Date().toISOString() };
+    window.__monthlyTrainingClearedItems = [];
+    try{ saveRosterCacheOnly('trainings', empty); }catch(e){}
+    try{ localStorage.setItem('eit_train_roster_v3', JSON.stringify(empty)); }catch(e){}
+    try{ localStorage.setItem('training_roster_lists', JSON.stringify(empty)); }catch(e){}
+    try{ localStorage.setItem('trainings', JSON.stringify(empty)); }catch(e){}
+    try{ if(window.rosterLastUpdated) rosterLastUpdated.trainings = empty.updated_at; }catch(e){}
+    return empty;
   }
   window.monthlyTrainingImportBatches = window.monthlyTrainingImportBatches || [];
   function renderTrainingImportBatches(){
@@ -13080,30 +14354,61 @@ window.addEventListener('load',function(){
     renderTrainingImportBatches();
   };
   window.saveTrainingImportBatches = async function(){
+    if(window.__savingTrainingImportBatches) return;
     var batches = window.monthlyTrainingImportBatches || [];
     if(!batches.length){
       alert('Add at least one batch before saving.');
       return;
     }
+    window.__savingTrainingImportBatches = true;
+    setTrainingForceEmpty(false);
+    delete window.__monthlyTrainingClearedItems;
     pushRosterUndo('Imported monthly training batches');
     var existing = loadRosterList('trainings') || emptyRosterPayload();
     var items = Array.isArray(existing.items) ? existing.items.slice() : [];
     batches.forEach(function(batch){
       items = items.concat(buildTrainingItemsWithName(batch.names, batch.training));
     });
-    await saveRosterList('trainings', { items: items });
-    rosterFilters.trainings = { shift:'all', working:false };
-    window.monthlyTrainingImportBatches = [];
-    closeRosterModal();
-    await renderRosterPanels();
-    try{ logActivity('notes','Imported <strong>Monthly Training</strong> batches', batches.length + ' batch(es) added'); }catch(e){}
+    try{
+      await saveRosterList('trainings', { items: dedupeTrainingItems(items) });
+      rosterFilters.trainings = { shift:'all', working:false };
+      window.monthlyTrainingImportBatches = [];
+      closeRosterModal();
+      await renderRosterPanels();
+      try{ logActivity('notes','Imported <strong>Monthly Training</strong> batches', batches.length + ' batch(es) added'); }catch(e){}
+    }finally{
+      window.__savingTrainingImportBatches = false;
+    }
   };
   window.clearAllMonthlyTrainings = async function(){
-    if(!confirm('Clear all monthly training records? This will remove every missing training from the list.')) return;
-    pushRosterUndo('Cleared all monthly trainings');
-    await saveRosterList('trainings', emptyRosterPayload());
+    if(!window.monthlyTrainingClearConfirm){
+      window.monthlyTrainingClearConfirm = true;
+      try{ renderRosterTable('trainings'); }catch(e){}
+      return;
+    }
+    window.monthlyTrainingClearConfirm = false;
+    setTrainingForceEmpty(true);
+    var empty = hardClearTrainingLocal();
+    try{ pushRosterUndo('Cleared all monthly trainings'); }catch(e){}
+    try{
+      window.__rosterImportNoSyncUntil = window.__rosterImportNoSyncUntil || { audits:0, trainings:0 };
+      window.__rosterImportNoSyncUntil.trainings = Date.now() + 30000;
+    }catch(e){}
+    try{ await saveRosterList('trainings', empty); }catch(e){}
+    try{
+      if(window.eqLoggedIn && typeof supabaseClient !== 'undefined' && supabaseClient){
+        await supabaseClient.from('training_roster_lists').upsert({
+          id:'trainings',
+          items:[],
+          updated_at:empty.updated_at,
+          updated_by:window.eqLoginUsername || 'CONGLOBAL'
+        });
+      }
+    }catch(err){ console.warn('Clear all remote save failed', err); }
     rosterFilters.trainings = { shift:'all', working:false };
-    await renderRosterPanels();
+    window.monthlyTrainingViewMode = 'timesheet';
+    renderRosterTable('trainings');
+    try{ await renderRosterPanels(); }catch(e){}
   };
   function uniqueTrainingCourses(){
     var payload = loadRosterList('trainings') || emptyRosterPayload();
@@ -13282,19 +14587,37 @@ window.addEventListener('load',function(){
     modal.innerHTML = '<div class="training-import-modal">'
       + '<div class="training-import-title"><span>Import Monthly Trainings</span><button class="training-import-close" type="button" onclick="closeRosterModal()">&times;</button></div>'
       + '<div class="training-import-help">Enter the training name, paste the people missing it, then add the batch. Repeat for each different training. Save when all batches are ready.</div>'
-      + '<div class="training-import-field"><label for="training-smart-paste">Smart Paste Full Report</label><textarea id="training-smart-paste" class="training-smart-paste" placeholder="Paste report rows here. The app will match Timesheet names and group missing courses automatically."></textarea></div>'
-      + '<div class="training-import-actions"><button type="button" onclick="parseSmartTrainingImport()">Parse Courses</button></div>'
       + '<div class="training-import-field"><label for="training-import-name">Training Missing</label><input id="training-import-name" type="text" placeholder="Example: HazCom Monthly Training"></div>'
       + '<div class="training-import-field"><label for="training-import-names">People Missing This Training</label><textarea id="training-import-names" placeholder="Paste names here, one per line."></textarea></div>'
-      + '<div class="training-import-actions"><button type="button" class="primary" onclick="addTrainingImportBatch()">Add Batch</button></div>'
+      + '<div class="training-import-actions"><button type="button" class="primary" id="training-add-batch-btn">Add Batch</button></div>'
       + '<div class="training-import-staged"><div class="training-import-staged-title">Batches to save</div><div id="training-import-staged-list"></div></div>'
-      + '<div class="training-import-actions"><button type="button" class="danger" onclick="window.monthlyTrainingImportBatches=[];renderTrainingImportBatches()">Clear Batches</button><button type="button" onclick="closeRosterModal()">Cancel</button><button type="button" class="primary" onclick="saveTrainingImportBatches()">Save Trainings</button></div>'
+      + '<div class="training-import-actions training-import-final-actions"><button type="button" class="danger" id="training-clear-batches-btn">Clear Batches</button><button type="button" id="training-cancel-import-btn">Cancel</button><button type="button" class="primary" id="training-save-import-btn">Save Trainings</button></div>'
       + '</div>';
     bg.classList.add('open');
     renderTrainingImportBatches();
+    var addBtn = document.getElementById('training-add-batch-btn');
+    var clearBtn = document.getElementById('training-clear-batches-btn');
+    var cancelBtn = document.getElementById('training-cancel-import-btn');
+    var saveBtn = document.getElementById('training-save-import-btn');
+    if(addBtn) addBtn.onclick = function(e){ e.preventDefault(); addTrainingImportBatch(); };
+    if(clearBtn) clearBtn.onclick = function(e){ e.preventDefault(); window.monthlyTrainingImportBatches=[]; renderTrainingImportBatches(); };
+    if(cancelBtn) cancelBtn.onclick = function(e){ e.preventDefault(); closeRosterModal(); };
+    if(saveBtn) saveBtn.onclick = function(e){ e.preventDefault(); saveTrainingImportBatches(); };
     setTimeout(function(){ var input = document.getElementById('training-import-name'); if(input) input.focus(); }, 0);
   };
-  function renderTimesheet(items){
+  function timesheetRosterShift(name, items){
+    var key = nameKey(name);
+    for(var i=0;i<items.length;i++){
+      if(nameKey(items[i].name) === key) return items[i].shift || 'Other';
+    }
+    if(key === nameKey('Candace Warren') || key === nameKey('Connie Johnson') || key === nameKey('Jarade Douglas') || key === nameKey('Gregory Watson II') || key === nameKey('Bryce Alexander') || key === nameKey('Naomisha Hunt') || key === nameKey('Ramacacondra Pratt') || key === nameKey('Kane Cabral') || key === nameKey('Tavares Gariet')) return 'Other';
+    var secondShift = [
+      'Benavides Robert','Bookman Derrell','Brown Brandy','Caceres Virula Victor','Carruthers Timothy','Contrerras Marco','Delgado Jose','Echendu Chimenjem','Gilder Rufus II','Hopkins Alexander','Hosey Kevin','Johnson Messiah','Keme Aweri Jr.','Mejia Aaron','Tingle Jason','Urtado Ernest'
+    ];
+    return secondShift.some(function(n){ return key === nameKey(n); }) ? 'Night' : 'Day';
+  }
+  function renderTimesheet(items, filterState){
+    filterState = normalizeRosterFilterState(filterState || {});
     var missingByName = {};
     items.forEach(function(item){
       var key = nameKey(item.name);
@@ -13306,15 +14629,21 @@ window.addEventListener('load',function(){
     var widths = getTimesheetWidths();
     var html = '<table class="monthly-timesheet"><colgroup><col style="width:'+widths[0]+'%"><col style="width:'+widths[1]+'%"><col style="width:'+widths[2]+'%"><col style="width:'+widths[3]+'%"></colgroup><tbody>';
     TIMESHEET_GROUPS.forEach(function(group, groupIndex){
-      html += '<tr><th class="timesheet-section-title '+alignmentClass(0)+'" onclick="toggleTimesheetColumnAlignment(0,event)">'+esc(group.title)+'<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,0)"></span></th><th class="'+alignmentClass(1)+'" onclick="toggleTimesheetColumnAlignment(1,event)">Off Days<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,1)"></span></th><th class="'+alignmentClass(2)+'" onclick="toggleTimesheetColumnAlignment(2,event)"># Missing<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,2)"></span></th><th class="'+alignmentClass(3)+'" onclick="toggleTimesheetColumnAlignment(3,event)">Missing</th></tr>';
+      html += '<tr><th class="timesheet-section-title '+alignmentClass(0)+'" onclick="toggleTimesheetColumnAlignment(0,event)">'+esc(group.title)+'<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,0)"></span></th><th class="'+alignmentClass(1)+'" onclick="toggleTimesheetColumnAlignment(1,event)">Off Days<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,1)"></span></th><th class="'+alignmentClass(2)+'" onclick="toggleTimesheetColumnAlignment(2,event)">Count<span class="monthly-timesheet-resizer" onmousedown="startTimesheetColumnResize(event,2)"></span></th><th class="timesheet-manage-courses '+alignmentClass(3)+'" onclick="openShiftMissingCourses('+groupIndex+',event)">Missing Courses</th></tr>';
       var visibleRows = 0;
       group.rows.forEach(function(row){
+        var rowShift = timesheetRosterShift(row[0], items);
+        if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return;
         var missingList = missingByName[nameKey(row[0])] || [];
+        if(window.monthlyTrainingHideOjt){
+          missingList = missingList.filter(function(label){ return String(label || '').toLowerCase().indexOf('ojt') === -1; });
+        }
+        missingList = sortCourseLabels(missingList);
         if(window.monthlyTrainingHideCompleted && !missingList.length) return;
         visibleRows++;
         var missingHtml = missingList.length
-          ? '<div class="missing-chip-stack">' + missingList.map(function(label){ return '<span class="missing-chip" data-course="'+esc(label)+'" title="'+esc(label)+'"><span>'+esc(label)+'</span><button type="button" class="missing-chip-remove" data-person="'+esc(row[0])+'" data-course="'+esc(label)+'" title="Remove this course from this person" onclick="removeMissingCourseFromChip(this,event)">&times;</button></span>'; }).join('') + '</div>'
-          : 'Completed';
+          ? '<div class="missing-chip-stack">' + missingList.map(function(label){ return '<span class="missing-chip'+courseChipClass(label)+'" data-course="'+esc(label)+'" title="'+esc(label)+'"><span>'+esc(label)+'</span><button type="button" class="missing-chip-remove" data-person="'+esc(row[0])+'" data-course="'+esc(label)+'" title="Remove this course from this person" onclick="removeMissingCourseFromChip(this,event)">&times;</button></span>'; }).join('') + '</div>'
+          : '<span class="completed-chip">Completed</span>';
         html += '<tr><td class="timesheet-name '+alignmentClass(0)+'">'+esc(row[0])+'</td><td class="timesheet-off '+alignmentClass(1)+'">'+esc(row[1])+'</td><td class="timesheet-off '+alignmentClass(2)+'">'+(missingList.length || '')+'</td><td class="timesheet-missing '+alignmentClass(3)+(missingList.length ? ' has-missing' : ' is-complete')+'">'+missingHtml+'</td></tr>';
       });
       if(!visibleRows){
@@ -13322,6 +14651,58 @@ window.addEventListener('load',function(){
       }
     });
     html += '</tbody></table>';
+    return html;
+  }
+  function renderMatrix(items, filterState){
+    filterState = normalizeRosterFilterState(filterState || {});
+    var coursesSeen = {};
+    var missingByName = {};
+    items.forEach(function(item){
+      var label = trainingLabel(item);
+      if(window.monthlyTrainingHideOjt && String(label || '').toLowerCase().indexOf('ojt') !== -1) return;
+      coursesSeen[label] = true;
+      var personKey = nameKey(item.name);
+      if(!missingByName[personKey]) missingByName[personKey] = {};
+      missingByName[personKey][label] = (missingByName[personKey][label] || 0) + 1;
+    });
+    var courses = Object.keys(coursesSeen).sort(function(a,b){ return a.localeCompare(b); });
+    if(!courses.length) return '<div class="roster-empty">No missing courses to show in the matrix.</div>';
+    var colTotals = {};
+    courses.forEach(function(course){ colTotals[course] = 0; });
+    var grandTotal = 0;
+    var colCount = courses.length + 3;
+    var html = '<div class="monthly-matrix-wrap"><table class="monthly-matrix"><thead><tr>'
+      + '<th class="matrix-name-head">Employee</th><th class="matrix-off-head">Off Days</th>'
+      + courses.map(function(course){
+          return '<th class="matrix-course-head'+matrixCourseClass(course)+'"><div class="matrix-course-angle"><span class="matrix-course-swatch"></span><span class="matrix-course-label">'+esc(course)+'</span></div></th>';
+        }).join('')
+      + '<th class="matrix-total-head">Tot</th></tr></thead><tbody>';
+    TIMESHEET_GROUPS.forEach(function(group){
+      var rows = [];
+      group.rows.forEach(function(row){
+        var rowShift = timesheetRosterShift(row[0], items);
+        if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return;
+        if(filterState.working && !rosterItemWorksToday({ name:row[0], employee:row[0], shift:rowShift })) return;
+        var courseMap = missingByName[nameKey(row[0])] || {};
+        var rowTotal = courses.reduce(function(sum, course){ return sum + (courseMap[course] || 0); }, 0);
+        if(window.monthlyTrainingHideCompleted && !rowTotal) return;
+        grandTotal += rowTotal;
+        courses.forEach(function(course){ colTotals[course] += (courseMap[course] || 0); });
+        rows.push('<tr><td class="matrix-name">'+esc(row[0])+'</td><td class="matrix-off">'+esc(row[1])+'</td>'
+          + courses.map(function(course){
+              var count = courseMap[course] || 0;
+              return '<td class="matrix-cell">' + (count ? '<span class="matrix-hit'+matrixCourseClass(course)+'">'+count+'</span>' : '<span class="matrix-dash">-</span>') + '</td>';
+            }).join('')
+          + '<td class="matrix-total"><span class="matrix-total-pill">'+rowTotal+'</span></td></tr>');
+      });
+      if(rows.length){
+        html += '<tr class="matrix-group-row"><th colspan="'+colCount+'">'+esc(group.title)+'</th></tr>' + rows.join('');
+      }
+    });
+    html += '<tr class="matrix-total-row"><td class="matrix-total-label" colspan="2">Column Totals</td>'
+      + courses.map(function(course){ return '<td class="matrix-cell">'+(colTotals[course] || '')+'</td>'; }).join('')
+      + '<td class="matrix-total">'+grandTotal+'</td></tr>';
+    html += '</tbody></table></div>';
     return html;
   }
   function confirmRosterDelete(type, id, name){
@@ -13354,18 +14735,93 @@ window.addEventListener('load',function(){
   };
   window.monthlyTrainingViewMode = window.monthlyTrainingViewMode || 'timesheet';
   window.monthlyTrainingHideCompleted = !!window.monthlyTrainingHideCompleted;
+  window.monthlyTrainingHideOjt = !!window.monthlyTrainingHideOjt;
+  if(!window.__monthlyTrainingClearSyncGuard && typeof window.syncRosterFromSupabase === 'function'){
+    window.__monthlyTrainingClearSyncGuard = true;
+    var monthlyTrainingOriginalSync = window.syncRosterFromSupabase;
+    window.syncRosterFromSupabase = async function(type){
+      var key = (typeof normalizeRosterType === 'function') ? normalizeRosterType(type) : type;
+      if(key === 'trainings' && trainingForceEmptyActive()){
+        var empty = { items: [], updated_at: new Date().toISOString() };
+        try{ saveRosterCacheOnly('trainings', empty); }catch(e){}
+        return empty;
+      }
+      return monthlyTrainingOriginalSync.apply(this, arguments);
+    };
+  }
   window.toggleMonthlyTrainingKanban = function(){
-    window.monthlyTrainingViewMode = window.monthlyTrainingViewMode === 'board' ? 'table' : 'board';
+    window.monthlyTrainingViewMode = window.monthlyTrainingViewMode === 'board' ? 'timesheet' : 'board';
     try{ renderRosterTable('trainings'); }catch(e){}
   };
   window.toggleMonthlyTrainingTimesheet = function(){
-    window.monthlyTrainingViewMode = window.monthlyTrainingViewMode === 'timesheet' ? 'table' : 'timesheet';
+    window.monthlyTrainingViewMode = 'timesheet';
+    try{ renderRosterTable('trainings'); }catch(e){}
+  };
+  window.toggleMonthlyTrainingMatrix = function(){
+    window.monthlyTrainingViewMode = window.monthlyTrainingViewMode === 'matrix' ? 'timesheet' : 'matrix';
     try{ renderRosterTable('trainings'); }catch(e){}
   };
   window.toggleMonthlyTrainingHideCompleted = function(){
     window.monthlyTrainingHideCompleted = !window.monthlyTrainingHideCompleted;
     try{ renderRosterTable('trainings'); }catch(e){}
   };
+  window.toggleMonthlyTrainingHideOjt = function(){
+    window.monthlyTrainingHideOjt = !window.monthlyTrainingHideOjt;
+    try{ renderRosterTable('trainings'); }catch(e){}
+  };
+  window.toggleTrainingFilterMenu = function(event){
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(event.stopImmediatePropagation) event.stopImmediatePropagation();
+      if(event.type === 'click' && window.__trainingFilterPointerGuard && Date.now() < window.__trainingFilterPointerGuard) return;
+      if(event.type === 'pointerdown') window.__trainingFilterPointerGuard = Date.now() + 450;
+    }
+    var btn = event && event.target && event.target.closest ? event.target.closest('[data-training-filter-toggle]') : null;
+    var wrap = btn && btn.closest ? btn.closest('.training-filter-menu-wrap') : null;
+    var menu = wrap && wrap.querySelector ? wrap.querySelector('.training-filter-menu') : document.getElementById('training-filter-menu');
+    if(menu) menu.classList.toggle('is-open');
+  };
+  window.selectTrainingFilterChoice = function(type, filter, event){
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if(event.stopImmediatePropagation) event.stopImmediatePropagation();
+    }
+    if(filter === 'working'){
+      setRosterFilter(type, 'working');
+    }else{
+      setRosterFilter(type, filter);
+    }
+    var menu = document.getElementById('training-filter-menu');
+    if(menu) menu.classList.remove('is-open');
+  };
+  if(!window.__trainingFilterMenuCloseBound){
+    window.__trainingFilterMenuCloseBound = true;
+    document.addEventListener('click', function(event){
+      var filterBtn = event.target && event.target.closest ? event.target.closest('[data-training-filter-toggle]') : null;
+      if(filterBtn){
+        event.preventDefault();
+        event.stopPropagation();
+        if(event.stopImmediatePropagation) event.stopImmediatePropagation();
+        toggleTrainingFilterMenu(event);
+        return;
+      }
+      var choice = event.target && event.target.closest ? event.target.closest('[data-training-filter-choice]') : null;
+      if(choice){
+        event.preventDefault();
+        event.stopPropagation();
+        if(event.stopImmediatePropagation) event.stopImmediatePropagation();
+        selectTrainingFilterChoice(choice.getAttribute('data-filter-type') || 'trainings', choice.getAttribute('data-training-filter-choice') || 'all', event);
+      }
+    }, true);
+    document.addEventListener('click', function(event){
+      var wrap = event.target && event.target.closest ? event.target.closest('.training-filter-menu-wrap') : null;
+      if(wrap) return;
+      var menu = document.getElementById('training-filter-menu');
+      if(menu) menu.classList.remove('is-open');
+    }, true);
+  }
   window.printMonthlyTimesheet = function(){
     window.monthlyTrainingViewMode = 'timesheet';
     try{ renderRosterTable('trainings'); }catch(e){}
@@ -13423,6 +14879,8 @@ window.addEventListener('load',function(){
             if(!rawItems.length) throw new Error('No items found in backup.');
             if(!confirm('Import ' + rawItems.length + ' saved missing training record(s)? This will add them to the current list.')) return;
             pushRosterUndo('Imported monthly training backup');
+            setTrainingForceEmpty(false);
+            delete window.__monthlyTrainingClearedItems;
             var existing = loadRosterList('trainings') || emptyRosterPayload();
             var items = Array.isArray(existing.items) ? existing.items.slice() : [];
             rawItems.forEach(function(row){
@@ -13432,7 +14890,7 @@ window.addEventListener('load',function(){
               if(typeof row.matched === 'boolean') built.matched = row.matched;
               items.push(built);
             });
-            await saveRosterList('trainings', { items: items });
+            await saveRosterList('trainings', { items: dedupeTrainingItems(items) });
             await renderRosterPanels();
           }catch(err){
             alert('Could not import that file: ' + (err && err.message ? err.message : err));
@@ -13448,26 +14906,31 @@ window.addEventListener('load',function(){
   };
   window.filterButtons = function(type){
     var state = normalizeRosterFilterState(rosterFilters[type]);
-    var defs = [
-      ['all','All',''],
-      ['Day','Day','<span class="filter-dot filter-dot-day"></span>'],
-      ['Night','Night','<span class="filter-dot filter-dot-night"></span>'],
-      ['Other','Other','<span class="filter-dot filter-dot-other"></span>']
-    ];
-    var shiftButtons = defs.map(function(pair){
-      var key = pair[0], label = pair[1], marker = pair[2];
-      return '<button class="roster-filter-btn'+(state.shift===key?' active':'')+'" onclick="setRosterFilter(\''+type+'\',\''+key+'\')">'+marker+'<span>'+label+'</span></button>';
-    }).join('');
-    var workingButton = '<button class="roster-filter-btn working-today'+(state.working?' active':'')+'" onclick="setRosterFilter(\''+type+'\',\'working\')"><span class="filter-star">'+icon('star')+'</span><span>Working Today</span></button>';
+    var activeLabel = state.working ? 'Working Today' : (state.shift && state.shift !== 'all' ? state.shift : 'All');
+    var shiftButtons = '<div class="training-filter-menu-wrap">'
+      + '<button class="roster-filter-btn active" data-training-filter-toggle="1" onpointerdown="toggleTrainingFilterMenu(event)" onclick="toggleTrainingFilterMenu(event)" type="button"><span>Filter:</span><strong>'+activeLabel+'</strong><span>â–¾</span></button>'
+      + '<div class="training-filter-menu" id="training-filter-menu">'
+      + '<button class="training-filter-choice'+(state.shift === 'all' && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="all" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'all\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'all\',event)" type="button">All</button>'
+      + '<button class="training-filter-choice'+(state.shift === 'Day' && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Day" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Day\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Day\',event)" type="button"><span class="filter-dot filter-dot-day"></span>Day</button>'
+      + '<button class="training-filter-choice'+(state.shift === 'Night' && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Night" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Night\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Night\',event)" type="button"><span class="filter-dot filter-dot-night"></span>Night</button>'
+      + '<button class="training-filter-choice'+(state.shift === 'Other' && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Other" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Other\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Other\',event)" type="button"><span class="filter-dot filter-dot-other"></span>Other</button>'
+      + '<button class="training-filter-choice'+(state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="working" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'working\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'working\',event)" type="button"><span class="filter-star">'+icon('star')+'</span>Working Today</button>'
+      + '</div></div>';
+    var workingButton = '';
+    var displayControls = type === 'trainings' ? timesheetDisplayControls() : '';
     var kanbanButton = type === 'trainings'
-      ? '<span class="roster-filter-spacer"></span><button class="roster-filter-btn print-timesheet-toggle" onclick="printMonthlyTimesheet()" type="button">'+icon('print')+'<span>Print</span></button><button class="roster-filter-btn training-import-toggle" onclick="openTrainingImportModal()" type="button">'+icon('plus')+'<span>Import</span></button><button class="roster-filter-btn export-trainings-toggle" onclick="exportMonthlyTrainingBackup()" type="button">'+icon('download')+'<span>Export</span></button><button class="roster-filter-btn restore-trainings-toggle" onclick="openMonthlyTrainingRestorePicker()" type="button">'+icon('upload')+'<span>Restore</span></button><button class="roster-filter-btn edit-courses-toggle" onclick="openCourseManagerModal()" type="button">'+icon('edit')+'<span>Edit Courses</span></button><button class="roster-filter-btn training-clear-toggle" onclick="clearAllMonthlyTrainings()" type="button">'+icon('clear')+'<span>Clear All</span></button><button class="roster-filter-btn hide-completed-toggle'+(window.monthlyTrainingHideCompleted?' active':'')+'" onclick="toggleMonthlyTrainingHideCompleted()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideCompleted?'Show Completed':'Hide Completed')+'</span></button><button class="roster-filter-btn timesheet-toggle'+(window.monthlyTrainingViewMode === 'timesheet'?' active':'')+'" onclick="toggleMonthlyTrainingTimesheet()" type="button">'+icon('sheet')+'<span>Timesheet</span></button><button class="roster-filter-btn kanban-toggle'+(window.monthlyTrainingViewMode === 'board'?' active':'')+'" onclick="toggleMonthlyTrainingKanban()" type="button">'+icon('board')+'<span>'+(window.monthlyTrainingViewMode === 'board'?'Table View':'Board View')+'</span></button>'
+      ? '<span class="roster-filter-spacer"></span>'+shiftButtons+'<button class="roster-filter-btn print-timesheet-toggle" onclick="printMonthlyTimesheet()" type="button">'+icon('print')+'<span>Print</span></button><button class="roster-filter-btn training-import-toggle" onclick="openTrainingImportModal()" type="button">'+icon('plus')+'<span>Import</span></button><button class="roster-filter-btn training-csv-toggle" onclick="openMonthlyTrainingCsvPicker()" type="button">'+icon('upload')+'<span>Import CSV</span></button><button class="roster-filter-btn export-trainings-toggle" onclick="exportMonthlyTrainingBackup()" type="button">'+icon('download')+'<span>Export</span></button><button class="roster-filter-btn restore-trainings-toggle" onclick="openMonthlyTrainingRestorePicker()" type="button">'+icon('upload')+'<span>Restore</span></button><button class="roster-filter-btn edit-courses-toggle" onclick="openCourseManagerModal()" type="button">'+icon('edit')+'<span>Edit Courses</span></button><button class="roster-filter-btn training-clear-toggle'+(window.monthlyTrainingClearConfirm?' active':'')+'" onclick="clearAllMonthlyTrainings()" type="button">'+icon('clear')+'<span>'+(window.monthlyTrainingClearConfirm?'Confirm Clear':'Clear All')+'</span></button><button class="roster-filter-btn hide-ojt-toggle'+(window.monthlyTrainingHideOjt?' active':'')+'" onclick="toggleMonthlyTrainingHideOjt()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideOjt?'Show OJT':'Hide OJT')+'</span></button><button class="roster-filter-btn hide-completed-toggle'+(window.monthlyTrainingHideCompleted?' active':'')+'" onclick="toggleMonthlyTrainingHideCompleted()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideCompleted?'Show Completed':'Hide Completed')+'</span></button><button class="roster-filter-btn timesheet-toggle'+(window.monthlyTrainingViewMode === 'timesheet'?' active':'')+'" onclick="toggleMonthlyTrainingTimesheet()" type="button">'+icon('sheet')+'<span>Timesheet</span></button><button class="roster-filter-btn matrix-toggle'+(window.monthlyTrainingViewMode === 'matrix'?' active':'')+'" onclick="toggleMonthlyTrainingMatrix()" type="button">'+icon('sheet')+'<span>Matrix</span></button><button class="roster-filter-btn kanban-toggle'+(window.monthlyTrainingViewMode === 'board'?' active':'')+'" onclick="toggleMonthlyTrainingKanban()" type="button">'+icon('board')+'<span>'+(window.monthlyTrainingViewMode === 'board'?'Table View':'Board View')+'</span></button>'
       : '';
-    return shiftButtons + workingButton + kanbanButton;
+    return (type === 'trainings' ? '' : shiftButtons) + displayControls + workingButton + kanbanButton;
   };
   window.renderRosterTable = function(type){
     var key = normalizeRosterType(type);
+    if(key === 'trainings') applyTimesheetDisplaySettings();
     var data = loadRosterList(key);
     var items = data.items || [];
+    if(key === 'trainings' && Array.isArray(window.__monthlyTrainingClearedItems)) items = window.__monthlyTrainingClearedItems.slice();
+    if(key === 'trainings' && trainingForceEmptyActive()) items = [];
+    if(key === 'trainings') items = dedupeTrainingItems(items);
     var filtered = filterRosterItems(items, rosterFilters[key]);
     var wrap = document.getElementById(key === 'audits' ? 'audit-table-wrap' : 'train-table-wrap');
     var countLabel = document.getElementById(key === 'audits' ? 'audit-count-label' : 'train-count-label');
@@ -13513,17 +14976,25 @@ window.addEventListener('load',function(){
     if(!wrap) return;
     if(key === 'trainings' && window.monthlyTrainingViewMode === 'timesheet'){
       wrap.classList.remove('kanban-mode');
+      wrap.classList.remove('matrix-mode');
       wrap.classList.add('timesheet-mode');
-      wrap.innerHTML = renderTimesheet(items);
+      wrap.innerHTML = renderTimesheet(items, rosterFilters[key]);
+      return;
+    }
+    if(key === 'trainings' && window.monthlyTrainingViewMode === 'matrix'){
+      wrap.classList.remove('kanban-mode');
+      wrap.classList.remove('timesheet-mode');
+      wrap.classList.add('matrix-mode');
+      wrap.innerHTML = renderMatrix(items, rosterFilters[key]);
       return;
     }
     if(!items.length){
-      wrap.classList.remove('kanban-mode','timesheet-mode');
+      wrap.classList.remove('kanban-mode','timesheet-mode','matrix-mode');
       wrap.innerHTML = '<div class="roster-empty">No names yet. Click Paste Names to import a list.</div>';
       return;
     }
     if(!filtered.length){
-      wrap.classList.remove('kanban-mode','timesheet-mode');
+      wrap.classList.remove('kanban-mode','timesheet-mode','matrix-mode');
       wrap.innerHTML = '<div class="roster-empty">No names match this filter.</div>';
       return;
     }
@@ -13540,47 +15011,64 @@ window.addEventListener('load',function(){
         + '<td><button type="button" class="monthly-reveal-delete" aria-label="Remove '+attrName+'" title="Remove '+attrName+'" data-roster-type="'+key+'" data-roster-id="'+safeId+'" data-roster-name="'+attrName+'" onclick="monthlyTrainingConfirmDelete(this,event)">&times;</button></td>'
         + '</tr>';
     }
-    function kanbanCard(item){
-      var sk = shiftKey(item.shift);
-      var safeId = esc(String(item.id || ''));
-      var safeName = esc(item.name || '');
-      var attrName = esc(item.name || '');
-      return '<div class="monthly-kanban-card" onclick="monthlyTrainingCardClick(this,event)">'
-        + '<div class="monthly-kanban-person"><span class="monthly-status-dot"></span><span class="monthly-avatar monthly-avatar-'+sk+'">'+esc(initials(item.name))+'</span><span class="monthly-name">'+safeName+'</span></div>'
-        + '<button type="button" class="monthly-reveal-delete" aria-label="Remove '+attrName+'" title="Remove '+attrName+'" data-roster-type="'+key+'" data-roster-id="'+safeId+'" data-roster-name="'+attrName+'" onclick="monthlyTrainingConfirmDelete(this,event)">&times;</button>'
-        + '</div>';
-    }
     if(key === 'trainings' && window.monthlyTrainingViewMode === 'board'){
-      var groups = [
-        { shift:'Day', label:'Day', sk:'day', icon:icon('sun') },
-        { shift:'Night', label:'Night', sk:'night', icon:icon('moon') },
-        { shift:'Other', label:'Other', sk:'other', icon:icon('other') }
-      ];
-      var board = groups.map(function(group){
-        var groupItems = filtered.filter(function(item){ return (item.shift === group.shift) || (group.shift === 'Other' && item.shift !== 'Day' && item.shift !== 'Night'); });
-        return '<section class="monthly-kanban-column monthly-kanban-'+group.sk+'">'
-          + '<div class="monthly-kanban-head"><div class="monthly-kanban-title">'+group.icon+'<span>'+group.label+'</span></div><span class="monthly-kanban-count">'+groupItems.length+'</span></div>'
-          + '<div class="monthly-kanban-list">' + (groupItems.length ? groupItems.map(kanbanCard).join('') : '<div class="monthly-kanban-empty">No names in this group.</div>') + '</div>'
+      var filterState = normalizeRosterFilterState(rosterFilters[key] || {});
+      var missingByName = {};
+      items.forEach(function(item){
+        var label = trainingLabel(item);
+        if(window.monthlyTrainingHideOjt && String(label || '').toLowerCase().indexOf('ojt') !== -1) return;
+        var personKey = nameKey(item.name);
+        if(!missingByName[personKey]) missingByName[personKey] = [];
+        if(missingByName[personKey].indexOf(label) === -1) missingByName[personKey].push(label);
+      });
+      function auditCard(row){
+        var rowShift = timesheetRosterShift(row[0], items);
+        if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return '';
+        if(filterState.working && !rosterItemWorksToday({ name:row[0], employee:row[0], shift:rowShift })) return '';
+        var missingList = missingByName[nameKey(row[0])] || [];
+        missingList = sortCourseLabels(missingList);
+        if(window.monthlyTrainingHideCompleted && !missingList.length) return '';
+        var courseHtml = missingList.length
+          ? '<div class="monthly-audit-course-list">' + missingList.map(function(label){
+              return '<div class="monthly-audit-course'+auditCourseClass(label)+'"><span class="monthly-audit-course-dot"></span><span>'+esc(label)+'</span></div>';
+            }).join('') + '</div>'
+          : '<div class="monthly-audit-complete">Completed</div>';
+        return '<article class="monthly-audit-card">'
+          + '<div class="monthly-audit-card-name">'+esc(row[0])+'</div>'
+          + '<div class="monthly-audit-card-off">OFF Â· '+esc(row[1])+'</div>'
+          + '<div class="monthly-audit-due"><strong>'+missingList.length+'</strong><span>DUE</span></div>'
+          + courseHtml
+          + '</article>';
+      }
+      var board = TIMESHEET_GROUPS.map(function(group){
+        var cards = group.rows.map(auditCard).filter(Boolean);
+        return '<section class="monthly-audit-shift">'
+          + '<div class="monthly-audit-shift-head"><div class="monthly-audit-shift-title">'+esc(group.title)+'</div><div class="monthly-audit-shift-count">'+cards.length+' shown</div></div>'
+          + (cards.length ? '<div class="monthly-audit-card-grid">'+cards.join('')+'</div>' : '<div class="monthly-audit-empty">No names in this group match the current filters.</div>')
           + '</section>';
       }).join('');
       wrap.classList.add('kanban-mode');
       wrap.classList.remove('timesheet-mode');
-      wrap.innerHTML = '<div class="monthly-kanban">' + board + '</div>';
+      wrap.classList.remove('matrix-mode');
+      wrap.innerHTML = '<div class="monthly-audit-board">' + board + '</div>';
       return;
     }
     wrap.classList.remove('kanban-mode');
     wrap.classList.remove('timesheet-mode');
+    wrap.classList.remove('matrix-mode');
     var rows = filtered.map(personRow).join('');
     wrap.innerHTML = '<table class="roster-table roster-table-no-match">'
       + '<thead><tr><th style="width:62%">Name</th><th style="width:24%">Shift</th><th style="width:14%"></th></tr></thead>'
       + '<tbody>' + rows + '</tbody></table>';
   };
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ try{ renderRosterPanels(); }catch(e){} });
+    document.addEventListener('DOMContentLoaded', function(){ try{ renderRosterPanels(); }catch(e){} setTimeout(revealMonthlyTrainingPage, 40); });
   }else{
     try{ renderRosterPanels(); }catch(e){}
+    setTimeout(revealMonthlyTrainingPage, 40);
   }
 })();
 </script>
 </body>
 </html>
+
