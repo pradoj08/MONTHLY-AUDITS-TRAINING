@@ -15113,7 +15113,7 @@ window.addEventListener('load',function(){
     if(!btn) return;
     confirmRosterDelete(btn.getAttribute('data-roster-type') || 'trainings', btn.getAttribute('data-roster-id') || '', btn.getAttribute('data-roster-name') || '');
   };
-  window.monthlyTrainingViewMode = window.monthlyTrainingViewMode || 'matrix';
+  window.monthlyTrainingViewMode = 'matrix';
   window.monthlyTrainingHideCompleted = window.monthlyTrainingHideCompleted !== false;
   window.monthlyTrainingHideOjt = !!window.monthlyTrainingHideOjt;
   window.monthlyTrainingHideCheckedCourses = !!window.monthlyTrainingHideCheckedCourses;
