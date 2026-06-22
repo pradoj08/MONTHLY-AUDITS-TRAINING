@@ -14854,8 +14854,8 @@ window.addEventListener('load',function(){
       var codes = ['J1', 'J2', 'H1', 'H2'];
       return codes[index] || ('D' + (index + 1));
     }
-    function matrixTableHeadHtml(shiftTitle){
-      return '<div class="compliance-table-head" role="button" tabindex="0" title="Sort incomplete first" onclick="sortMonthlyTrainingMatrixHeader(event)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){sortMonthlyTrainingMatrixHeader(event);}"><span data-matrix-sort="incomplete">'+esc(shiftTitle || 'Shift')+'</span><span data-matrix-sort="incomplete">Off days</span><span class="compliance-head-docs" data-matrix-sort="incomplete">Review Course Codes</span><span data-matrix-sort="done" title="Sort most completed first">Done</span></div>';
+    function matrixTableHeadHtml(shiftTitle, doneLabel){
+      return '<div class="compliance-table-head" role="button" tabindex="0" title="Sort incomplete first" onclick="sortMonthlyTrainingMatrixHeader(event)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){sortMonthlyTrainingMatrixHeader(event);}"><span data-matrix-sort="incomplete">'+esc(shiftTitle || 'Shift')+'</span><span data-matrix-sort="incomplete">Off days</span><span class="compliance-head-docs" data-matrix-sort="incomplete">Review Course Codes</span><span data-matrix-sort="done" title="Sort most completed first">'+esc(doneLabel || 'Done')+'</span></div>';
     }
     var totalCells = 0;
     var completedCells = 0;
@@ -14890,13 +14890,14 @@ window.addEventListener('load',function(){
         rows.push({
           missingCount: missingCount,
           completeCount: completeCount,
+          requiredCount: requiredCount,
           html: '<div class="compliance-row'+(missingCount ? ' is-flagged' : ' is-complete')+'">'
           + '<div class="compliance-name">'+esc(row[0])+'</div>'
           + '<div class="compliance-off">'+esc(row[1] || '')+'</div>'
           + '<div class="compliance-docs">'
           + cells.map(function(cell){
               var label = cell.state === 'done' ? '&#10003;' : (cell.state === 'dash' ? '&minus;' : matrixDocCode(cell.index));
-              return '<div class="compliance-doc-cell'+matrixDocClass(cell.index)+' '+cell.state+'" role="button" tabindex="0" data-person="'+esc(row[0])+'" data-course="'+esc(cell.course)+'" data-base-state="'+cell.baseState+'" data-state="'+cell.state+'" title="'+esc(matrixDocCode(cell.index) + ' - ' + cell.course)+'" onclick="cycleMonthlyTrainingMatrixCell(this,event)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){cycleMonthlyTrainingMatrixCell(this,event);}">'+label+'</div>';
+              return '<div class="compliance-doc-cell'+matrixDocClass(cell.index)+' '+cell.state+'" role="button" tabindex="0" data-person="'+esc(row[0])+'" data-course="'+esc(cell.course)+'" data-course-note="'+esc(matrixDocCode(cell.index) + ' - ' + cell.course)+'" data-base-state="'+cell.baseState+'" data-state="'+cell.state+'" title="'+esc(matrixDocCode(cell.index) + ' - ' + cell.course)+'" onclick="cycleMonthlyTrainingMatrixCell(this,event)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){cycleMonthlyTrainingMatrixCell(this,event);}">'+label+'</div>';
             }).join('')
           + '</div>'
           + '<div class="compliance-done"><strong class="'+(missingCount ? 'warn' : 'ok')+'">'+completeCount+'/'+requiredCount+'</strong><span><i style="width:'+rowPct+'%"></i></span></div>'
@@ -14913,16 +14914,18 @@ window.addEventListener('load',function(){
             return 0;
           });
         }
+        var groupCompletedCells = rows.reduce(function(sum, row){ return sum + row.completeCount; }, 0);
+        var groupRequiredCells = rows.reduce(function(sum, row){ return sum + row.requiredCount; }, 0);
         rowsHtml += '<section class="compliance-shift-block">'
-          + matrixTableHeadHtml(group.title)
+          + matrixTableHeadHtml(group.title, 'Done ' + groupCompletedCells + '/' + groupRequiredCells)
           + rows.map(function(row){ return row.html; }).join('')
           + '</section>';
       }
     });
-    return '<div class="compliance-matrix'+(window.monthlyTrainingHideCompleted ? ' completed-hidden' : '')+'" style="--matrix-doc-count:'+courses.length+'">'
+    return '<div class="compliance-matrix'+(window.monthlyTrainingHideCompleted ? ' completed-hidden' : '')+(window.monthlyTrainingHideCheckedCourses ? ' checks-hidden' : '')+(courses.length > 6 ? ' many-courses' : '')+'" style="--matrix-doc-count:'+courses.length+'">'
       + '<div class="compliance-doc-key"><div class="compliance-doc-key-grid">'
       + courses.map(function(course, index){
-          return '<div class="compliance-doc-key-item"><span class="'+matrixDocClass(index).trim()+'">'+matrixDocCode(index)+'</span><strong>'+esc(course)+'</strong></div>';
+          return '<div class="compliance-doc-key-item"><span class="'+matrixDocClass(index).trim()+'" data-course-note="'+esc(matrixDocCode(index) + ' - ' + course)+'" title="'+esc(matrixDocCode(index) + ' - ' + course)+'">'+matrixDocCode(index)+'</span><strong>'+esc(course)+'</strong></div>';
         }).join('')
       + '</div></div>'
       + (rowsHtml || '<div class="roster-empty">No team members match the current filters.</div>')
@@ -15113,6 +15116,7 @@ window.addEventListener('load',function(){
   window.monthlyTrainingViewMode = window.monthlyTrainingViewMode || 'matrix';
   window.monthlyTrainingHideCompleted = window.monthlyTrainingHideCompleted !== false;
   window.monthlyTrainingHideOjt = !!window.monthlyTrainingHideOjt;
+  window.monthlyTrainingHideCheckedCourses = !!window.monthlyTrainingHideCheckedCourses;
   if(!window.__monthlyTrainingClearSyncGuard && typeof window.syncRosterFromSupabase === 'function'){
     window.__monthlyTrainingClearSyncGuard = true;
     var monthlyTrainingOriginalSync = window.syncRosterFromSupabase;
@@ -15148,6 +15152,10 @@ window.addEventListener('load',function(){
   };
   window.toggleMonthlyTrainingHideOjt = function(){
     window.monthlyTrainingHideOjt = !window.monthlyTrainingHideOjt;
+    try{ renderRosterTable('trainings'); }catch(e){}
+  };
+  window.toggleMonthlyTrainingHideCheckedCourses = function(){
+    window.monthlyTrainingHideCheckedCourses = !window.monthlyTrainingHideCheckedCourses;
     try{ renderRosterTable('trainings'); }catch(e){}
   };
   window.toggleTrainingFilterMenu = function(event){
@@ -15301,7 +15309,7 @@ window.addEventListener('load',function(){
     var displayControls = type === 'trainings' ? timesheetDisplayControls() : '';
     var viewLabel = window.monthlyTrainingViewMode === 'matrix' ? 'Matrix' : (window.monthlyTrainingViewMode === 'board' ? 'Board View' : (window.monthlyTrainingViewMode === 'course-board' ? 'Course Board' : 'Timesheet'));
     var dataMenu = '<div class="training-toolbar-menu-wrap"><button class="roster-filter-btn training-toolbar-menu-toggle" type="button">'+icon('upload')+'<span>Data</span><span aria-hidden="true">&#9662;</span></button><div class="training-toolbar-menu"><button class="training-toolbar-choice training-csv-toggle" onclick="openMonthlyTrainingCsvPicker()" type="button">'+icon('upload')+'<span>Import CSV</span></button><button class="training-toolbar-choice export-trainings-toggle" onclick="exportMonthlyTrainingBackup()" type="button">'+icon('download')+'<span>Export</span></button></div></div>';
-    var visibilityMenu = '<div class="training-toolbar-menu-wrap"><button class="roster-filter-btn training-toolbar-menu-toggle" type="button">'+icon('eye')+'<span>Visibility</span><span aria-hidden="true">&#9662;</span></button><div class="training-toolbar-menu"><button class="training-toolbar-choice hide-ojt-toggle'+(window.monthlyTrainingHideOjt?' active':'')+'" onclick="toggleMonthlyTrainingHideOjt()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideOjt?'Show OJT':'Hide OJT')+'</span></button><button class="training-toolbar-choice hide-completed-toggle'+(window.monthlyTrainingHideCompleted?' active':'')+'" onclick="toggleMonthlyTrainingHideCompleted()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideCompleted?'Show Completed':'Hide Completed')+'</span></button></div></div>';
+    var visibilityMenu = '<div class="training-toolbar-menu-wrap"><button class="roster-filter-btn training-toolbar-menu-toggle" type="button">'+icon('eye')+'<span>Visibility</span><span aria-hidden="true">&#9662;</span></button><div class="training-toolbar-menu"><button class="training-toolbar-choice hide-ojt-toggle'+(window.monthlyTrainingHideOjt?' active':'')+'" onclick="toggleMonthlyTrainingHideOjt()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideOjt?'Show OJT':'Hide OJT')+'</span></button><button class="training-toolbar-choice hide-completed-toggle'+(window.monthlyTrainingHideCompleted?' active':'')+'" onclick="toggleMonthlyTrainingHideCompleted()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideCompleted?'Show Completed':'Hide Completed')+'</span></button><button class="training-toolbar-choice hide-checked-courses-toggle'+(window.monthlyTrainingHideCheckedCourses?' active':'')+'" onclick="toggleMonthlyTrainingHideCheckedCourses()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideCheckedCourses?'Show Checked Courses':'Hide Checked Courses')+'</span></button></div></div>';
     var viewMenu = '<div class="training-toolbar-menu-wrap"><button class="roster-filter-btn training-toolbar-menu-toggle'+(window.monthlyTrainingViewMode === 'timesheet' ? ' active' : '')+'" type="button">'+icon('sheet')+'<span>View: '+viewLabel+'</span><span aria-hidden="true">&#9662;</span></button><div class="training-toolbar-menu"><button class="training-toolbar-choice timesheet-toggle'+(window.monthlyTrainingViewMode === 'timesheet'?' active':'')+'" onclick="toggleMonthlyTrainingTimesheet()" type="button">'+icon('sheet')+'<span>Timesheet</span></button><button class="training-toolbar-choice matrix-toggle'+(window.monthlyTrainingViewMode === 'matrix'?' active':'')+'" onclick="toggleMonthlyTrainingMatrix()" type="button">'+icon('sheet')+'<span>Matrix</span></button><button class="training-toolbar-choice course-board-toggle'+(window.monthlyTrainingViewMode === 'course-board'?' active':'')+'" onclick="toggleMonthlyTrainingCourseBoard()" type="button">'+icon('board')+'<span>Course Board</span></button><button class="training-toolbar-choice kanban-toggle'+(window.monthlyTrainingViewMode === 'board'?' active':'')+'" onclick="toggleMonthlyTrainingKanban()" type="button">'+icon('board')+'<span>Board View</span></button></div></div>';
     var kanbanButton = type === 'trainings'
       ? '<span class="roster-filter-spacer"></span>'+shiftButtons+'<button class="roster-filter-btn print-timesheet-toggle" onclick="printMonthlyTimesheet()" type="button">'+icon('print')+'<span>Print</span></button>'+dataMenu+'<button class="roster-filter-btn edit-courses-toggle" onclick="openCourseManagerModal()" type="button">'+icon('edit')+'<span>Edit Courses</span></button><button class="roster-filter-btn training-clear-toggle'+(window.monthlyTrainingClearConfirm?' active':'')+'" onclick="clearAllMonthlyTrainings()" type="button">'+icon('clear')+'<span>'+(window.monthlyTrainingClearConfirm?'Confirm Clear':'Clear All')+'</span></button>'+visibilityMenu+viewMenu
@@ -16110,6 +16118,9 @@ window.addEventListener('load',function(){
     grid-template-columns:repeat(2,minmax(0,1fr)) !important;
     gap:12px 28px !important;
   }
+  #page-audits .compliance-matrix.many-courses .compliance-doc-key-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
   #page-audits .compliance-doc-key-item{
     display:grid !important;
     grid-template-columns:50px minmax(0,1fr) !important;
@@ -16118,6 +16129,7 @@ window.addEventListener('load',function(){
   }
   #page-audits .compliance-doc-key-item span,
   #page-audits .compliance-table-head b{
+    position:relative !important;
     min-width:44px !important;
     height:32px !important;
     display:inline-flex !important;
@@ -16167,6 +16179,10 @@ window.addEventListener('load',function(){
     justify-self:center !important;
     text-align:center !important;
   }
+  #page-audits .compliance-table-head > span:first-child{
+    justify-self:start !important;
+    text-align:left !important;
+  }
   #page-audits .compliance-head-docs{
     display:flex !important;
     align-items:center !important;
@@ -16208,6 +16224,16 @@ window.addEventListener('load',function(){
     border-bottom:1px solid #edf0f5 !important;
     background:#fff !important;
   }
+  #page-audits .compliance-matrix.checks-hidden .compliance-table-head,
+  #page-audits .compliance-matrix.checks-hidden .compliance-row{
+    grid-template-columns:minmax(130px,.8fr) minmax(82px,.55fr) minmax(420px,2.7fr) minmax(105px,.65fr) !important;
+  }
+  #page-audits .compliance-matrix.checks-hidden.many-courses .compliance-row{
+    height:var(--matrix-row-height,58px) !important;
+    min-height:0 !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+  }
   #page-audits .compliance-row.is-flagged{
     background:#fff6f6 !important;
     box-shadow:inset 4px 0 0 #ef4444 !important;
@@ -16235,7 +16261,24 @@ window.addEventListener('load',function(){
     justify-content:center !important;
     gap:var(--matrix-cell-gap,12px) !important;
   }
+  #page-audits .compliance-matrix.checks-hidden .compliance-docs{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex-wrap:nowrap !important;
+    gap:6px !important;
+    min-width:0 !important;
+    overflow:visible !important;
+  }
+  #page-audits .compliance-matrix.checks-hidden.many-courses .compliance-docs{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex-wrap:nowrap !important;
+    gap:6px !important;
+  }
   #page-audits .compliance-doc-cell{
+    position:relative !important;
     width:var(--matrix-cell-size,44px) !important;
     height:var(--matrix-cell-size,44px) !important;
     display:inline-flex !important;
@@ -16247,15 +16290,78 @@ window.addEventListener('load',function(){
     cursor:pointer !important;
     user-select:none !important;
   }
+  #page-audits .compliance-matrix.checks-hidden .compliance-doc-cell{
+    width:clamp(28px, calc(var(--matrix-cell-size,44px) - 8px), 36px) !important;
+    height:clamp(26px, calc(var(--matrix-cell-size,44px) - 10px), 34px) !important;
+    border-radius:9px !important;
+    font-size:clamp(13px, calc(var(--matrix-cell-font-size,24px) - 5px), 19px) !important;
+  }
+  #page-audits .compliance-matrix.checks-hidden.many-courses .compliance-doc-cell{
+    width:clamp(24px, calc(var(--matrix-cell-size,44px) - 12px), 32px) !important;
+    height:clamp(24px, calc(var(--matrix-cell-size,44px) - 12px), 32px) !important;
+    font-size:clamp(12px, calc(var(--matrix-cell-font-size,24px) - 7px), 17px) !important;
+  }
   #page-audits .compliance-doc-cell:hover,
   #page-audits .compliance-doc-cell:focus{
     outline:2px solid rgba(37,99,235,.35) !important;
     outline-offset:1px !important;
   }
+  #page-audits .compliance-doc-key-item span[data-course-note]::after,
+  #page-audits .compliance-doc-cell[data-course-note]::after{
+    content:attr(data-course-note) !important;
+    position:absolute !important;
+    left:50% !important;
+    bottom:calc(100% + 10px) !important;
+    z-index:50 !important;
+    width:max-content !important;
+    max-width:280px !important;
+    padding:8px 10px !important;
+    border-radius:8px !important;
+    background:#111827 !important;
+    color:#fff !important;
+    box-shadow:0 12px 28px rgba(15,23,42,.24) !important;
+    font:800 12px/1.25 Inter,"IBM Plex Sans",Arial,sans-serif !important;
+    letter-spacing:0 !important;
+    text-align:left !important;
+    white-space:normal !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+    transform:translate(-50%,4px) !important;
+    transition:opacity .14s ease, transform .14s ease !important;
+  }
+  #page-audits .compliance-doc-key-item span[data-course-note]::before,
+  #page-audits .compliance-doc-cell[data-course-note]::before{
+    content:"" !important;
+    position:absolute !important;
+    left:50% !important;
+    bottom:calc(100% + 4px) !important;
+    z-index:51 !important;
+    border:6px solid transparent !important;
+    border-top-color:#111827 !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+    transform:translate(-50%,4px) !important;
+    transition:opacity .14s ease, transform .14s ease !important;
+  }
+  #page-audits .compliance-doc-key-item span[data-course-note]:hover::after,
+  #page-audits .compliance-doc-key-item span[data-course-note]:focus::after,
+  #page-audits .compliance-doc-cell[data-course-note]:hover::after,
+  #page-audits .compliance-doc-cell[data-course-note]:focus::after,
+  #page-audits .compliance-doc-key-item span[data-course-note]:hover::before,
+  #page-audits .compliance-doc-key-item span[data-course-note]:focus::before,
+  #page-audits .compliance-doc-cell[data-course-note]:hover::before,
+  #page-audits .compliance-doc-cell[data-course-note]:focus::before{
+    opacity:1 !important;
+    transform:translate(-50%,0) !important;
+  }
   #page-audits .compliance-doc-cell.missing{
     border:0 !important;
     opacity:1 !important;
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.45) !important;
+  }
+  #page-audits .compliance-matrix.checks-hidden .compliance-doc-cell.done{
+    display:none !important;
+    pointer-events:none !important;
   }
   #page-audits .compliance-done{
     width:100% !important;
