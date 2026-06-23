@@ -9496,8 +9496,18 @@ function bestEmployeeMatch(name){
   return candidates[0].emp;
 }
 
+function normalizeRosterShiftValue(shift){
+  var raw = String(shift == null ? '' : shift).trim();
+  var text = raw.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  if(raw === 'Day' || text === 'day' || text === '1st' || text === '1st shift' || text === 'first' || text === 'first shift') return 'Day';
+  if(raw === 'Night' || text === 'night' || text === '2nd' || text === '2nd shift' || text === 'second' || text === 'second shift') return 'Night';
+  if(raw === 'Gate' || text === 'gate' || text === 'gate clerk' || text === 'gate clerks') return 'Gate';
+  if(raw === 'Other' || text === 'other' || text === 'manager' || text === 'managers' || text === 'mechanic' || text === 'mechanics' || text === 'managers mechanics') return 'Other';
+  return 'Other';
+}
+
 function bucketFromShift(shift){
-  return shift === 'Day' ? 'Day' : (shift === 'Night' ? 'Night' : 'Other');
+  return normalizeRosterShiftValue(shift);
 }
 
 function normalizeRosterType(type){
@@ -9655,11 +9665,13 @@ function buildRosterItems(names){
 }
 
 function countsByShift(items){
+  function itemShift(item){ return normalizeRosterShiftValue(item && item.shift); }
   return {
     all: items.length,
-    Day: items.filter(function(i){ return i.shift === 'Day'; }).length,
-    Night: items.filter(function(i){ return i.shift === 'Night'; }).length,
-    Other: items.filter(function(i){ return i.shift === 'Other'; }).length
+    Day: items.filter(function(i){ return itemShift(i) === 'Day'; }).length,
+    Night: items.filter(function(i){ return itemShift(i) === 'Night'; }).length,
+    Gate: items.filter(function(i){ return itemShift(i) === 'Gate'; }).length,
+    Other: items.filter(function(i){ return itemShift(i) === 'Other'; }).length
   };
 }
 
@@ -9683,23 +9695,49 @@ function rosterItemWorksToday(item){
 
 function normalizeRosterFilterState(filter){
   // Backward compatible: older builds stored this as a single string.
-  if(!filter) return { shift: 'all', working: false };
-  if(typeof filter === 'string'){
-    if(filter === 'working') return { shift: 'all', working: true };
-    if(filter === 'Day' || filter === 'Night' || filter === 'Other') return { shift: filter, working: false };
-    return { shift: 'all', working: false };
+  var valid = { Day:true, Night:true, Gate:true, Other:true };
+  function normalizeShift(value){
+    return normalizeRosterShiftValue(value);
   }
-  return {
-    shift: filter.shift || 'all',
-    working: !!filter.working
-  };
+  function cleanShifts(values){
+    var seen = {};
+    var out = [];
+    (values || []).forEach(function(value){
+      value = normalizeShift(value);
+      if(valid[value] && !seen[value]){
+        seen[value] = true;
+        out.push(value);
+      }
+    });
+    return out;
+  }
+  function makeState(shifts, working){
+    shifts = cleanShifts(shifts);
+    return {
+      shift: shifts.length === 1 ? shifts[0] : (shifts.length ? 'multi' : 'all'),
+      shifts: shifts,
+      working: !!working
+    };
+  }
+  if(!filter) return makeState([], false);
+  if(typeof filter === 'string'){
+    if(filter === 'working') return makeState([], true);
+    if(valid[normalizeShift(filter)]) return makeState([normalizeShift(filter)], false);
+    return makeState([], false);
+  }
+  return makeState(Array.isArray(filter.shifts) ? filter.shifts : (valid[normalizeShift(filter.shift)] ? [normalizeShift(filter.shift)] : []), filter.working);
+}
+
+function rosterFilterAllowsShift(filter, shift){
+  var state = normalizeRosterFilterState(filter);
+  return !state.shifts.length || state.shifts.indexOf(normalizeRosterShiftValue(shift)) !== -1;
 }
 
 function filterRosterItems(items, filter){
   var state = normalizeRosterFilterState(filter);
   var out = items.slice();
-  if(state.shift && state.shift !== 'all'){
-    out = out.filter(function(i){ return i.shift === state.shift; });
+  if(state.shifts.length){
+    out = out.filter(function(i){ return state.shifts.indexOf(normalizeRosterShiftValue(i.shift)) !== -1; });
   }
   if(state.working){
     out = out.filter(rosterItemWorksToday);
@@ -9728,7 +9766,15 @@ function setRosterFilter(type, filter){
   if(filter === 'working'){
     state.working = !state.working;
   } else {
-    state.shift = filter || 'all';
+    if(filter === 'all' || !filter){
+      state.shifts = [];
+      state.working = false;
+    }else{
+      var idx = state.shifts.indexOf(filter);
+      if(idx === -1) state.shifts.push(filter);
+      else state.shifts.splice(idx, 1);
+    }
+    state.shift = state.shifts.length === 1 ? state.shifts[0] : (state.shifts.length ? 'multi' : 'all');
   }
   rosterFilters[key] = state;
   renderRosterPanels();
@@ -9858,10 +9904,11 @@ function renderRosterTable(type){
   }
 
   var rows = filtered.map(function(item){
-    var shiftClass = item.shift === 'Day' ? 'roster-pill-day' : (item.shift === 'Night' ? 'roster-pill-night' : 'roster-pill-other');
+    var normalizedShift = normalizeRosterShiftValue(item.shift);
+    var shiftClass = normalizedShift === 'Day' ? 'roster-pill-day' : (normalizedShift === 'Night' ? 'roster-pill-night' : 'roster-pill-other');
     return '<tr>'
       + '<td><span class="roster-name">'+item.name+'</span></td>'
-      + '<td><span class="roster-pill '+shiftClass+'">'+item.shift+'</span></td>'
+      + '<td><span class="roster-pill '+shiftClass+'">'+monthlyTrainingShiftDisplayLabel(normalizedShift)+'</span></td>'
       + '<td><button type="button" class="roster-action-btn roster-delete-btn" data-roster-type="'+key+'" data-roster-id="'+String(item.id).replace(/"/g,'&quot;')+'">Delete</button></td>'
       + '</tr>';
   }).join('');
@@ -11065,7 +11112,7 @@ window.addEventListener('load',function(){
     var emp = null;
     try{ emp = typeof bestEmployeeMatch === 'function' ? bestEmployeeMatch(name) : null; }catch(e){}
     var shift = 'Other';
-    try{ shift = typeof bucketFromShift === 'function' ? bucketFromShift(emp ? emp.shift : 'Other') : (emp && (emp.shift === 'Day' || emp.shift === 'Night') ? emp.shift : 'Other'); }catch(e){}
+    try{ shift = typeof normalizeRosterShiftValue === 'function' ? normalizeRosterShiftValue(emp ? emp.shift : 'Other') : 'Other'; }catch(e){}
     return {
       id: 'rs_' + Date.now().toString(36) + '_' + idx + '_' + Math.random().toString(36).slice(2,8),
       name: name,
@@ -11793,6 +11840,7 @@ window.addEventListener('load',function(){
   }
   #page-audits .filter-dot-day{background:#f59e0b;}
   #page-audits .filter-dot-night{background:#3b82f6;}
+  #page-audits .filter-dot-gate{background:#16a34a;}
   #page-audits .filter-dot-other{background:#7c3aed;}
   #page-audits .filter-star{color:#059669;display:inline-flex;}
   #page-audits .training-filter-menu-wrap{
@@ -13708,7 +13756,8 @@ window.addEventListener('load',function(){
     return ((parts[0][0] || '') + (parts.length > 1 ? (parts[parts.length - 1][0] || '') : '')).toUpperCase();
   }
   function shiftKey(shift){
-    return shift === 'Day' ? 'day' : (shift === 'Night' ? 'night' : 'other');
+    shift = normalizeRosterShiftValue(shift);
+    return shift === 'Day' ? 'day' : (shift === 'Night' ? 'night' : (shift === 'Gate' ? 'gate' : 'other'));
   }
   function icon(name){
     if(name === 'users') return '<svg viewBox="0 0 24 24" class="monthly-summary-icon" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
@@ -13726,6 +13775,7 @@ window.addEventListener('load',function(){
     if(name === 'print') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>';
     if(name === 'download') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>';
     if(name === 'upload') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>';
+    if(name === 'qr') return '<svg viewBox="0 0 24 24" class="filter-board-icon" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"/><path d="M14 14h2v2h-2zM18 14h2v6h-2zM14 18h2v2h-2z"/></svg>';
     return '';
   }
   var TIMESHEET_DISPLAY_STORAGE_KEY = 'monthly_training_display_settings_v1';
@@ -13872,7 +13922,12 @@ window.addEventListener('load',function(){
     ]}
   ];
   function monthlyTrainingShiftDisplayLabel(shift){
-    return String(shift || '') === 'Other' ? 'Managers/Mechanics' : (shift || 'Managers/Mechanics');
+    if(Array.isArray(shift)) return shift.map(monthlyTrainingShiftDisplayLabel).join(', ');
+    shift = normalizeRosterShiftValue(shift);
+    if(shift === 'Day') return '1ST SHIFT';
+    if(shift === 'Night') return '2ND SHIFT';
+    if(shift === 'Gate') return 'Gate';
+    return 'Managers/Mechanics';
   }
   function nameKey(name){
     var clean = String(name || '')
@@ -14336,7 +14391,8 @@ window.addEventListener('load',function(){
       saveRosterCacheOnly('trainings', payload);
       try{ if(window.rosterLastUpdated) rosterLastUpdated.trainings = payload.updated_at; }catch(e){}
       rosterFilters.trainings = { shift:'all', working:false };
-      window.monthlyTrainingViewMode = 'timesheet';
+      window.monthlyTrainingViewMode = window.monthlyTrainingImportReturnView || window.monthlyTrainingViewMode || 'matrix';
+      delete window.monthlyTrainingImportReturnView;
       window.monthlyTrainingHideCompleted = true;
       window.monthlyTrainingCsvReviewItems = [];
       closeRosterModal();
@@ -14346,13 +14402,14 @@ window.addEventListener('load',function(){
         console.warn('CSV remote save failed', err);
       });
       try{ logActivity('notes','Imported <strong>Monthly Training CSV</strong>', items.length + ' missing assignment(s) found'); }catch(e){}
-      alert('Imported ' + items.length + ' missing course assignment(s) to the timesheet.');
+      alert('Imported ' + items.length + ' missing course assignment(s).');
     }catch(err){
       alert('CSV import failed: ' + (err && err.message ? err.message : err));
       throw err;
     }
   };
   window.openMonthlyTrainingCsvPicker = function(){
+    window.monthlyTrainingImportReturnView = window.monthlyTrainingViewMode || 'matrix';
     var input = document.getElementById('monthly-training-csv-file');
     if(!input){
       input = document.createElement('input');
@@ -14475,6 +14532,8 @@ window.addEventListener('load',function(){
     try{
       await saveRosterList('trainings', { items: dedupeTrainingItems(items) });
       rosterFilters.trainings = { shift:'all', working:false };
+      window.monthlyTrainingViewMode = window.monthlyTrainingImportReturnView || window.monthlyTrainingViewMode || 'matrix';
+      delete window.monthlyTrainingImportReturnView;
       window.monthlyTrainingImportBatches = [];
       closeRosterModal();
       await renderRosterPanels();
@@ -14683,6 +14742,7 @@ window.addEventListener('load',function(){
     document.addEventListener('click', handleMissingCourseEditEvent, true);
   }
   window.openTrainingImportModal = function(){
+    window.monthlyTrainingImportReturnView = window.monthlyTrainingViewMode || 'matrix';
     var bg = document.getElementById('roster-modal-bg');
     var modal = bg ? bg.querySelector('.modal') : null;
     if(!bg || !modal) return;
@@ -14710,14 +14770,16 @@ window.addEventListener('load',function(){
   };
   function timesheetRosterShift(name, items){
     var key = nameKey(name);
-    for(var i=0;i<items.length;i++){
-      if(nameKey(items[i].name) === key) return items[i].shift || 'Other';
-    }
-    if(key === nameKey('Candace Warren') || key === nameKey('Connie Johnson') || key === nameKey('Jarade Douglas') || key === nameKey('Gregory Watson II') || key === nameKey('Bryce Alexander') || key === nameKey('Naomisha Hunt') || key === nameKey('Ramacacondra Pratt') || key === nameKey('Kane Cabral') || key === nameKey('Tavares Gariet')) return 'Other';
+    if(key === nameKey('Candace Warren') || key === nameKey('Connie Johnson') || key === nameKey('Jarade Douglas') || key === nameKey('Gregory Watson II') || key === nameKey('Bryce Alexander') || key === nameKey('Naomisha Hunt') || key === nameKey('Ramacacondra Pratt') || key === nameKey('Kane Cabral') || key === nameKey('Tavares Gariet')) return 'Gate';
+    if(key === nameKey('Jacob Prado') || key === nameKey('Jakabris Williams') || key === nameKey('Neal Profit') || key === nameKey('Jesus Macias') || key === nameKey('Jarvis Atkins') || key === nameKey('Dave Augustine') || key === nameKey('Shannon Howard') || key === nameKey('Michael Stewart') || key === nameKey('Mike Stewart')) return 'Other';
     var secondShift = [
       'Benavides Robert','Bookman Derrell','Brown Brandy','Caceres Virula Victor','Carruthers Timothy','Contrerras Marco','Delgado Jose','Echendu Chimenjem','Gilder Rufus II','Hopkins Alexander','Hosey Kevin','Johnson Messiah','Keme Aweri Jr.','Mejia Aaron','Tingle Jason','Urtado Ernest'
     ];
-    return secondShift.some(function(n){ return key === nameKey(n); }) ? 'Night' : 'Day';
+    if(secondShift.some(function(n){ return key === nameKey(n); })) return 'Night';
+    for(var i=0;i<items.length;i++){
+      if(nameKey(items[i].name) === key) return normalizeRosterShiftValue(items[i].shift || 'Other');
+    }
+    return 'Day';
   }
   function renderTimesheet(items, filterState){
     filterState = normalizeRosterFilterState(filterState || {});
@@ -14739,7 +14801,7 @@ window.addEventListener('load',function(){
       var count = 0;
       group.rows.forEach(function(row){
         var rowShift = timesheetRosterShift(row[0], items);
-        if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return;
+        if(!rosterFilterAllowsShift(filterState, rowShift)) return;
         if(visibleMissingList(row).length) count++;
       });
       return count;
@@ -14755,9 +14817,9 @@ window.addEventListener('load',function(){
       var visibleRows = 0;
       group.rows.forEach(function(row){
         var rowShift = timesheetRosterShift(row[0], items);
-        if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return;
+        if(!rosterFilterAllowsShift(filterState, rowShift)) return;
         var missingList = visibleMissingList(row);
-        if(window.monthlyTrainingHideCompleted && !missingList.length) return;
+        if(monthlyTrainingHideCompletedForFilter(filterState) && !missingList.length) return;
         visibleRows++;
         var missingHtml = missingList.length
           ? '<div class="missing-chip-stack">' + missingList.map(function(label){ return '<span class="missing-chip'+courseChipClass(label)+'" data-course="'+esc(label)+'" title="'+esc(label)+'"><span>'+esc(label)+'</span><button type="button" class="missing-chip-remove" data-person="'+esc(row[0])+'" data-course="'+esc(label)+'" title="Remove this course from this person" onclick="removeMissingCourseFromChip(this,event)">&times;</button></span>'; }).join('') + '</div>'
@@ -14801,6 +14863,95 @@ window.addEventListener('load',function(){
   function saveMatrixCellStates(states){
     try{ localStorage.setItem(MATRIX_CELL_STATE_KEY, JSON.stringify(states || {})); }catch(e){}
   }
+  var MONTHLY_TRAINING_QR_KEY = 'monthly_training_qr_codes_v1';
+  function readMonthlyTrainingQrCodes(){
+    try{
+      var parsed = JSON.parse(localStorage.getItem(MONTHLY_TRAINING_QR_KEY) || '[]');
+      return Array.isArray(parsed) ? parsed.filter(function(item){ return item && item.src; }).slice(0, 4) : [];
+    }catch(e){
+      return [];
+    }
+  }
+  function saveMonthlyTrainingQrCodes(codes){
+    try{ localStorage.setItem(MONTHLY_TRAINING_QR_KEY, JSON.stringify((codes || []).slice(0, 4))); }catch(e){}
+  }
+  function monthlyTrainingQrEnabled(){
+    return !!window.monthlyTrainingQrReplaceMode;
+  }
+  function monthlyTrainingQrAllowedForShift(filterState, shift){
+    return rosterFilterAllowsShift(filterState, shift);
+  }
+  function monthlyTrainingHideCompletedForFilter(filterState){
+    filterState = normalizeRosterFilterState(filterState || {});
+    return !!window.monthlyTrainingHideCompleted && !filterState.shifts.length;
+  }
+  function renderMonthlyTrainingQrTiles(context){
+    var codes = readMonthlyTrainingQrCodes();
+    var body = codes.length
+      ? codes.map(function(code, index){
+          return '<div class="monthly-training-qr-tile"><img src="'+esc(code.src)+'" alt="'+esc(code.label || ('QR Code ' + (index + 1)))+'"><span>'+esc(code.label || ('QR Code ' + (index + 1)))+'</span></div>';
+        }).join('')
+      : '<div class="monthly-training-qr-empty">Upload up to 4 QR codes</div>';
+    return '<div class="monthly-training-qr-panel '+(context || '')+'"><div class="monthly-training-qr-grid">'+body+'</div></div>';
+  }
+  window.toggleMonthlyTrainingQrReplacement = function(){
+    window.monthlyTrainingQrReplaceMode = !window.monthlyTrainingQrReplaceMode;
+    try{ localStorage.setItem('monthly_training_qr_replace_mode_v1', window.monthlyTrainingQrReplaceMode ? '1' : '0'); }catch(e){}
+    try{ renderRosterTable('trainings'); }catch(e){}
+  };
+  function readMonthlyTrainingQrFile(file){
+    return new Promise(function(resolve, reject){
+      var reader = new FileReader();
+      reader.onload = function(){ resolve(String(reader.result || '')); };
+      reader.onerror = function(){ reject(reader.error || new Error('Unable to read QR image.')); };
+      reader.readAsDataURL(file);
+    });
+  }
+  function getMonthlyTrainingQrInput(){
+    var input = document.getElementById('monthly-training-qr-upload-input');
+    if(!input){
+      input = document.createElement('input');
+      input.id = 'monthly-training-qr-upload-input';
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.multiple = true;
+      input.style.position = 'fixed';
+      input.style.left = '-9999px';
+      input.style.top = '0';
+      input.style.width = '1px';
+      input.style.height = '1px';
+      document.body.appendChild(input);
+      input.addEventListener('change', async function(){
+        var files = Array.prototype.slice.call(input.files || []).filter(function(file){
+          return file && (!file.type || String(file.type).indexOf('image/') === 0);
+        }).slice(0, 4);
+        input.value = '';
+        if(!files.length) return;
+        var codes = [];
+        for(var index = 0; index < files.length; index++){
+          var file = files[index];
+          try{
+            var fallback = file.name ? file.name.replace(/\.[^.]+$/, '') : ('QR Code ' + (index + 1));
+            var label = window.prompt('Label for QR code ' + (index + 1), fallback);
+            var src = await readMonthlyTrainingQrFile(file);
+            codes.push({ label: (label || fallback || ('QR Code ' + (index + 1))).trim(), src: src });
+          }catch(err){
+            console.warn('QR upload failed', err);
+          }
+        }
+        saveMonthlyTrainingQrCodes(codes.filter(function(code){ return code && code.src; }).slice(0, 4));
+        window.monthlyTrainingQrReplaceMode = true;
+        try{ localStorage.setItem('monthly_training_qr_replace_mode_v1', '1'); }catch(e){}
+        try{ renderRosterTable('trainings'); }catch(e){}
+      });
+    }
+    return input;
+  }
+  window.uploadMonthlyTrainingQrCodes = function(){
+    var input = getMonthlyTrainingQrInput();
+    input.value = '';
+    input.click();
+  };
   function matrixCellStateFor(states, person, course, baseState){
     var state = states[matrixCellStateKey(person, course)];
     return state === 'done' || state === 'dash' || state === 'missing' ? state : baseState;
@@ -14863,13 +15014,34 @@ window.addEventListener('load',function(){
     var totalFlagged = 0;
     var rowsHtml = '';
     var cellStates = getMatrixCellStates();
+    var qrBlockInserted = false;
     getTimesheetGroups(items).forEach(function(group){
+      var groupTitle = String(group.title || '').toUpperCase();
+      if(monthlyTrainingQrEnabled() && groupTitle.indexOf('GATE') !== -1){
+        if(!qrBlockInserted){
+          if(monthlyTrainingQrAllowedForShift(filterState, 'Gate')){
+            rowsHtml += renderMonthlyTrainingQrTiles('matrix-qr-panel');
+            qrBlockInserted = true;
+          }
+        }
+        return;
+      }
+      var groupRows = group.rows || [];
+      if(monthlyTrainingQrEnabled() && groupTitle.indexOf('MANAGERS/MECHANICS') !== -1){
+        if(!qrBlockInserted){
+          if(monthlyTrainingQrAllowedForShift(filterState, 'Other')){
+            rowsHtml += renderMonthlyTrainingQrTiles('matrix-qr-panel');
+            qrBlockInserted = true;
+          }
+        }
+        return;
+      }
       var rows = [];
       var groupComplete = 0;
       var groupFlagged = 0;
-      group.rows.forEach(function(row){
+      groupRows.forEach(function(row){
         var rowShift = timesheetRosterShift(row[0], items);
-        if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return;
+        if(!rosterFilterAllowsShift(filterState, rowShift)) return;
         if(filterState.working && !rosterItemWorksToday({ name:row[0], employee:row[0], shift:rowShift })) return;
         var courseMap = missingByName[nameKey(row[0])] || {};
         var cells = courses.map(function(course, index){
@@ -14880,7 +15052,7 @@ window.addEventListener('load',function(){
         var requiredCount = cells.reduce(function(sum, cell){ return sum + (cell.state === 'dash' ? 0 : 1); }, 0);
         var completeCount = cells.reduce(function(sum, cell){ return sum + (cell.state === 'done' ? 1 : 0); }, 0);
         var missingCount = cells.reduce(function(sum, cell){ return sum + (cell.state === 'missing' ? 1 : 0); }, 0);
-        if(window.monthlyTrainingHideCompleted && !missingCount) return;
+        if(monthlyTrainingHideCompletedForFilter(filterState) && !missingCount) return;
         var rowPct = requiredCount ? Math.round((completeCount / requiredCount) * 100) : 100;
         shownPeople++;
         totalFlagged += missingCount ? 1 : 0;
@@ -15018,7 +15190,7 @@ window.addEventListener('load',function(){
         var rowShift = groupShift;
         var rowKey = nameKey(row[0]);
         if(rowKey === nameKey('Jakabris Williams') || rowKey === nameKey('Jesus Macias')) rowShift = 'Other';
-        if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return;
+        if(!rosterFilterAllowsShift(filterState, rowShift)) return;
         if(filterState.working && !rosterItemWorksToday({ name:row[0], employee:row[0], shift:rowShift })) return;
         var personKey = rowKey;
         items.forEach(function(item){
@@ -15038,9 +15210,11 @@ window.addEventListener('load',function(){
     var courses = orderCourseBoardCourses(Object.keys(courseMap));
     if(!courses.length) return '<div class="roster-empty">No missing courses match the current filters.</div>';
     function courseBoardShiftRank(shift){
+      shift = normalizeRosterShiftValue(shift);
       return shift === 'Day' ? 1 : (shift === 'Night' ? 2 : (shift === 'Gate' ? 3 : 4));
     }
     function courseBoardShiftClass(shift){
+      shift = normalizeRosterShiftValue(shift);
       return shift === 'Day' ? ' first-shift' : (shift === 'Night' ? ' second-shift' : (shift === 'Gate' ? ' gate-shift' : ' other-shift'));
     }
     function courseBoardIsPurple(person){
@@ -15051,10 +15225,11 @@ window.addEventListener('load',function(){
       return courseBoardIsPurple(person) ? ' purple-shift' : '';
     }
     function courseBoardBucket(person){
+      var shift = normalizeRosterShiftValue(person && person.shift);
       if(courseBoardIsPurple(person)) return 'purple';
-      if(person.shift === 'Day') return 'first';
-      if(person.shift === 'Night') return 'second';
-      if(person.shift === 'Gate') return 'gate';
+      if(shift === 'Day') return 'first';
+      if(shift === 'Night') return 'second';
+      if(shift === 'Gate') return 'gate';
       return 'other';
     }
     function renderCourseBoardGroup(label, bucket, people){
@@ -15072,14 +15247,20 @@ window.addEventListener('load',function(){
             var rankDiff = courseBoardShiftRank(a.shift) - courseBoardShiftRank(b.shift);
             return rankDiff || a.name.localeCompare(b.name);
           });
+          var visiblePeople = monthlyTrainingQrEnabled()
+            ? people.filter(function(person){
+                var bucket = courseBoardBucket(person);
+                return bucket === 'first' || bucket === 'second';
+              })
+            : people;
+          var showQrPanel = monthlyTrainingQrEnabled() && (monthlyTrainingQrAllowedForShift(filterState, 'Gate') || monthlyTrainingQrAllowedForShift(filterState, 'Other'));
           return '<article class="monthly-course-card'+courseChipClass(course)+'" draggable="true" data-course="'+esc(course)+'" ondragstart="courseBoardDragStart(event)" ondragover="courseBoardDragOver(event)" ondrop="courseBoardDrop(event)" ondragend="courseBoardDragEnd(event)">'
-            + '<div class="monthly-course-card-head"><div class="monthly-course-card-title">'+esc(course)+'</div><div class="monthly-course-card-count">'+people.length+'</div></div>'
+            + '<div class="monthly-course-card-head"><div class="monthly-course-card-title">'+esc(course)+'</div><div class="monthly-course-card-count">'+visiblePeople.length+'</div></div>'
             + '<div class="monthly-course-card-names">'
-            + renderCourseBoardGroup('1ST SHIFT', 'first', people.filter(function(person){ return courseBoardBucket(person) === 'first'; }))
-            + renderCourseBoardGroup('2ND SHIFT', 'second', people.filter(function(person){ return courseBoardBucket(person) === 'second'; }))
-            + renderCourseBoardGroup('GATE', 'gate', people.filter(function(person){ return courseBoardBucket(person) === 'gate'; }))
-            + renderCourseBoardGroup('MECHANICS', 'mechanics', people.filter(function(person){ return courseBoardBucket(person) === 'purple'; }))
-            + renderCourseBoardGroup('MANAGERS', 'purple', people.filter(function(person){ return courseBoardBucket(person) === 'other'; }))
+            + renderCourseBoardGroup('1ST SHIFT', 'first', visiblePeople.filter(function(person){ return courseBoardBucket(person) === 'first'; }))
+            + renderCourseBoardGroup('2ND SHIFT', 'second', visiblePeople.filter(function(person){ return courseBoardBucket(person) === 'second'; }))
+            + (showQrPanel ? renderMonthlyTrainingQrTiles('course-board-qr-panel') : renderCourseBoardGroup('GATE', 'gate', people.filter(function(person){ return courseBoardBucket(person) === 'gate'; })) + renderCourseBoardGroup('MECHANICS', 'mechanics', people.filter(function(person){ return courseBoardBucket(person) === 'purple'; })))
+            + (monthlyTrainingQrEnabled() ? '' : renderCourseBoardGroup('MANAGERS', 'purple', people.filter(function(person){ return courseBoardBucket(person) === 'other'; })))
             + '</div>'
             + '</article>';
         }).join('')
@@ -15117,6 +15298,7 @@ window.addEventListener('load',function(){
   window.monthlyTrainingHideCompleted = window.monthlyTrainingHideCompleted !== false;
   window.monthlyTrainingHideOjt = !!window.monthlyTrainingHideOjt;
   window.monthlyTrainingHideCheckedCourses = !!window.monthlyTrainingHideCheckedCourses;
+  try{ window.monthlyTrainingQrReplaceMode = localStorage.getItem('monthly_training_qr_replace_mode_v1') === '1'; }catch(e){ window.monthlyTrainingQrReplaceMode = !!window.monthlyTrainingQrReplaceMode; }
   if(!window.__monthlyTrainingClearSyncGuard && typeof window.syncRosterFromSupabase === 'function'){
     window.__monthlyTrainingClearSyncGuard = true;
     var monthlyTrainingOriginalSync = window.syncRosterFromSupabase;
@@ -15176,14 +15358,22 @@ window.addEventListener('load',function(){
       event.preventDefault();
       event.stopPropagation();
       if(event.stopImmediatePropagation) event.stopImmediatePropagation();
+      if(event.type === 'click' && window.__trainingChoicePointerGuard && Date.now() < window.__trainingChoicePointerGuard) return;
+      if(event.type === 'pointerdown') window.__trainingChoicePointerGuard = Date.now() + 450;
     }
     if(filter === 'working'){
+      window.__trainingFilterKeepOpen = true;
       setRosterFilter(type, 'working');
     }else{
+      if(normalizeRosterType(type) === 'trainings' && (filter === 'Other' || filter === 'Gate') && window.monthlyTrainingQrReplaceMode){
+        window.monthlyTrainingQrReplaceMode = false;
+        try{ localStorage.setItem('monthly_training_qr_replace_mode_v1', '0'); }catch(e){}
+      }
+      window.__trainingFilterKeepOpen = filter !== 'all';
       setRosterFilter(type, filter);
     }
     var menu = document.getElementById('training-filter-menu');
-    if(menu) menu.classList.remove('is-open');
+    if(menu && !window.__trainingFilterKeepOpen) menu.classList.remove('is-open');
   };
   if(!window.__trainingFilterMenuCloseBound){
     window.__trainingFilterMenuCloseBound = true;
@@ -15240,7 +15430,7 @@ window.addEventListener('load',function(){
         return {
           name: item.name || '',
           training: trainingLabel(item),
-          shift: item.shift || 'Other',
+          shift: normalizeRosterShiftValue(item.shift || 'Other'),
           matched: !!item.matched,
           employee: item.employee || ''
         };
@@ -15295,14 +15485,16 @@ window.addEventListener('load',function(){
   };
   window.filterButtons = function(type){
     var state = normalizeRosterFilterState(rosterFilters[type]);
-    var activeLabel = state.working ? 'Working Today' : (state.shift && state.shift !== 'all' ? monthlyTrainingShiftDisplayLabel(state.shift) : 'All');
+    var selectedShiftLabel = state.shifts.length ? monthlyTrainingShiftDisplayLabel(state.shifts) : 'All';
+    var activeLabel = state.working ? selectedShiftLabel + ' + Working Today' : selectedShiftLabel;
     var shiftButtons = '<div class="training-filter-menu-wrap">'
       + '<button class="roster-filter-btn active" data-training-filter-toggle="1" onpointerdown="toggleTrainingFilterMenu(event)" onclick="toggleTrainingFilterMenu(event)" type="button"><span>Filter:</span><strong>'+activeLabel+'</strong><span aria-hidden="true">&#9662;</span></button>'
       + '<div class="training-filter-menu" id="training-filter-menu">'
-      + '<button class="training-filter-choice'+(state.shift === 'all' && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="all" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'all\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'all\',event)" type="button">All</button>'
-      + '<button class="training-filter-choice'+(state.shift === 'Day' && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Day" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Day\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Day\',event)" type="button"><span class="filter-dot filter-dot-day"></span>1ST SHIFT</button>'
-      + '<button class="training-filter-choice'+(state.shift === 'Night' && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Night" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Night\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Night\',event)" type="button"><span class="filter-dot filter-dot-night"></span>2ND SHIFT</button>'
-      + '<button class="training-filter-choice'+(state.shift === 'Other' && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Other" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Other\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Other\',event)" type="button"><span class="filter-dot filter-dot-other"></span>Managers/Mechanics</button>'
+      + '<button class="training-filter-choice'+(!state.shifts.length && !state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="all" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'all\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'all\',event)" type="button">All</button>'
+      + '<button class="training-filter-choice'+(state.shifts.indexOf('Day') !== -1 ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Day" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Day\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Day\',event)" type="button"><span class="filter-dot filter-dot-day"></span>1ST SHIFT</button>'
+      + '<button class="training-filter-choice'+(state.shifts.indexOf('Night') !== -1 ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Night" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Night\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Night\',event)" type="button"><span class="filter-dot filter-dot-night"></span>2ND SHIFT</button>'
+      + '<button class="training-filter-choice'+(state.shifts.indexOf('Gate') !== -1 ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Gate" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Gate\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Gate\',event)" type="button"><span class="filter-dot filter-dot-gate"></span>Gate</button>'
+      + '<button class="training-filter-choice'+(state.shifts.indexOf('Other') !== -1 ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="Other" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'Other\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'Other\',event)" type="button"><span class="filter-dot filter-dot-other"></span>Managers/Mechanics</button>'
       + '<button class="training-filter-choice'+(state.working ? ' active' : '')+'" data-filter-type="'+type+'" data-training-filter-choice="working" onpointerdown="selectTrainingFilterChoice(\''+type+'\',\'working\',event)" onclick="selectTrainingFilterChoice(\''+type+'\',\'working\',event)" type="button"><span class="filter-star">'+icon('star')+'</span>Working Today</button>'
       + '</div></div>';
     var workingButton = '';
@@ -15311,8 +15503,9 @@ window.addEventListener('load',function(){
     var dataMenu = '<div class="training-toolbar-menu-wrap"><button class="roster-filter-btn training-toolbar-menu-toggle" type="button">'+icon('upload')+'<span>Data</span><span aria-hidden="true">&#9662;</span></button><div class="training-toolbar-menu"><button class="training-toolbar-choice training-csv-toggle" onclick="openMonthlyTrainingCsvPicker()" type="button">'+icon('upload')+'<span>Import CSV</span></button><button class="training-toolbar-choice export-trainings-toggle" onclick="exportMonthlyTrainingBackup()" type="button">'+icon('download')+'<span>Export</span></button></div></div>';
     var visibilityMenu = '<div class="training-toolbar-menu-wrap"><button class="roster-filter-btn training-toolbar-menu-toggle" type="button">'+icon('eye')+'<span>Visibility</span><span aria-hidden="true">&#9662;</span></button><div class="training-toolbar-menu"><button class="training-toolbar-choice hide-ojt-toggle'+(window.monthlyTrainingHideOjt?' active':'')+'" onclick="toggleMonthlyTrainingHideOjt()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideOjt?'Show OJT':'Hide OJT')+'</span></button><button class="training-toolbar-choice hide-completed-toggle'+(window.monthlyTrainingHideCompleted?' active':'')+'" onclick="toggleMonthlyTrainingHideCompleted()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideCompleted?'Show Completed':'Hide Completed')+'</span></button><button class="training-toolbar-choice hide-checked-courses-toggle'+(window.monthlyTrainingHideCheckedCourses?' active':'')+'" onclick="toggleMonthlyTrainingHideCheckedCourses()" type="button">'+icon('eye')+'<span>'+(window.monthlyTrainingHideCheckedCourses?'Show Checked Courses':'Hide Checked Courses')+'</span></button></div></div>';
     var viewMenu = '<div class="training-toolbar-menu-wrap"><button class="roster-filter-btn training-toolbar-menu-toggle'+(window.monthlyTrainingViewMode === 'timesheet' ? ' active' : '')+'" type="button">'+icon('sheet')+'<span>View: '+viewLabel+'</span><span aria-hidden="true">&#9662;</span></button><div class="training-toolbar-menu"><button class="training-toolbar-choice timesheet-toggle'+(window.monthlyTrainingViewMode === 'timesheet'?' active':'')+'" onclick="toggleMonthlyTrainingTimesheet()" type="button">'+icon('sheet')+'<span>Timesheet</span></button><button class="training-toolbar-choice matrix-toggle'+(window.monthlyTrainingViewMode === 'matrix'?' active':'')+'" onclick="toggleMonthlyTrainingMatrix()" type="button">'+icon('sheet')+'<span>Matrix</span></button><button class="training-toolbar-choice course-board-toggle'+(window.monthlyTrainingViewMode === 'course-board'?' active':'')+'" onclick="toggleMonthlyTrainingCourseBoard()" type="button">'+icon('board')+'<span>Course Board</span></button><button class="training-toolbar-choice kanban-toggle'+(window.monthlyTrainingViewMode === 'board'?' active':'')+'" onclick="toggleMonthlyTrainingKanban()" type="button">'+icon('board')+'<span>Board View</span></button></div></div>';
+    var qrButtons = '<button class="roster-filter-btn monthly-qr-replace-toggle'+(window.monthlyTrainingQrReplaceMode?' active':'')+'" onclick="toggleMonthlyTrainingQrReplacement()" type="button">'+icon('qr')+'<span>'+(window.monthlyTrainingQrReplaceMode?'Show Gate/MM':'QR Mode')+'</span></button><button class="roster-filter-btn monthly-qr-upload-toggle" onclick="uploadMonthlyTrainingQrCodes()" type="button">'+icon('upload')+'<span>Upload QR</span></button>';
     var kanbanButton = type === 'trainings'
-      ? '<span class="roster-filter-spacer"></span>'+shiftButtons+'<button class="roster-filter-btn print-timesheet-toggle" onclick="printMonthlyTimesheet()" type="button">'+icon('print')+'<span>Print</span></button>'+dataMenu+'<button class="roster-filter-btn edit-courses-toggle" onclick="openCourseManagerModal()" type="button">'+icon('edit')+'<span>Edit Courses</span></button><button class="roster-filter-btn training-clear-toggle'+(window.monthlyTrainingClearConfirm?' active':'')+'" onclick="clearAllMonthlyTrainings()" type="button">'+icon('clear')+'<span>'+(window.monthlyTrainingClearConfirm?'Confirm Clear':'Clear All')+'</span></button>'+visibilityMenu+viewMenu
+      ? '<span class="roster-filter-spacer"></span>'+shiftButtons+'<button class="roster-filter-btn print-timesheet-toggle" onclick="printMonthlyTimesheet()" type="button">'+icon('print')+'<span>Print</span></button>'+dataMenu+'<button class="roster-filter-btn edit-courses-toggle" onclick="openCourseManagerModal()" type="button">'+icon('edit')+'<span>Edit Courses</span></button>'+qrButtons+'<button class="roster-filter-btn training-clear-toggle'+(window.monthlyTrainingClearConfirm?' active':'')+'" onclick="clearAllMonthlyTrainings()" type="button">'+icon('clear')+'<span>'+(window.monthlyTrainingClearConfirm?'Confirm Clear':'Clear All')+'</span></button>'+visibilityMenu+viewMenu
       : '';
     return (type === 'trainings' ? '' : shiftButtons) + displayControls + workingButton + kanbanButton;
   };
@@ -15332,6 +15525,11 @@ window.addEventListener('load',function(){
     var filtersWrap = document.getElementById(key === 'audits' ? 'audit-filter-row' : 'train-filter-row');
     var updatedLabel = document.getElementById('roster-updated');
     if(filtersWrap) filtersWrap.innerHTML = window.filterButtons(key);
+    if(filtersWrap && window.__trainingFilterKeepOpen){
+      var reopenedMenu = filtersWrap.querySelector('#training-filter-menu');
+      if(reopenedMenu) reopenedMenu.classList.add('is-open');
+      window.__trainingFilterKeepOpen = false;
+    }
     if(key === 'trainings' && filtersWrap){
       var trainingSectionForToolbar = document.querySelector('#page-audits .audits-wrap > .roster-section:last-of-type');
       if(trainingSectionForToolbar && trainingSectionForToolbar.firstElementChild !== filtersWrap){
@@ -15340,7 +15538,7 @@ window.addEventListener('load',function(){
     }
     var counts = countsByShift(items);
     if(totalLabel) totalLabel.textContent = String(counts.all);
-    if(summaryLabel) summaryLabel.textContent = 'Day ' + counts.Day + ' - Night ' + counts.Night + ' - Managers/Mechanics ' + counts.Other;
+    if(summaryLabel) summaryLabel.textContent = 'Day ' + counts.Day + ' - Night ' + counts.Night + ' - Gate ' + counts.Gate + ' - Managers/Mechanics ' + counts.Other;
     if(countLabel) countLabel.textContent = filtered.length + ' shown  -  ' + counts.all + ' total';
     if(updatedLabel){
       var latest = rosterLastUpdated.audits || rosterLastUpdated.trainings || data.updated_at || null;
@@ -15355,6 +15553,8 @@ window.addEventListener('load',function(){
         + '<span class="monthly-summary-item">'+icon('sun')+'<span>Day&nbsp; <u>'+counts.Day+'</u></span></span>'
         + '<span class="monthly-summary-separator"></span>'
         + '<span class="monthly-summary-item">'+icon('moon')+'<span>Night&nbsp; '+counts.Night+'</span></span>'
+        + '<span class="monthly-summary-separator"></span>'
+        + '<span class="monthly-summary-item">'+icon('qr')+'<span>Gate&nbsp; '+counts.Gate+'</span></span>'
         + '<span class="monthly-summary-separator"></span>'
         + '<span class="monthly-summary-item">'+icon('other')+'<span>Managers/Mechanics&nbsp; '+counts.Other+'</span></span>'
         + '</div>';
@@ -15427,11 +15627,11 @@ window.addEventListener('load',function(){
       });
       function auditCard(row){
         var rowShift = timesheetRosterShift(row[0], items);
-        if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return '';
+        if(!rosterFilterAllowsShift(filterState, rowShift)) return '';
         if(filterState.working && !rosterItemWorksToday({ name:row[0], employee:row[0], shift:rowShift })) return '';
         var missingList = missingByName[nameKey(row[0])] || [];
         missingList = sortCourseLabels(missingList);
-        if(window.monthlyTrainingHideCompleted && !missingList.length) return '';
+        if(monthlyTrainingHideCompletedForFilter(filterState) && !missingList.length) return '';
         var courseHtml = missingList.length
           ? '<div class="monthly-audit-course-list">' + missingList.map(function(label){
               return '<div class="monthly-audit-course'+auditCourseClass(label)+'"><span class="monthly-audit-course-dot"></span><span>'+esc(label)+'</span></div>';
@@ -15449,7 +15649,7 @@ window.addEventListener('load',function(){
         var pendingCount = 0;
         group.rows.forEach(function(row){
           var rowShift = timesheetRosterShift(row[0], items);
-          if(filterState.shift && filterState.shift !== 'all' && rowShift !== filterState.shift) return;
+          if(!rosterFilterAllowsShift(filterState, rowShift)) return;
           if(filterState.working && !rosterItemWorksToday({ name:row[0], employee:row[0], shift:rowShift })) return;
           var missingList = sortCourseLabels(missingByName[nameKey(row[0])] || []);
           if(missingList.length) pendingCount++;
@@ -15870,6 +16070,109 @@ window.addEventListener('load',function(){
   else setTimeout(reapplyFit, 60);
 })();
 </script>
+<style id="monthly-training-qr-replacement-final">
+  #page-audits .monthly-training-qr-panel{
+    display:grid !important;
+    gap:10px !important;
+    padding:10px !important;
+    border:1px solid #cbd5e1 !important;
+    border-radius:8px !important;
+    background:#f8fafc !important;
+    color:#334155 !important;
+  }
+  #page-audits .monthly-training-qr-panel.matrix-qr-panel{
+    margin:0 !important;
+    padding:8px 40px !important;
+    border-left:0 !important;
+    border-right:0 !important;
+    border-radius:0 !important;
+    background:#f1f5f9 !important;
+    justify-content:center !important;
+  }
+  #page-audits .monthly-training-qr-head{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:10px !important;
+    font:900 12px/1 Inter, Arial, sans-serif !important;
+    letter-spacing:.08em !important;
+  }
+  #page-audits .monthly-training-qr-head strong{
+    min-width:30px !important;
+    height:22px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:999px !important;
+    background:#fff !important;
+    color:#334155 !important;
+    font:900 12px/1 Inter, Arial, sans-serif !important;
+  }
+  #page-audits .monthly-training-qr-grid{
+    display:grid !important;
+    grid-template-columns:repeat(4,max-content) !important;
+    justify-content:center !important;
+    align-items:center !important;
+    gap:18px !important;
+  }
+  #page-audits .monthly-training-qr-tile{
+    min-width:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:7px !important;
+    padding:8px 9px !important;
+    border:1px solid #e2e8f0 !important;
+    border-radius:8px !important;
+    background:#fff !important;
+  }
+  #page-audits .monthly-training-qr-tile img{
+    width:214px !important;
+    height:214px !important;
+    object-fit:contain !important;
+  }
+  #page-audits .monthly-training-qr-tile span{
+    width:30px !important;
+    min-height:202px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    color:#111827 !important;
+    font:900 21px/1 Inter, Arial, sans-serif !important;
+    text-transform:uppercase !important;
+    text-align:center !important;
+    writing-mode:vertical-rl !important;
+    transform:rotate(180deg) !important;
+    white-space:nowrap !important;
+  }
+  #page-audits .monthly-training-qr-empty{
+    grid-column:1 / -1 !important;
+    min-height:64px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border:1px dashed #94a3b8 !important;
+    border-radius:8px !important;
+    background:#fff !important;
+    color:#64748b !important;
+    font:850 13px/1 Inter, Arial, sans-serif !important;
+  }
+  #page-audits .monthly-training-qr-panel.course-board-qr-panel .monthly-training-qr-grid{
+    grid-template-columns:repeat(2,max-content) !important;
+  }
+  #page-audits .monthly-training-qr-panel.course-board-qr-panel .monthly-training-qr-tile img{
+    width:156px !important;
+    height:156px !important;
+  }
+  #page-audits .monthly-training-qr-panel.course-board-qr-panel .monthly-training-qr-tile span{
+    min-height:144px !important;
+  }
+  @media (max-width:900px){
+    #page-audits .monthly-training-qr-grid{
+      grid-template-columns:repeat(2,max-content) !important;
+    }
+  }
+</style>
 <style id="monthly-course-board-final">
   #page-audits #train-table-wrap.course-board-mode{
     border:0 !important;
